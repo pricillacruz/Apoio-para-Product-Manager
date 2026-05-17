@@ -1,0 +1,13 @@
+# Vídeos grandes (Gravações e demonstrações)
+*.mp4
+*.mov
+*.avi
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Diretórios temporários / Editor
+.vscode/
+.idea/
+*.log
