@@ -194,7 +194,53 @@ function startQuiz() {
     showQuestion();
 }
 
+// Instância de áudio (criada no primeiro clique para evitar bloqueio de autoplay do navegador)
+let audioCtx = null;
+
+function playAudioFeedback(isCorrect) {
+    if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+    
+    const osc = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+    
+    osc.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+    
+    if (isCorrect) {
+        // Som de acerto (Ding/Upward)
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+        osc.frequency.exponentialRampToValueAtTime(1046.50, audioCtx.currentTime + 0.1); // C6
+        
+        gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+        
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.3);
+    } else {
+        // Som de erro (Bloop/Downward)
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(300, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.2); 
+        
+        gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+        
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.3);
+    }
+}
+
 function showQuestion() {
+    const questionContainer = document.getElementById('quiz-question-container');
+    questionContainer.classList.remove('fade-out');
+    questionContainer.classList.add('fade-in');
+
     const qData = randomizedQuestions[currentQuestionIndex];
     document.getElementById('q-current').textContent = currentQuestionIndex + 1;
     document.getElementById('q-total').textContent = randomizedQuestions.length;
@@ -226,10 +272,19 @@ function selectAnswer(selectedIndex, btnElement) {
     if (selectedIndex === correctIndex) {
         btnElement.classList.add('correct');
         score++;
+        playAudioFeedback(true);
     } else {
         btnElement.classList.add('wrong');
         allButtons[correctIndex].classList.add('correct'); // Highlight the correct one
+        playAudioFeedback(false);
     }
+    
+    // Inicia o fade out após 1.2s para preparar a próxima
+    setTimeout(() => {
+        const questionContainer = document.getElementById('quiz-question-container');
+        questionContainer.classList.remove('fade-in');
+        questionContainer.classList.add('fade-out');
+    }, 1200);
     
     // Wait briefly then go to next question
     setTimeout(() => {
