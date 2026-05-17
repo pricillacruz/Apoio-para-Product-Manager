@@ -288,3 +288,35 @@ button, .btn-primary, .btn-secondary { cursor: pointer; font-family: var(--font-
     .orbital-node { position: static; transform: none; margin-bottom: 20px; }
     .center-node { position: static; margin: 0 auto 40px; }
 }
+/* Animações de Resultado do Quiz */
+.anim-bounce {
+    animation: bounce 2s infinite;
+    display: inline-block;
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-20px);}
+    60% {transform: translateY(-10px);}
+}
+
+.anim-pulse {
+    animation: pulse 2s infinite;
+    display: inline-block;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.anim-tada {
+    animation: tada 1s infinite;
+    display: inline-block;
+}
+@keyframes tada {
+    0% {transform: scale3d(1, 1, 1);}
+    10%, 20% {transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);}
+    30%, 50%, 70%, 90% {transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);}
+    40%, 60%, 80% {transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);}
+    100% {transform: scale3d(1, 1, 1);}
+}

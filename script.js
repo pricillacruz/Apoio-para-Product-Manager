@@ -165,10 +165,29 @@ const quizQuestions = [
 
 let currentQuestionIndex = 0;
 let score = 0;
+let randomizedQuestions = [];
+
+// Função para embaralhar array (Fisher-Yates)
+function shuffleArray(array) {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+    return newArray;
+}
 
 function startQuiz() {
+    randomizedQuestions = shuffleArray(quizQuestions);
     currentQuestionIndex = 0;
     score = 0;
+    
+    // Remove animação antiga se existir
+    const oldAnim = document.getElementById('result-animation');
+    if(oldAnim) oldAnim.remove();
+    const oldRec = document.getElementById('result-recommendation');
+    if(oldRec) oldRec.remove();
+    
     document.getElementById('quiz-start').style.display = 'none';
     document.getElementById('quiz-result').style.display = 'none';
     document.getElementById('quiz-question-container').style.display = 'block';
@@ -176,10 +195,13 @@ function startQuiz() {
 }
 
 function showQuestion() {
-    const qData = quizQuestions[currentQuestionIndex];
+    const qData = randomizedQuestions[currentQuestionIndex];
     document.getElementById('q-current').textContent = currentQuestionIndex + 1;
-    document.getElementById('q-total').textContent = quizQuestions.length;
-    document.getElementById('question-text').textContent = qData.question;
+    document.getElementById('q-total').textContent = randomizedQuestions.length;
+    
+    // Remove numeração manual da pergunta para ficar clean depois do shuffle
+    const qText = qData.question.replace(/^\d+\.\s*/, '');
+    document.getElementById('question-text').textContent = qText;
     
     const optionsContainer = document.getElementById('options-container');
     optionsContainer.innerHTML = ''; // clear previous
@@ -199,7 +221,7 @@ function selectAnswer(selectedIndex, btnElement) {
     const allButtons = optionsContainer.querySelectorAll('button');
     allButtons.forEach(btn => btn.disabled = true);
     
-    const correctIndex = quizQuestions[currentQuestionIndex].correct;
+    const correctIndex = randomizedQuestions[currentQuestionIndex].correct;
     
     if (selectedIndex === correctIndex) {
         btnElement.classList.add('correct');
@@ -212,7 +234,7 @@ function selectAnswer(selectedIndex, btnElement) {
     // Wait briefly then go to next question
     setTimeout(() => {
         currentQuestionIndex++;
-        if (currentQuestionIndex < quizQuestions.length) {
+        if (currentQuestionIndex < randomizedQuestions.length) {
             showQuestion();
         } else {
             showResult();
@@ -222,22 +244,69 @@ function selectAnswer(selectedIndex, btnElement) {
 
 function showResult() {
     document.getElementById('quiz-question-container').style.display = 'none';
-    document.getElementById('quiz-result').style.display = 'block';
+    const resultContainer = document.getElementById('quiz-result');
+    resultContainer.style.display = 'block';
     
-    document.getElementById('result-score').textContent = `${score}/${quizQuestions.length}`;
+    document.getElementById('result-score').textContent = `${score}/${randomizedQuestions.length}`;
     
     let message = '';
-    if (score <= 3) {
-        message = "Você está começando sua jornada. Continue explorando os conceitos da página.";
-    } else if (score <= 6) {
-        message = "Você já entende fundamentos importantes. Agora é hora de praticar com exemplos reais.";
-    } else if (score <= 8) {
-        message = "Você tem uma boa visão de Produto. Continue aprofundando estratégia, dados e priorização.";
+    let emoji = '';
+    let animClass = '';
+    let recommendationHTML = '';
+    
+    if (score <= 4) {
+        message = "Início de Jornada! Não desanime. O mundo de Produto é vasto e cheio de conceitos.";
+        emoji = '🎯';
+        animClass = 'anim-bounce';
+        recommendationHTML = `
+            <div id="result-recommendation" style="margin-top:20px; padding:15px; background:rgba(255,100,100,0.1); border-left: 4px solid var(--accent-red); border-radius:4px; text-align:left;">
+                <h5 style="margin-bottom:8px; color:var(--accent-red);">📚 Sugestão de Leitura:</h5>
+                <p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">Para fortalecer sua base, sugerimos que você revise as seções:</p>
+                <ul style="font-size:0.9rem; color:#aaa; margin-left:20px;">
+                    <li><a href="#ciclo" style="color:var(--accent-blue);">O Ciclo de Vida do Produto (Discovery)</a></li>
+                    <li><a href="#frameworks" style="color:var(--accent-blue);">Frameworks Essenciais (RICE, MoSCoW)</a></li>
+                </ul>
+            </div>`;
+    } else if (score <= 7) {
+        message = "Bom trabalho! Você já domina muitos fundamentos. Só falta lapidar alguns conceitos mais estratégicos.";
+        emoji = '💪';
+        animClass = 'anim-pulse';
+        recommendationHTML = `
+            <div id="result-recommendation" style="margin-top:20px; padding:15px; background:rgba(100,200,255,0.1); border-left: 4px solid var(--accent-blue); border-radius:4px; text-align:left;">
+                <h5 style="margin-bottom:8px; color:var(--accent-blue);">📚 Sugestão de Leitura:</h5>
+                <p style="font-size:0.9rem; color:#ccc; margin-bottom:10px;">Você está no caminho certo! Para virar a chave, dê uma olhada em:</p>
+                <ul style="font-size:0.9rem; color:#aaa; margin-left:20px;">
+                    <li><a href="#metricas" style="color:var(--accent-teal);">Métricas & Analytics (North Star Metric)</a></li>
+                    <li><a href="#playbook" style="color:var(--accent-teal);">Playbook do PM (Baixe o Status Executivo)</a></li>
+                </ul>
+            </div>`;
     } else {
-        message = "Mandou muito bem! Você pensa como um PM de alta performance.";
+        message = "Brilhante! Você tem o mindset exato de um PM de Alta Performance.";
+        emoji = '🚀';
+        animClass = 'anim-tada';
+        recommendationHTML = `
+            <div id="result-recommendation" style="margin-top:20px; padding:15px; background:rgba(100,255,150,0.1); border-left: 4px solid var(--accent-green); border-radius:4px; text-align:left;">
+                <h5 style="margin-bottom:8px; color:var(--accent-green);">🔥 Próximo Nível:</h5>
+                <p style="font-size:0.9rem; color:#ccc;">Sua visão está super afiada. Use os templates do <strong>Playbook do PM</strong> no seu dia a dia para continuar gerando impacto!</p>
+            </div>`;
     }
     
     document.getElementById('result-message').textContent = message;
+    
+    // Adiciona o elemento de emoji animado
+    const emojiEl = document.createElement('div');
+    emojiEl.id = 'result-animation';
+    emojiEl.className = animClass;
+    emojiEl.style.fontSize = '4rem';
+    emojiEl.style.margin = '20px 0';
+    emojiEl.textContent = emoji;
+    
+    // Insere o emoji antes do score
+    const scoreEl = document.querySelector('.quiz-score-circle');
+    scoreEl.parentNode.insertBefore(emojiEl, scoreEl);
+    
+    // Insere a recomendação de leitura
+    resultContainer.insertAdjacentHTML('beforeend', recommendationHTML);
     
     // Refresh Icons for result
     lucide.createIcons();
