@@ -591,6 +591,7 @@
             </div>
 
             <div class="accordion-container">
+
                 <!-- RICE -->
                 <div class="accordion-item">
                     <div class="accordion-header">
@@ -598,34 +599,56 @@
                         <i data-lucide="chevron-down"></i>
                     </div>
                     <div class="accordion-body">
-                        <p><strong>Quando usar:</strong> Para comparar muitas iniciativas matemáticas que disputam os mesmos recursos.</p>
-                        <p><strong>Fórmula:</strong> (Reach × Impact × Confidence) ÷ Effort</p>
-                        <div class="bg-card p-4 rounded mt-3">
-                            <p class="text-sm"><strong>Exemplo:</strong> Melhorar o onboarding.</p>
-                            <ul class="text-sm mb-2">
-                                <li><strong>Reach:</strong> 20.000 usuários/mês</li>
-                                <li><strong>Impact:</strong> 3 (Massivo)</li>
-                                <li><strong>Confidence:</strong> 80% (Pesquisa validada)</li>
-                                <li><strong>Effort:</strong> 4 meses (Engenharia + Design)</li>
+                        <p><strong>Contexto (Quando usar):</strong> Ideal para quando você tem muitas iniciativas promissoras disputando os mesmos recursos limitados e precisa remover o "achismo" ou o viés de quem grita mais alto na decisão.</p>
+                        <div class="mt-3">
+                            <h5 class="text-purple mb-2">Significado da Sigla (CAPS):</h5>
+                            <ul class="text-sm">
+                                <li><strong>R (Reach - Alcance):</strong> Quantos usuários/clientes serão impactados por essa iniciativa em um determinado período (ex: por mês)?</li>
+                                <li><strong>I (Impact - Impacto):</strong> O quanto isso afeta nossa métrica principal? (Geralmente medido em: 3 = Massivo, 2 = Alto, 1 = Médio, 0.5 = Baixo, 0.25 = Mínimo).</li>
+                                <li><strong>C (Confidence - Confiança):</strong> Qual o nosso nível de certeza sobre o alcance e impacto previstos? (Geralmente: 100% = Alta/Comprovada, 80% = Média, 50% = Baixa/Palpite).</li>
+                                <li><strong>E (Effort - Esforço):</strong> Quanto tempo a equipe levará para concluir? (Ex: 3 pessoas x 1 mês = 3 Pessoas/Mês).</li>
                             </ul>
-                            <div class="tag bg-purple text-white p-2">Score = (20000 * 3 * 0.8) / 4 = 12.000</div>
+                        </div>
+                        <p class="mt-2"><strong>Fórmula:</strong> (R × I × C) ÷ E</p>
+                        <div class="bg-card p-4 rounded mt-3">
+                            <p class="text-sm"><strong>Exemplo de como usar:</strong> Projeto de Melhoria do Onboarding da Conta Digital.</p>
+                            <ul class="text-sm mb-2 text-muted">
+                                <li><strong>Reach:</strong> 20.000 usuários acessam a tela por mês.</li>
+                                <li><strong>Impact:</strong> 3 (Massivo, pois ativa novas contas diretamente).</li>
+                                <li><strong>Confidence:</strong> 80% (Pesquisa com usuários apontou que a mudança ajuda).</li>
+                                <li><strong>Effort:</strong> 4 meses (Tempo de Engenharia + Design).</li>
+                            </ul>
+                            <div class="tag bg-purple text-white p-2">Score RICE = (20.000 * 3 * 0.8) / 4 = 12.000 pontos.</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- KANO -->
+                <!-- ICE -->
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <div class="acc-title"><i data-lucide="smile"></i><h3>Kano Model</h3></div>
+                        <div class="acc-title"><i data-lucide="zap"></i><h3>ICE Score</h3></div>
                         <i data-lucide="chevron-down"></i>
                     </div>
                     <div class="accordion-body">
-                        <p><strong>Quando usar:</strong> Para equilibrar inovação com o "básico bem feito". Foco na satisfação.</p>
-                        <ul class="mt-3">
-                            <li><strong>Básico (Obrigatório):</strong> Login Seguro. Se falhar, o cliente odeia.</li>
-                            <li><strong>Performance:</strong> Extrato carregando mais rápido. Quanto melhor, mais feliz.</li>
-                            <li><strong>Encantador (Uau):</strong> App bancário que avisa: "Cuidado, essa conta de destino parece fraude". O cliente não esperava, mas ama.</li>
-                        </ul>
+                        <p><strong>Contexto (Quando usar):</strong> Excelente para priorizações ultra-rápidas, como testes de Growth Hacking, marketing ou dinâmicas de ideação onde você não tem dados absolutos e precisa de velocidade acima da precisão matemática.</p>
+                        <div class="mt-3">
+                            <h5 class="text-blue mb-2">Significado da Sigla (CAPS):</h5>
+                            <ul class="text-sm">
+                                <li><strong>I (Impact - Impacto):</strong> Quão grande será o resultado positivo se isso funcionar? (Nota de 1 a 10).</li>
+                                <li><strong>C (Confidence - Confiança):</strong> Quão certos estamos de que a hipótese vai se provar real? (Nota de 1 a 10).</li>
+                                <li><strong>E (Ease - Facilidade):</strong> Quão rápido ou barato é construir isso? Aqui avalia-se a *facilidade* (10 é muito fácil) em vez de esforço. (Nota de 1 a 10).</li>
+                            </ul>
+                        </div>
+                        <p class="mt-2"><strong>Fórmula:</strong> I × C × E</p>
+                        <div class="bg-card p-4 rounded mt-3">
+                            <p class="text-sm"><strong>Exemplo de como usar:</strong> Adicionar botão de PIX na tela principal do carrinho.</p>
+                            <ul class="text-sm mb-2 text-muted">
+                                <li><strong>Impact:</strong> 9 (Espera-se um salto gigante em conversão).</li>
+                                <li><strong>Confidence:</strong> 8 (Forte, pois os concorrentes já utilizam com sucesso).</li>
+                                <li><strong>Ease:</strong> 6 (Média, pois exige integração com a API do Banco Central).</li>
+                            </ul>
+                            <div class="tag bg-blue text-white p-2">Score ICE = 9 * 8 * 6 = 432 pontos.</div>
+                        </div>
                     </div>
                 </div>
 
@@ -636,29 +659,73 @@
                         <i data-lucide="chevron-down"></i>
                     </div>
                     <div class="accordion-body">
-                        <p><strong>Quando usar:</strong> Para definir o corte exato de escopo de um lançamento de MVP.</p>
-                        <div class="grid-2 mt-3">
-                            <div class="bg-card p-3 rounded border-left-red"><strong>Must Have:</strong> Vital para funcionar (Token SMS).</div>
-                            <div class="bg-card p-3 rounded border-left-yellow"><strong>Should Have:</strong> Importante, mas pode aguardar v2 (Notificação Push).</div>
-                            <div class="bg-card p-3 rounded border-left-blue"><strong>Could Have:</strong> "Nice to have" (Modo Noturno).</div>
-                            <div class="bg-card p-3 rounded border-left-gray"><strong>Won't Have:</strong> Explicitamente fora agora (Cashback em cripto).</div>
+                        <p><strong>Contexto (Quando usar):</strong> Ideal para definir o corte exato do escopo de um MVP (Mínimo Produto Viável) e alinhar expectativas de lançamento com Stakeholders não-técnicos.</p>
+                        <div class="mt-3">
+                            <h5 class="text-yellow mb-2">Significado da Sigla (CAPS):</h5>
+                            <ul class="text-sm">
+                                <li><strong>M (Must Have - Obrigatório):</strong> Itens inegociáveis. Se a funcionalidade não estiver presente, o lançamento falha, é ilegal ou inseguro.</li>
+                                <li><strong>S (Should Have - Importante):</strong> Itens de alto valor, mas que se não entrarem agora, o produto ainda pode ser lançado (com alguma dor ou trabalho manual temporário).</li>
+                                <li><strong>C (Could Have - Desejável):</strong> "Nice to have". É o que chamamos de brilho ou encanto. Faremos apenas se sobrar tempo no ciclo de entrega.</li>
+                                <li><strong>W (Won't Have - Fora do escopo):</strong> Funcionalidades explicitamente rejeitadas para este lançamento. Ajuda a evitar frustrações futuras.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-card p-4 rounded mt-3">
+                            <p class="text-sm mb-2"><strong>Exemplo de como usar:</strong> Construção do aplicativo "Carteira Digital".</p>
+                            <div class="grid-2">
+                                <div class="bg-card p-3 rounded border-left-red text-sm"><strong>Must Have:</strong> Envio de Token SMS para segurança. Sem isso o Banco Central barra.</div>
+                                <div class="bg-card p-3 rounded border-left-yellow text-sm"><strong>Should Have:</strong> Notificação Push de compra. Muito útil, mas se falhar no v1, o extrato ainda mostra a compra.</div>
+                                <div class="bg-card p-3 rounded border-left-blue text-sm"><strong>Could Have:</strong> Tema escuro (Dark Mode).</div>
+                                <div class="bg-card p-3 rounded border-left-gray text-sm"><strong>Won't Have:</strong> Cashback em compras online. Acordado com a diretoria que só virá no trimestre seguinte.</div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- ICE e COST OF DELAY -->
+                <!-- KANO MODEL -->
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <div class="acc-title"><i data-lucide="zap"></i><h3>ICE & Cost of Delay</h3></div>
+                        <div class="acc-title"><i data-lucide="smile"></i><h3>Kano Model</h3></div>
                         <i data-lucide="chevron-down"></i>
                     </div>
                     <div class="accordion-body">
-                        <p><strong>ICE (Impact, Confidence, Ease):</strong> Priorização ultra-rápida. Avalia facilidade no lugar de esforço complexo.</p>
-                        <p class="mt-3"><strong>Cost of Delay (Custo do Atraso):</strong> Qual o impacto financeiro de NÃO fazer agora?</p>
-                        <p class="text-sm text-muted"><strong>Exemplo:</strong> Se atrasarmos a atualização da API antifraude em 1 mês, o banco perde R$ 1 Milhão em fraudes e sofre risco regulatório. Prioridade Máxima, mesmo com esforço altíssimo.</p>
+                        <p><strong>Contexto (Quando usar):</strong> Para equilibrar inovação com o "básico bem feito". Em vez de priorizar pelo esforço da equipe, você prioriza pelo nível de satisfação do cliente.</p>
+                        <div class="mt-3">
+                            <h5 class="text-teal mb-2">As Três Categorias:</h5>
+                            <ul class="text-sm">
+                                <li><strong>Básico (Obrigatório):</strong> Funcionalidades que o cliente não vai te elogiar por ter, mas vai te odiar se não tiver. Se não existir, a satisfação cai drasticamente.</li>
+                                <li><strong>Performance (Linear):</strong> Quanto mais, melhor. A satisfação do cliente cresce proporcionalmente à entrega.</li>
+                                <li><strong>Encantador (Uau / Delighter):</strong> O cliente não esperava por isso, logo não sente falta se não tiver. Mas se você entregar, a satisfação vai lá no alto.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-card p-4 rounded mt-3">
+                            <p class="text-sm mb-2"><strong>Exemplo de como usar:</strong> Mapeando features de um App Bancário.</p>
+                            <ul class="text-sm text-muted">
+                                <li><strong>Básico:</strong> Fazer Login Seguro e Ver Saldo.</li>
+                                <li><strong>Performance:</strong> O app carregar o extrato em 1 segundo em vez de 5 segundos.</li>
+                                <li><strong>Encantador:</strong> O app identificar que você pagou a mesma conta duas vezes e oferecer o estorno automático antes mesmo de você perceber.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COST OF DELAY -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="acc-title"><i data-lucide="clock"></i><h3>Cost of Delay (Custo do Atraso)</h3></div>
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="accordion-body">
+                        <p><strong>Contexto (Quando usar):</strong> Quando você está lidando com dívidas técnicas, compliance, regulamentação ou janelas de mercado muito fechadas (como a Black Friday).</p>
+                        <p class="mt-2"><strong>Como funciona:</strong> Em vez de calcular o que você vai ganhar lançando a funcionalidade, você calcula qual será a sua PERDA TANGÍVEL (financeira, legal, de clientes) por cada semana ou mês de atraso.</p>
+                        <div class="bg-card p-4 rounded mt-3">
+                            <p class="text-sm mb-2"><strong>Exemplo de como usar:</strong> Atualização de criptografia no banco de dados.</p>
+                            <p class="text-sm text-muted">A equipe quer adiar a tarefa de melhoria de segurança porque ela exige 3 meses de esforço da arquitetura.</p>
+                            <p class="text-sm text-muted">O PM então aplica a ótica do Cost of Delay: <em>"Se não fizermos isso até Dezembro, sofreremos multa da Lei de Proteção de Dados no valor de R$ 2 Milhões e uma taxa diária de R$ 10.000."</em> O custo de não fazer e o risco superam o esforço, transformando a tarefa chata em Prioridade Número 1.</p>
+                        </div>
                     </div>
                 </div>
             </div>
+</div>
         </div>
     </section>
 
