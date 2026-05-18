@@ -879,9 +879,33 @@
                 <p>O PM não manda no time de engenharia. Ele influencia com clareza, contexto analítico e evidências matemáticas.</p>
             </div>
 
-            <div class="quote-card mb-5 mx-auto max-w-800">
-                <i data-lucide="bar-chart"></i>
-                <p><strong>Mapeando o Produto com Dados:</strong> O segredo da influência é cruzar métricas de Negócio com métricas Técnicas. Um PM não olha apenas a "taxa de conversão". Ele analisa o <em>volume de usuários ativos na plataforma</em> cruzado com o <em>volume de uso de uma funcionalidade específica (agent)</em>. Ele acompanha a saúde da API cruzando o <em>volume de sucessos (HTTP Status 200)</em> contra a <em>quantidade de falhas (HTTP Status 400/500)</em>. Se a conversão caiu, os dados dirão se foi porque o usuário não gostou (UX) ou porque o sistema quebrou (Tech). Dados matam o "achismo" na raiz.</p>
+            <div class="bg-card p-4 rounded shadow-sm border-color mb-5 mx-auto max-w-800">
+                <h4 class="mb-3 text-center" style="display:flex; align-items:center; justify-content:center; gap:8px;"><i data-lucide="bar-chart-2" class="text-teal"></i> Mapeando o Produto com Dados</h4>
+                <p class="text-sm text-center text-muted mb-4">O segredo da influência é cruzar a camada de negócio com a saúde da infraestrutura. Se a conversão caiu, foi problema de usabilidade (UX) ou o servidor caiu (Tech)? Dados matam o "achismo" na raiz.</p>
+                
+                <div class="grid-2" style="gap: 16px;">
+                    <div class="p-3 rounded" style="background: rgba(100,200,255,0.05); border: 1px solid rgba(100,200,255,0.1);">
+                        <h5 class="text-blue mb-3" style="display:flex; align-items:center; gap:6px;"><i data-lucide="users" style="width:16px;"></i> Visão de Negócio</h5>
+                        <ul class="text-sm text-muted check-list">
+                            <li class="mb-2"><strong>Volume de Usuários (MAU/DAU):</strong> Quantos estão ativos hoje?</li>
+                            <li class="mb-2"><strong>Uso de Funcionalidade:</strong> Quantos clicaram na feature X?</li>
+                            <li><strong>Funil de Conversão:</strong> Onde exatamente estão abandonando a jornada?</li>
+                        </ul>
+                    </div>
+                    <div class="p-3 rounded" style="background: rgba(255,100,100,0.05); border: 1px solid rgba(255,100,100,0.1);">
+                        <h5 class="text-red mb-3" style="display:flex; align-items:center; gap:6px;"><i data-lucide="server" style="width:16px;"></i> Visão Técnica</h5>
+                        <ul class="text-sm text-muted check-list">
+                            <li class="mb-2"><strong>Status 200 (Sucesso):</strong> A API respondeu corretamente e sem demora.</li>
+                            <li class="mb-2"><strong>Status 400 (Client Error):</strong> Ex: Usuário enviou formato de CPF inválido.</li>
+                            <li><strong>Status 500 (Timeout):</strong> O servidor caiu. O cliente clica e nada acontece.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-4 p-3 border-left-teal rounded" style="background: rgba(0,0,0,0.2);">
+                    <h5 class="text-white text-sm mb-2">Diagnóstico Rápido:</h5>
+                    <p class="text-sm text-muted mb-0">Se a conversão na tela de pagamento despencou hoje e o painel técnico da Engenharia mostra um pico de <strong>Status 500</strong> na API do parceiro de cartão de crédito, o problema não é a cor do botão. É infraestrutura. Com essa evidência visual, o PM mobiliza o time técnico em minutos.</p>
+                </div>
             </div>
 
             <div class="grid-2 align-start mt-4">
@@ -936,41 +960,47 @@
                 <p>Métodos, ferramentas e boas práticas que definem o ritmo global de inovação digital.</p>
             </div>
 
-            <div class="companies-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+            <div class="companies-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px;">
+                <!-- Amazon -->
                 <div class="company-card border-top-yellow bg-card p-4 rounded shadow-sm">
-                    <h3 class="gradient-text mb-3" style="display:flex; align-items:center; gap:8px;"><i data-lucide="shopping-cart"></i> Amazon</h3>
-                    <ul class="text-sm text-muted check-list">
-                        <li class="mb-2"><strong>Prática Principal:</strong> <em>Working Backwards</em> (Trabalhar de trás para frente).</li>
-                        <li class="mb-2"><strong>Ferramenta (Doc):</strong> <strong>PRFAQ</strong> (Press Release & FAQ). O PM escreve o "comunicado de imprensa" do lançamento antes mesmo de existir uma linha de código.</li>
-                        <li><strong>Caso de Uso:</strong> Evitar construir produtos caros que ninguém quer. O time lê o PRFAQ; se não soar empolgante, o projeto é cancelado na fase de ideação.</li>
-                    </ul>
+                    <h3 class="gradient-text mb-2" style="display:flex; align-items:center; gap:8px;"><i data-lucide="shopping-cart"></i> Amazon</h3>
+                    <p class="text-sm text-white mb-3" style="font-weight: 600;">Working Backwards & Six Pager</p>
+                    <p class="text-sm text-muted" style="line-height: 1.6;">O PM da Amazon não usa PowerPoint. Ele escreve um documento narrativo longo (<strong>Six Pager</strong>) ou um comunicado de imprensa futuro (<strong>PRFAQ</strong>) antes mesmo do desenvolvimento começar. O objetivo é validar de forma profunda se a ideia tem real valor para o cliente. Se o documento não convencer a diretoria durante os 20 minutos de leitura silenciosa na reunião, o produto nem é iniciado.</p>
                 </div>
                 
+                <!-- Google -->
                 <div class="company-card border-top-blue bg-card p-4 rounded shadow-sm">
-                    <h3 class="gradient-text mb-3" style="display:flex; align-items:center; gap:8px;"><i data-lucide="search"></i> Google</h3>
-                    <ul class="text-sm text-muted check-list">
-                        <li class="mb-2"><strong>Prática Principal:</strong> <em>Experimentação Escalada e OKRs Radicais</em>.</li>
-                        <li class="mb-2"><strong>Ferramentas:</strong> Plataformas próprias massivas de Teste A/B e <strong>SRE</strong> (Site Reliability Engineering).</li>
-                        <li><strong>Caso de Uso:</strong> Um botão nunca muda de cor por "achismo". O PM lança a mudança para 0.1% dos usuários, mede o impacto estatístico no OKR e a latência de infraestrutura antes do rollout (liberação) global.</li>
-                    </ul>
+                    <h3 class="gradient-text mb-2" style="display:flex; align-items:center; gap:8px;"><i data-lucide="search"></i> Google</h3>
+                    <p class="text-sm text-white mb-3" style="font-weight: 600;">10x Thinking & SRE</p>
+                    <p class="text-sm text-muted" style="line-height: 1.6;">A cultura foca em soluções que melhorem processos em 10 vezes (10x), não apenas 10%. Tudo é testado em altíssima escala usando testes A/B. Como bilhões de pessoas usam os produtos, a figura do Engenheiro de Confiabilidade (<strong>SRE</strong>) é tão vital quanto o PM, garantindo que o sistema aguente o tráfego global massivo sem cair.</p>
                 </div>
 
+                <!-- Netflix -->
+                <div class="company-card border-top-red bg-card p-4 rounded shadow-sm">
+                    <h3 class="gradient-text mb-2" style="display:flex; align-items:center; gap:8px;"><i data-lucide="play"></i> Netflix</h3>
+                    <p class="text-sm text-white mb-3" style="font-weight: 600;">Chaos Engineering & Densidade de Talento</p>
+                    <p class="text-sm text-muted" style="line-height: 1.6;">Eles aplicam o conceito de <strong>Chaos Monkey</strong>, uma ferramenta que derruba os próprios servidores da Netflix em produção de propósito. Por quê? Para garantir que a arquitetura seja tão resiliente que consiga se curar sozinha sem o usuário sequer perceber na TV de casa. Cultivam uma cultura de times extremamente enxutos, mas com altíssima densidade de talento e remuneração.</p>
+                </div>
+
+                <!-- Spotify -->
                 <div class="company-card border-top-green bg-card p-4 rounded shadow-sm">
-                    <h3 class="gradient-text mb-3" style="display:flex; align-items:center; gap:8px;"><i data-lucide="music"></i> Spotify & Netflix</h3>
-                    <ul class="text-sm text-muted check-list">
-                        <li class="mb-2"><strong>Práticas Principais:</strong> <em>Chaos Engineering (Netflix)</em> e <em>Spotify Model (Squads/Tribes)</em>.</li>
-                        <li class="mb-2"><strong>Ferramentas:</strong> <strong>Chaos Monkey</strong> (ferramenta que derruba servidores de propósito em produção).</li>
-                        <li><strong>Caso de Uso:</strong> Netflix usa o Chaos Monkey para garantir que o sistema sobreviva a quedas sem o usuário perceber. O Spotify organiza PMs e Devs em "Squads" ultra autônomos para focar em jornadas super específicas (ex: "Squad de Playlists").</li>
-                    </ul>
+                    <h3 class="gradient-text mb-2" style="display:flex; align-items:center; gap:8px;"><i data-lucide="music"></i> Spotify</h3>
+                    <p class="text-sm text-white mb-3" style="font-weight: 600;">Squads, Tribes & Autonomia Total</p>
+                    <p class="text-sm text-muted" style="line-height: 1.6;">Pioneira no modelo de escala ágil. Cada pequeno time opera como uma mini-startup 100% autônoma (com PM, Engenheiros e Designers) dedicada a uma missão muito específica. Essa arquitetura permite que eles atualizem partes do aplicativo de forma totalmente independente, sem precisar de aprovação pesada do resto da organização corporativa.</p>
                 </div>
 
+                <!-- Mercado Livre -->
+                <div class="company-card border-top-yellow bg-card p-4 rounded shadow-sm">
+                    <h3 class="gradient-text mb-2" style="display:flex; align-items:center; gap:8px;"><i data-lucide="package"></i> Mercado Livre</h3>
+                    <p class="text-sm text-white mb-3" style="font-weight: 600;">Continuous Deployment & Ecossistema</p>
+                    <p class="text-sm text-muted" style="line-height: 1.6;">Possui uma das engenharias mais agressivas e eficientes da América Latina. Através de sua plataforma proprietária (Fury), o Meli lança milhares de pequenas versões de código todos os dias. O PM pensa puramente em "Ecossistema", sabendo que uma pequena mudança no carrinho de compras impacta toda a malha de pagamentos (Mercado Pago) e logística (Mercado Envios).</p>
+                </div>
+
+                <!-- Nubank -->
                 <div class="company-card border-top-purple bg-card p-4 rounded shadow-sm">
-                    <h3 class="gradient-text mb-3" style="display:flex; align-items:center; gap:8px;"><i data-lucide="credit-card"></i> Mercado Livre & Nubank</h3>
-                    <ul class="text-sm text-muted check-list">
-                        <li class="mb-2"><strong>Prática Principal:</strong> <em>Velocidade Brutal e UX Sem Atrito</em>.</li>
-                        <li class="mb-2"><strong>Ferramentas:</strong> <strong>Continuous Deployment (CD)</strong> agressivo e <strong>Feature Flags</strong>.</li>
-                        <li><strong>Caso de Uso:</strong> O Mercado Livre (através de sua plataforma 'Fury') lança milhares de micro-atualizações por dia. O Nubank foca a cultura em "matar a complexidade", onde o PM usa Feature Flags para ligar e desligar serviços instantaneamente caso alguma taxa de erro dispare (ex: Pix fora do ar).</li>
-                    </ul>
+                    <h3 class="gradient-text mb-2" style="display:flex; align-items:center; gap:8px;"><i data-lucide="credit-card"></i> Nubank</h3>
+                    <p class="text-sm text-white mb-3" style="font-weight: 600;">Obsessão por Simplicidade & Feature Flags</p>
+                    <p class="text-sm text-muted" style="line-height: 1.6;">O principal inimigo do Nubank é a complexidade bancária. Os PMs focam em reduzir atritos a zero e utilizam extensivamente <strong>Feature Flags</strong>. Isso permite ligar ou desligar botões e serviços no aplicativo dos usuários em tempo real via servidor, sem precisar forçar uma nova e demorada atualização na loja de aplicativos da Apple ou Google caso ocorra um bug grave.</p>
                 </div>
             </div>
         </div>
