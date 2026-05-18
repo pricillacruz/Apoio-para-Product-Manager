@@ -830,7 +830,7 @@
     <section id="estrategia" class="section dark-alt">
         <div class="container">
             <div class="section-header">
-                <h2>Product Strategy em Cascata</h2>
+                <h2>Product Strategy</h2>
                 <p>Do sonho corporativo até a tarefa no Jira do Desenvolvedor.</p>
             </div>
 
@@ -876,36 +876,54 @@
         <div class="container">
             <div class="section-header">
                 <h2>Influência com Dados</h2>
-                <p>O PM não manda no time de engenharia. Ele influencia com clareza e contexto.</p>
+                <p>O PM não manda no time de engenharia. Ele influencia com clareza, contexto analítico e evidências matemáticas.</p>
             </div>
 
             <div class="quote-card mb-5 mx-auto max-w-800">
-                <i data-lucide="lightbulb"></i>
-                <p><strong>Analogia:</strong> Influenciar com dados é como iluminar um caminho numa floresta escura. O time não te segue porque você ordenou, te segue porque agora todo mundo consegue enxergar o sentido.</p>
+                <i data-lucide="bar-chart"></i>
+                <p><strong>Mapeando o Produto com Dados:</strong> O segredo da influência é cruzar métricas de Negócio com métricas Técnicas. Um PM não olha apenas a "taxa de conversão". Ele analisa o <em>volume de usuários ativos na plataforma</em> cruzado com o <em>volume de uso de uma funcionalidade específica (agent)</em>. Ele acompanha a saúde da API cruzando o <em>volume de sucessos (HTTP Status 200)</em> contra a <em>quantidade de falhas (HTTP Status 400/500)</em>. Se a conversão caiu, os dados dirão se foi porque o usuário não gostou (UX) ou porque o sistema quebrou (Tech). Dados matam o "achismo" na raiz.</p>
             </div>
 
             <div class="grid-2 align-start mt-4">
                 <div class="bg-card p-4 rounded border-left-red">
                     <h4 class="text-red mb-2"><i data-lucide="x-circle"></i> O jeito Chefe (Errado)</h4>
-                    <p class="text-sm text-muted">"Time, eu quero que vocês mudem a tela de cadastro amanhã. Façam o botão verde e tirem aquele campo de RG. É urgente."</p>
-                    <p class="text-sm mt-2"><em>Reação: Engenharia fica frustrada, acha que o PM é ditador e apenas cumpre ordens sem engajamento.</em></p>
+                    <p class="text-sm text-muted">"Time, quero que mudem a tela de cadastro amanhã. É urgente, o CEO pediu."</p>
+                    <p class="text-sm mt-2"><em>Reação: A Engenharia fica frustrada, executa de má vontade e não se sente dona do produto.</em></p>
                 </div>
                 
                 <div class="bg-card p-4 rounded border-left-teal">
-                    <h4 class="text-teal mb-2"><i data-lucide="check-circle"></i> O jeito PM de Alta Performance</h4>
-                    <p class="text-sm text-muted">"Time, temos 48% de abandono na etapa de envio de documentos. A hipótese validada por UX é que o texto atual gera insegurança sobre privacidade. Podemos estruturar um teste A/B simplificando essa tela para medir se a conversão aumenta?"</p>
-                    <p class="text-sm mt-2"><em>Reação: O time entende o impacto, sugere soluções técnicas criativas e engaja no resultado, não só na entrega.</em></p>
+                    <h4 class="text-teal mb-2"><i data-lucide="check-circle"></i> O jeito PM Analítico</h4>
+                    <p class="text-sm text-muted">"Time, o monitoramento mostra que 30% das tentativas de upload batem em 'Status 400' (Bad Request). Isso impacta 5.000 usuários por semana. O que acham de investigarmos se o formato da imagem está quebrando o limite de payload?"</p>
+                    <p class="text-sm mt-2"><em>Reação: O time entende a dor exata, sabe a escala do problema e atua como parceiro na solução técnica.</em></p>
                 </div>
             </div>
 
-            <h4 class="text-center mt-5 mb-4">Os 6 Passos da Influência</h4>
-            <div class="steps-row">
-                <span class="tag p-2">1. Comece pelo problema</span>
-                <span class="tag p-2">2. Mostre dados (Evidência)</span>
-                <span class="tag p-2">3. Conecte ao OKR</span>
-                <span class="tag p-2">4. Traga opções e trade-offs</span>
-                <span class="tag p-2">5. Co-construa com o Tech Lead</span>
-                <span class="tag p-2 border-teal text-teal">6. Decisão Clara</span>
+            <h4 class="text-center mt-5 mb-4">Os 6 Passos Dinâmicos da Influência</h4>
+            <div class="grid-3" style="gap: 20px;">
+                <div class="bg-card p-3 rounded shadow-sm border-top-gray">
+                    <h5 class="mb-2"><span class="text-muted">1.</span> Comece pelo Problema</h5>
+                    <p class="text-sm text-muted">Apresente a dor do usuário, não uma tela desenhada. Traga o "O Quê" e o "Por Quê". Deixe o "Como" para depois.</p>
+                </div>
+                <div class="bg-card p-3 rounded shadow-sm border-top-blue">
+                    <h5 class="mb-2"><span class="text-blue">2.</span> Traga as Evidências</h5>
+                    <p class="text-sm text-muted">Qual o volume de impacto? É um bug que afeta 10 usuários (Status 404 isolado) ou 10.000 usuários?</p>
+                </div>
+                <div class="bg-card p-3 rounded shadow-sm border-top-purple">
+                    <h5 class="mb-2"><span class="text-purple">3.</span> Conecte ao Negócio</h5>
+                    <p class="text-sm text-muted">Mostre como resolver esse problema ajuda a bater a meta (OKR) do trimestre. Isso alinha todo mundo.</p>
+                </div>
+                <div class="bg-card p-3 rounded shadow-sm border-top-yellow">
+                    <h5 class="mb-2"><span class="text-yellow">4.</span> Mapeie Trade-offs</h5>
+                    <p class="text-sm text-muted">Seja honesto: "Para focar nisso agora, teremos que pausar o desenvolvimento da feature Y. O ganho compensa?"</p>
+                </div>
+                <div class="bg-card p-3 rounded shadow-sm border-top-teal">
+                    <h5 class="mb-2"><span class="text-teal">5.</span> Co-construa a Solução</h5>
+                    <p class="text-sm text-muted">Trabalhe junto com o Tech Lead. Eles sabem as limitações de arquitetura melhor que ninguém.</p>
+                </div>
+                <div class="bg-card p-3 rounded shadow-sm border-top-green">
+                    <h5 class="mb-2"><span class="text-green">6.</span> Decisão Clara</h5>
+                    <p class="text-sm text-muted">Saia da reunião com papéis definidos, métricas de sucesso anotadas e o risco assumido e documentado.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -915,37 +933,43 @@
         <div class="container">
             <div class="section-header">
                 <h2>Cultura das Big Techs</h2>
-                <p>Como os líderes de mercado pensam a engenharia de produtos digitais.</p>
+                <p>Métodos, ferramentas e boas práticas que definem o ritmo global de inovação digital.</p>
             </div>
 
-            <div class="companies-grid">
-                <div class="company-card border-top-yellow">
-                    <h3 class="gradient-text">Amazon</h3>
+            <div class="companies-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+                <div class="company-card border-top-yellow bg-card p-4 rounded shadow-sm">
+                    <h3 class="gradient-text mb-3" style="display:flex; align-items:center; gap:8px;"><i data-lucide="shopping-cart"></i> Amazon</h3>
                     <ul class="text-sm text-muted check-list">
-                        <li><strong>Customer Obsession:</strong> A cadeira vazia na reunião.</li>
-                        <li><strong>Working Backwards:</strong> Escrever o Press Release (PRFAQ) antes de codar uma linha, para validar valor.</li>
-                        <li><strong>Two-Way Doors:</strong> Decisões reversíveis tomam-se rápido; irreversíveis, com cautela.</li>
+                        <li class="mb-2"><strong>Prática Principal:</strong> <em>Working Backwards</em> (Trabalhar de trás para frente).</li>
+                        <li class="mb-2"><strong>Ferramenta (Doc):</strong> <strong>PRFAQ</strong> (Press Release & FAQ). O PM escreve o "comunicado de imprensa" do lançamento antes mesmo de existir uma linha de código.</li>
+                        <li><strong>Caso de Uso:</strong> Evitar construir produtos caros que ninguém quer. O time lê o PRFAQ; se não soar empolgante, o projeto é cancelado na fase de ideação.</li>
                     </ul>
                 </div>
-                <div class="company-card border-top-blue">
-                    <h3 class="gradient-text">Google & Microsoft</h3>
+                
+                <div class="company-card border-top-blue bg-card p-4 rounded shadow-sm">
+                    <h3 class="gradient-text mb-3" style="display:flex; align-items:center; gap:8px;"><i data-lucide="search"></i> Google</h3>
                     <ul class="text-sm text-muted check-list">
-                        <li><strong>Google:</strong> Obcecado por experimentação contínua, escala global massiva (SRE) e uso rigoroso de OKRs.</li>
-                        <li><strong>Microsoft:</strong> Foco em Ecossistema, plataformas robustas (Enterprise) e segurança de ponta a ponta. Integração profunda.</li>
+                        <li class="mb-2"><strong>Prática Principal:</strong> <em>Experimentação Escalada e OKRs Radicais</em>.</li>
+                        <li class="mb-2"><strong>Ferramentas:</strong> Plataformas próprias massivas de Teste A/B e <strong>SRE</strong> (Site Reliability Engineering).</li>
+                        <li><strong>Caso de Uso:</strong> Um botão nunca muda de cor por "achismo". O PM lança a mudança para 0.1% dos usuários, mede o impacto estatístico no OKR e a latência de infraestrutura antes do rollout (liberação) global.</li>
                     </ul>
                 </div>
-                <div class="company-card border-top-green">
-                    <h3 class="gradient-text">Spotify & Netflix</h3>
+
+                <div class="company-card border-top-green bg-card p-4 rounded shadow-sm">
+                    <h3 class="gradient-text mb-3" style="display:flex; align-items:center; gap:8px;"><i data-lucide="music"></i> Spotify & Netflix</h3>
                     <ul class="text-sm text-muted check-list">
-                        <li><strong>Spotify:</strong> O famoso modelo de Squads, Tribes e Guilds. Alta autonomia na ponta com forte alinhamento central.</li>
-                        <li><strong>Netflix:</strong> Cultura de alta densidade de talento, liberdade com responsabilidade, dados avançados e personalização extrema.</li>
+                        <li class="mb-2"><strong>Práticas Principais:</strong> <em>Chaos Engineering (Netflix)</em> e <em>Spotify Model (Squads/Tribes)</em>.</li>
+                        <li class="mb-2"><strong>Ferramentas:</strong> <strong>Chaos Monkey</strong> (ferramenta que derruba servidores de propósito em produção).</li>
+                        <li><strong>Caso de Uso:</strong> Netflix usa o Chaos Monkey para garantir que o sistema sobreviva a quedas sem o usuário perceber. O Spotify organiza PMs e Devs em "Squads" ultra autônomos para focar em jornadas super específicas (ex: "Squad de Playlists").</li>
                     </ul>
                 </div>
-                <div class="company-card border-top-purple">
-                    <h3 class="gradient-text">Nubank & Mercado Livre</h3>
+
+                <div class="company-card border-top-purple bg-card p-4 rounded shadow-sm">
+                    <h3 class="gradient-text mb-3" style="display:flex; align-items:center; gap:8px;"><i data-lucide="credit-card"></i> Mercado Livre & Nubank</h3>
                     <ul class="text-sm text-muted check-list">
-                        <li><strong>Nubank:</strong> Obsessão por matar complexidade. UX brutalmente simples e redução total de fricção bancária.</li>
-                        <li><strong>Meli:</strong> Velocidade de experimentação brutal focada em ecossistema gigantesco (Marketplace, Logística, Pagamentos).</li>
+                        <li class="mb-2"><strong>Prática Principal:</strong> <em>Velocidade Brutal e UX Sem Atrito</em>.</li>
+                        <li class="mb-2"><strong>Ferramentas:</strong> <strong>Continuous Deployment (CD)</strong> agressivo e <strong>Feature Flags</strong>.</li>
+                        <li><strong>Caso de Uso:</strong> O Mercado Livre (através de sua plataforma 'Fury') lança milhares de micro-atualizações por dia. O Nubank foca a cultura em "matar a complexidade", onde o PM usa Feature Flags para ligar e desligar serviços instantaneamente caso alguma taxa de erro dispare (ex: Pix fora do ar).</li>
                     </ul>
                 </div>
             </div>
@@ -995,44 +1019,56 @@
     <section id="evolucao" class="section dark-alt">
         <div class="container">
             <div class="section-header">
-                <h2>Roadmap de Carreira</h2>
-                <p>Como evoluir do nível básico até a cadeira de Diretor.</p>
+                <h2>Roadmap de Carreira Detalhado</h2>
+                <p>O que se espera de você em cada nível de maturidade e como dar o próximo salto na carreira de Produto.</p>
             </div>
 
-            <div class="career-path">
-                <div class="path-step">
-                    <div class="level-badge">Jr</div>
+            <div class="career-path" style="display: flex; flex-direction: column; gap: 20px; max-width: 900px; margin: 0 auto;">
+                <div class="path-step bg-card p-4 rounded border-color shadow-sm" style="display: flex; gap: 20px; align-items: flex-start;">
+                    <div class="level-badge" style="min-width:80px; text-align:center;">Jr</div>
                     <div class="step-info">
-                        <h3>Associate / Junior PM</h3>
-                        <p>Foco tático. Escreve user stories claras, roda cerimônias (Scrum) e ajuda a reportar bugs.</p>
+                        <h3 class="text-white">Associate / Junior PM</h3>
+                        <p class="text-sm text-muted mb-2"><strong>Foco:</strong> Delivery, Execução e Processo Tático.</p>
+                        <p class="text-sm text-muted mb-2">Garante que a máquina rode. Escreve user stories impecáveis, ajuda o time de engenharia a não ter bloqueios durante a Sprint, responde chamados de bugs e aprende a ler dashboards básicos de Analytics.</p>
+                        <p class="text-sm text-teal mb-0"><em>👉 Para ser promovido:</em> Precisa parar de apenas "tirar pedidos" e começar a fazer perguntas investigativas (Discovery) antes de escrever as histórias.</p>
                     </div>
                 </div>
-                <div class="path-step">
-                    <div class="level-badge">Pleno</div>
+
+                <div class="path-step bg-card p-4 rounded border-color shadow-sm" style="display: flex; gap: 20px; align-items: flex-start;">
+                    <div class="level-badge" style="min-width:80px; text-align:center;">Pleno</div>
                     <div class="step-info">
-                        <h3>PM Pleno</h3>
-                        <p>Dono da Squad. Conduz Discovery, domina Analytics (Amplitude/GA4), prioriza backlog com RICE e negocia com stakeholders.</p>
+                        <h3 class="text-white">PM Pleno (Middle)</h3>
+                        <p class="text-sm text-muted mb-2"><strong>Foco:</strong> Discovery, Dados e Priorização da Squad.</p>
+                        <p class="text-sm text-muted mb-2">Dono autônomo da sua Squad. Identifica dores dos usuários cruzando métricas quantitativas (funis) com entrevistas qualitativas. Usa métodos como RICE para justificar por que "A" entra na frente de "B". Sabe dizer "Não" para Stakeholders.</p>
+                        <p class="text-sm text-teal mb-0"><em>👉 Para ser promovido:</em> Precisa sair do escopo da própria Squad e começar a entender como o seu produto impacta a receita global da empresa (Visão de P&L - Profit and Loss).</p>
                     </div>
                 </div>
-                <div class="path-step">
-                    <div class="level-badge border-purple text-purple">Sr</div>
+
+                <div class="path-step bg-card p-4 rounded border-left-purple shadow-sm" style="display: flex; gap: 20px; align-items: flex-start;">
+                    <div class="level-badge border-purple text-purple" style="min-width:80px; text-align:center;">Sr</div>
                     <div class="step-info">
-                        <h3>Senior PM</h3>
-                        <p>Dono da Estratégia do Domínio. Lida com grande ambiguidade. Foco profundo no impacto financeiro e mentoria de PMs mais novos.</p>
+                        <h3 class="text-white">Senior PM</h3>
+                        <p class="text-sm text-muted mb-2"><strong>Foco:</strong> Estratégia de Domínio, Ambiguidade e Negócios.</p>
+                        <p class="text-sm text-muted mb-2">Recebe problemas enormes e abstratos do CEO (ex: "Aumentar faturamento na vertical de crédito em 20%") e descobre sozinho como quebrar isso em dezenas de iniciativas acionáveis. Costuma mentorar PMs mais novos e navega politicamente por toda a empresa.</p>
+                        <p class="text-sm text-purple mb-0"><em>👉 Para ser promovido:</em> Precisa demonstrar excelência em liderança indireta e estar pronto para construir cultura, organizar portfólios e contratar talentos.</p>
                     </div>
                 </div>
-                <div class="path-step">
-                    <div class="level-badge boss-minor">GPM</div>
+
+                <div class="path-step bg-card p-4 rounded border-left-blue shadow-sm" style="display: flex; gap: 20px; align-items: flex-start;">
+                    <div class="level-badge boss-minor" style="min-width:80px; text-align:center;">GPM</div>
                     <div class="step-info">
-                        <h3>Group PM / Head of Product</h3>
-                        <p>Gestor de Gestores. Cuida de múltiplos times, define portfólio, orçamento e foca intensamente na cultura de produto e contratações.</p>
+                        <h3 class="text-white">Group PM / Head of Product</h3>
+                        <p class="text-sm text-muted mb-2"><strong>Foco:</strong> Liderança de Pessoas, Organização Organizacional e Alocação de Orçamento.</p>
+                        <p class="text-sm text-muted mb-2">Gestor de Gestores. Não escreve mais tickets no Jira. Seu trabalho agora é gerenciar, contratar, demitir e desenvolver outros Product Managers. Garante que 3, 4 ou 5 squads diferentes não estejam construindo funcionalidades redundantes e conflituosas.</p>
                     </div>
                 </div>
-                <div class="path-step">
-                    <div class="level-badge boss">Diretor</div>
+
+                <div class="path-step bg-card p-4 rounded border-left-yellow shadow-sm" style="display: flex; gap: 20px; align-items: flex-start;">
+                    <div class="level-badge boss" style="min-width:80px; text-align:center;">VP/CPO</div>
                     <div class="step-info">
-                        <h3>Diretor / VP / CPO</h3>
-                        <p>Conecta o Produto diretamente com investidores, diretoria corporativa e define o rumo de crescimento (Growth) da empresa no mercado a longo prazo.</p>
+                        <h3 class="text-white">Diretor / VP / CPO</h3>
+                        <p class="text-sm text-muted mb-2"><strong>Foco:</strong> Expansão de Mercado, Aquisições (M&A) e Investidores.</p>
+                        <p class="text-sm text-muted mb-2">Conecta a estratégia do Produto diretamente com as demandas do mercado financeiro, investidores e Board de Diretores. Define para onde a empresa como um todo vai nos próximos 3 a 5 anos.</p>
                     </div>
                 </div>
             </div>
@@ -1044,7 +1080,7 @@
         <div class="container">
             <div class="section-header">
                 <span class="badge">Download Templates</span>
-                <h2>Playbook do PM</h2>
+                <h2>Modelos e Guias para o PM</h2>
                 <p>Copie e cole no seu Notion, ou baixe em formato Imagem, Excel e Word para preencher dinamicamente.</p>
             </div>
 
