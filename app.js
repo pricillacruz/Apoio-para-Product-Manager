@@ -70,12 +70,12 @@ const Footer = `
             Transformando conceitos técnicos complexos em conhecimentos acessíveis, visuais e humanos.
         </p>
         <div class="flex items-center justify-center gap-6 mt-8">
-            <a href="#" class="text-gray-600 hover:text-primary transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-            <a href="#" class="text-gray-600 hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+            <a href="https://www.linkedin.com/in/pricilla-souza/" target="_blank" class="text-gray-600 hover:text-primary transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+            <a href="https://github.com/pricillacruz" target="_blank" class="text-gray-600 hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
             <a href="#" class="text-gray-600 hover:text-pink-500 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
         </div>
         <div class="mt-8 text-gray-700 text-xs">
-            © ${new Date().getFullYear()} Journey PM. Construído para pessoas que amam aprender.
+            © ${new Date().getFullYear()} Journey PM. Desenvolvido por <span class="text-gray-400 font-semibold">Pricilla Cruz</span>. Construído para pessoas que amam aprender.
         </div>
     </div>
 </footer>
