@@ -6,7 +6,7 @@ const Navbar = `
                 <i data-lucide="layers" class="w-5 h-5"></i>
             </div>
             <span class="font-display font-bold text-xl tracking-tight text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-accent transition-all">
-                Tech Portal
+                Journey PM
             </span>
         </a>
         
@@ -64,7 +64,7 @@ const Footer = `
     <div class="container mx-auto px-6 text-center relative z-10">
         <a href="index.html" class="inline-flex items-center gap-2 mb-6 opacity-50 hover:opacity-100 transition-opacity">
             <i data-lucide="layers" class="w-5 h-5 text-white"></i>
-            <span class="font-display font-bold text-xl tracking-tight text-white">Tech Portal</span>
+            <span class="font-display font-bold text-xl tracking-tight text-white">Journey PM</span>
         </a>
         <p class="text-gray-500 text-sm max-w-md mx-auto">
             Transformando conceitos técnicos complexos em conhecimentos acessíveis, visuais e humanos.
@@ -75,7 +75,7 @@ const Footer = `
             <a href="#" class="text-gray-600 hover:text-pink-500 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
         </div>
         <div class="mt-8 text-gray-700 text-xs">
-            © ${new Date().getFullYear()} Tech Portal. Construído para pessoas que amam aprender.
+            © ${new Date().getFullYear()} Journey PM. Construído para pessoas que amam aprender.
         </div>
     </div>
 </footer>

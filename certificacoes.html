@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificações Tech & Produto | PM Playbook</title>
+    <title>Certificações Tech & Produto | Journey PM</title>
     
     <!-- Meta Tags SEO -->
     <meta name="description" content="Guia definitivo de certificações de Produto, Cloud, Dados, IA e Metodologias Ágeis para Product Managers de Alta Performance. Mapeamento, roadmaps, bolsas e comparativos interativos.">
@@ -475,7 +475,7 @@
 
                             <div>
                                 <span class="text-xs text-gray-500 font-bold block mb-1">Pragmatic Institute</span>
-                                class="text-xl font-display font-bold text-white mb-2">Pragmatic Product Management</h3>
+                                <h3 class="text-xl font-display font-bold text-white mb-2">Pragmatic Product Management</h3>
                                 <p class="text-sm text-gray-400 mb-4 line-clamp-3">A certificação voltada para a gestão de produtos baseada no framework Pragmatic, amplamente adotado em mercados internacionais de TI e Produto.</p>
                                 
                                 <div class="flex flex-wrap gap-2 mb-4">
@@ -1580,6 +1580,14 @@
             // Initial render
             renderStudyPlanner();
 
+            // 4.5 Montar Minha Trilha button click scroll
+            const btnMontarTrilha = document.getElementById("btn-montar-trilha");
+            if (btnMontarTrilha) {
+                btnMontarTrilha.addEventListener("click", () => {
+                    document.getElementById("catalogo").scrollIntoView({ behavior: "smooth" });
+                });
+            }
+
             // 5. Intelligent Search and Multi Filtering logic
             const searchInput = document.getElementById("cert-search-input");
             const areaFilter = document.getElementById("cert-area-filter");
@@ -1733,24 +1741,27 @@
                 header.addEventListener("click", () => {
                     const body = header.nextElementSibling;
                     const card = header.closest(".glass-card");
-                    const icon = header.querySelector("i[data-lucide='chevron-down']");
+                    const icon = header.querySelector("svg, i");
                     const isOpen = body.style.maxHeight && body.style.maxHeight !== "0px";
 
                     // Close other accordions
                     faqHeaders.forEach(h => {
-                        h.nextElementSibling.style.maxHeight = "0px";
-                        h.closest(".glass-card").classList.remove("border-primary/40");
-                        h.querySelector("i[data-lucide='chevron-down']").style.transform = "rotate(0deg)";
+                        if (h !== header) {
+                            const hIcon = h.querySelector("svg, i");
+                            h.nextElementSibling.style.maxHeight = "0px";
+                            h.closest(".glass-card").classList.remove("border-primary/40");
+                            if (hIcon) hIcon.style.transform = "rotate(0deg)";
+                        }
                     });
 
                     if (!isOpen) {
                         body.style.maxHeight = `${body.scrollHeight}px`;
                         card.classList.add("border-primary/40");
-                        icon.style.transform = "rotate(180deg)";
+                        if (icon) icon.style.transform = "rotate(180deg)";
                     } else {
                         body.style.maxHeight = "0px";
                         card.classList.remove("border-primary/40");
-                        icon.style.transform = "rotate(0deg)";
+                        if (icon) icon.style.transform = "rotate(0deg)";
                     }
                 });
             });
