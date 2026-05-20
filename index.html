@@ -1,2135 +1,309 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-width=1.0">
-    <title>Do Zero ao PM de Alta Performance | Product Management</title>
-    <meta name="description"
-        content="Guia visual interativo completo sobre Product Management: estratégia, discovery, métricas, priorização e liderança.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Portal | Entenda Tecnologia de Forma Visual</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#030712', // gray-950
+                        surface: '#111827', // gray-900
+                        primary: '#3b82f6', // blue-500
+                        accent: '#8b5cf6', // violet-500
+                        tech: '#10b981', // emerald-500
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="./style.css">
 </head>
-
-<body>
-    <nav class="navbar">
-        <div class="logo">
-            <i data-lucide="layers" class="icon-brand"></i>
-            <span>PM Journey</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#hero">Início</a></li>
-            <li><a href="#oque-e-pm">O PM</a></li>
-            <li><a href="#ciclo">Ciclo</a></li>
-            <li><a href="#discovery">Discovery</a></li>
-            <li><a href="#priorizacao">Priorização</a></li>
-            <li><a href="#execucao">Execução</a></li>
-            <li><a href="#metricas">Métricas</a></li>
-            <li><a href="#influencia">Liderança</a></li>
-            <li><a href="#playbook">Playbook</a></li>
-            <li><a href="#quiz">Quiz</a></li>
-        </ul>
-        <a href="#oque-e-pm" class="btn-primary btn-sm" style="text-decoration:none;">Começar Jornada</a>
-    </nav>
+<body class="bg-background text-gray-200 font-sans antialiased selection:bg-accent selection:text-white overflow-x-hidden">
+    
+    <div id="nav-container"></div> <!-- Menu Fixo Superior -->
 
     <!-- HERO SECTION -->
-    <section id="hero" class="hero">
-        <div class="hero-bg-gradients">
-            <div class="glow glow-1"></div>
-            <div class="glow glow-2"></div>
-        </div>
-        <div class="container hero-container">
-            <div class="hero-content">
-                <span class="badge">O Guia Interativo Definitivo</span>
-                <h1 class="hero-title">Do Zero ao <span class="gradient-text">Product Manager</span> de Alta Performance
-                </h1>
-                <p class="hero-subtitle">Aprenda a pensar, priorizar, construir, medir e evoluir produtos digitais com
-                    estratégia, dados, discovery, delivery e foco no cliente.</p>
+    <main class="relative pt-32 pb-24 min-h-screen flex flex-col justify-center">
+        <!-- Glows de fundo -->
+        <div class="absolute top-20 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-10 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[120px] pointer-events-none"></div>
 
-                <div class="hero-blocks-grid">
-                    <a href="#discovery" class="hero-mini-block"><i data-lucide="search"></i> Discovery</a>
-                    <a href="#estrategia" class="hero-mini-block"><i data-lucide="target"></i> Estratégia</a>
-                    <a href="#priorizacao" class="hero-mini-block"><i data-lucide="list-ordered"></i> Priorização</a>
-                    <a href="#execucao" class="hero-mini-block"><i data-lucide="box"></i> Delivery</a>
-                    <a href="#metricas" class="hero-mini-block"><i data-lucide="bar-chart-2"></i> Métricas</a>
-                    <a href="#ciclo" class="hero-mini-block"><i data-lucide="flask-conical"></i> Experimentação</a>
-                    <a href="#ciclo" class="hero-mini-block"><i data-lucide="server"></i> Escalabilidade</a>
-                    <a href="#ciclo" class="hero-mini-block"><i data-lucide="trending-up"></i> Evolução</a>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface/50 border border-gray-800 backdrop-blur-sm mb-8 animate-fade-in-up">
+                <span class="flex h-2 w-2 rounded-full bg-tech animate-pulse"></span>
+                <span class="text-sm font-medium text-gray-300">O seu mapa interativo da tecnologia</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-display font-bold tracking-tight mb-6 animate-fade-in-up" style="animation-delay: 0.1s; line-height: 1.1;">
+                Entenda tecnologia de forma <br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-pink-500">
+                    Visual, Simples e Humana
+                </span>
+            </h1>
+            
+            <p class="mt-6 text-xl text-gray-400 max-w-3xl mx-auto mb-10 animate-fade-in-up" style="animation-delay: 0.2s;">
+                De pessoas iniciantes a líderes. Aprenda como Produto, Engenharia, Dados, UX e IA se conectam para criar experiências digitais incríveis. Sem jargões chatos.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s;">
+                <a href="#trilhas" class="px-8 py-4 rounded-xl bg-white text-background font-semibold hover:bg-gray-100 transition-all flex items-center gap-2 transform hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">
+                    Por onde começar? <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+                <a href="relaciona.html" class="px-8 py-4 rounded-xl bg-surface border border-gray-700 hover:border-gray-500 transition-all flex items-center gap-2 transform hover:scale-105 text-white">
+                    Como tudo se conecta <i data-lucide="git-merge" class="w-5 h-5 text-accent"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- TRILHAS DE APRENDIZADO (CARDS NAVEGÁVEIS) -->
+        <div id="trilhas" class="container mx-auto px-6 mt-32 relative z-10">
+            <div class="text-center mb-16 animate-fade-in-up" style="animation-delay: 0.4s;">
+                <h2 class="text-3xl font-display font-bold mb-4 text-white">Explore as Áreas da Tecnologia</h2>
+                <p class="text-gray-400">Escolha um universo para mergulhar e entender na prática.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up" style="animation-delay: 0.5s;">
+                <!-- Produto -->
+                <a href="produto.html" class="tech-card group p-1 rounded-2xl bg-gradient-to-b from-gray-800 to-gray-900 hover:from-primary hover:to-accent transition-all duration-500 block relative transform hover:-translate-y-2">
+                    <div class="bg-surface h-full rounded-xl p-8 relative overflow-hidden z-10">
+                        <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/30 transition-all"></div>
+                        <div class="w-12 h-12 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center mb-6">
+                            <i data-lucide="target" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold mb-3 group-hover:text-primary transition-colors text-white">Produto</h3>
+                        <p class="text-gray-400 text-sm mb-4">O cérebro estratégico. Descubra como investigar problemas, definir visão e liderar a criação de soluções.</p>
+                        <div class="text-xs font-medium text-blue-400 flex items-center gap-1 mt-auto">Explorar a trilha <i data-lucide="chevron-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i></div>
+                    </div>
+                </a>
+
+                <!-- Engenharia -->
+                <a href="engenharia.html" class="tech-card group p-1 rounded-2xl bg-gradient-to-b from-gray-800 to-gray-900 hover:from-gray-400 hover:to-gray-600 transition-all duration-500 block relative transform hover:-translate-y-2">
+                    <div class="bg-surface h-full rounded-xl p-8 relative overflow-hidden z-10">
+                        <div class="w-12 h-12 rounded-lg bg-gray-500/10 text-gray-400 flex items-center justify-center mb-6">
+                            <i data-lucide="code-2" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold mb-3 group-hover:text-white transition-colors text-white">Engenharia</h3>
+                        <p class="text-gray-400 text-sm mb-4">Os construtores. Entenda como o backend, frontend e a cloud trabalham juntos para criar software.</p>
+                        <div class="text-xs font-medium text-gray-300 flex items-center gap-1 mt-auto">Explorar a trilha <i data-lucide="chevron-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i></div>
+                    </div>
+                </a>
+
+                <!-- Dados -->
+                <a href="dados.html" class="tech-card group p-1 rounded-2xl bg-gradient-to-b from-gray-800 to-gray-900 hover:from-tech hover:to-emerald-700 transition-all duration-500 block relative transform hover:-translate-y-2">
+                    <div class="bg-surface h-full rounded-xl p-8 relative overflow-hidden z-10">
+                        <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-tech/10 rounded-full blur-2xl group-hover:bg-tech/30 transition-all"></div>
+                        <div class="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-6">
+                            <i data-lucide="bar-chart-2" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold mb-3 group-hover:text-tech transition-colors text-white">Dados</h3>
+                        <p class="text-gray-400 text-sm mb-4">O sistema nervoso. Saiba como capturar eventos, armazenar no Data Lake e tomar decisões baseadas em fatos.</p>
+                        <div class="text-xs font-medium text-emerald-400 flex items-center gap-1 mt-auto">Explorar a trilha <i data-lucide="chevron-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i></div>
+                    </div>
+                </a>
+
+                <!-- IA -->
+                <a href="ia.html" class="tech-card group p-1 rounded-2xl bg-gradient-to-b from-gray-800 to-gray-900 hover:from-fuchsia-500 hover:to-pink-600 transition-all duration-500 block relative transform hover:-translate-y-2">
+                    <div class="bg-surface h-full rounded-xl p-8 relative overflow-hidden z-10">
+                        <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-fuchsia-500/10 rounded-full blur-2xl group-hover:bg-fuchsia-500/30 transition-all"></div>
+                        <div class="w-12 h-12 rounded-lg bg-fuchsia-500/10 text-fuchsia-500 flex items-center justify-center mb-6">
+                            <i data-lucide="sparkles" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold mb-3 group-hover:text-fuchsia-400 transition-colors text-white">Inteligência Artificial</h3>
+                        <p class="text-gray-400 text-sm mb-4">A força multiplicadora. Entenda GenAI, LLMs, embeddings e como IA potencializa as empresas e produtos.</p>
+                        <div class="text-xs font-medium text-fuchsia-400 flex items-center gap-1 mt-auto">Explorar a trilha <i data-lucide="chevron-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i></div>
+                    </div>
+                </a>
+
+                <!-- UX Design -->
+                <a href="ux.html" class="tech-card group p-1 rounded-2xl bg-gradient-to-b from-gray-800 to-gray-900 hover:from-pink-500 hover:to-rose-500 transition-all duration-500 block relative transform hover:-translate-y-2">
+                    <div class="bg-surface h-full rounded-xl p-8 relative overflow-hidden z-10">
+                        <div class="w-12 h-12 rounded-lg bg-pink-500/10 text-pink-500 flex items-center justify-center mb-6">
+                            <i data-lucide="pen-tool" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold mb-3 group-hover:text-pink-400 transition-colors text-white">UX Design</h3>
+                        <p class="text-gray-400 text-sm mb-4">A empatia na prática. Como transformar fluxos complexos em jornadas humanas e intuitivas para o usuário final.</p>
+                        <div class="text-xs font-medium text-pink-400 flex items-center gap-1 mt-auto">Explorar a trilha <i data-lucide="chevron-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i></div>
+                    </div>
+                </a>
+                
+                <!-- Arquiteturas -->
+                <a href="arquiteturas.html" class="tech-card group p-1 rounded-2xl bg-gradient-to-b from-gray-800 to-gray-900 hover:from-amber-500 hover:to-orange-600 transition-all duration-500 block relative transform hover:-translate-y-2">
+                    <div class="bg-surface h-full rounded-xl p-8 relative overflow-hidden z-10">
+                        <div class="w-12 h-12 rounded-lg bg-amber-500/10 text-amber-500 flex items-center justify-center mb-6">
+                            <i data-lucide="layers" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold mb-3 group-hover:text-amber-400 transition-colors text-white">Arquiteturas</h3>
+                        <p class="text-gray-400 text-sm mb-4">Como a cidade é organizada. Aprenda sobre Microsserviços, APIs, Serverless e Mensageria de forma simples.</p>
+                        <div class="text-xs font-medium text-amber-400 flex items-center gap-1 mt-auto">Explorar a trilha <i data-lucide="chevron-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- COMO AS ÁREAS SE CONECTAM - SESSÃO RESUMO -->
+    <section class="py-24 border-t border-gray-800 bg-gradient-to-b from-background to-surface">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-accent font-medium text-sm tracking-wider uppercase mb-2 block">A Visão do Todo</span>
+                <h2 class="text-3xl font-display font-bold mb-4 text-white">Como Tudo se Conecta?</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Em uma empresa de tecnologia, nenhuma área trabalha sozinha. Entender como a engrenagem roda é o que diferencia iniciantes de líderes.</p>
+            </div>
+
+            <div class="relative max-w-4xl mx-auto p-8 rounded-2xl bg-gray-900 border border-gray-800 shadow-2xl glass-panel">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <!-- UX -> Product -> Eng -->
+                    <div class="flex flex-col items-center text-center w-32 shrink-0 group">
+                        <div class="w-16 h-16 rounded-full bg-pink-500/10 border border-pink-500/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(236,72,153,0.3)]">
+                            <i data-lucide="pen-tool" class="w-8 h-8 text-pink-500"></i>
+                        </div>
+                        <span class="font-bold text-sm text-gray-200">UX Design</span>
+                        <span class="text-xs text-gray-500">Desenha a jornada</span>
+                    </div>
+
+                    <i data-lucide="arrow-right" class="w-6 h-6 text-gray-600 hidden md:block"></i>
+                    
+                    <div class="flex flex-col items-center text-center w-32 shrink-0 group">
+                        <div class="w-16 h-16 rounded-full bg-blue-500/10 border border-blue-500/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                            <i data-lucide="target" class="w-8 h-8 text-blue-500"></i>
+                        </div>
+                        <span class="font-bold text-sm text-gray-200">Produto</span>
+                        <span class="text-xs text-gray-500">Define o porquê</span>
+                    </div>
+
+                    <i data-lucide="arrow-right" class="w-6 h-6 text-gray-600 hidden md:block"></i>
+
+                    <div class="flex flex-col items-center text-center w-32 shrink-0 group">
+                        <div class="w-16 h-16 rounded-full bg-gray-500/10 border border-gray-500/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(156,163,175,0.3)]">
+                            <i data-lucide="code-2" class="w-8 h-8 text-gray-300"></i>
+                        </div>
+                        <span class="font-bold text-sm text-gray-200">Engenharia</span>
+                        <span class="text-xs text-gray-500">Constrói o motor</span>
+                    </div>
                 </div>
 
-                <div class="hero-actions mt-4">
-                    <a href="#oque-e-pm" class="btn-primary" style="text-decoration:none;">
-                        <i data-lucide="rocket"></i> Começar Jornada
+                <div class="flex flex-col md:flex-row items-center justify-center gap-16 mt-12">
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <i data-lucide="bar-chart-2" class="w-6 h-6 text-emerald-500"></i>
+                        </div>
+                        <div>
+                            <span class="block font-bold text-sm text-gray-200">Dados</span>
+                            <span class="text-xs text-gray-500">Mede o impacto e gera insights</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-12 h-12 rounded-full bg-fuchsia-500/10 border border-fuchsia-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <i data-lucide="sparkles" class="w-6 h-6 text-fuchsia-500"></i>
+                        </div>
+                        <div>
+                            <span class="block font-bold text-sm text-gray-200">IA</span>
+                            <span class="text-xs text-gray-500">Automatiza e personaliza</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <a href="relaciona.html" class="inline-flex items-center justify-center gap-2 text-accent hover:text-white transition-colors font-medium">
+                        Ver o fluxo completo e animado <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
             </div>
-            <div class="hero-visual">
-                <!-- Abstract Dashboard Mockup via HTML/CSS -->
-                <div class="mock-dashboard">
-                    <div class="mock-header">
-                        <div class="mock-dots"><span></span><span></span><span></span></div>
-                        <div class="mock-url">app.finbank.com/dashboard</div>
-                    </div>
-                    <div class="mock-body">
-                        <div class="mock-sidebar">
-                            <div class="skeleton-line short"></div>
-                            <div class="skeleton-line"></div>
-                            <div class="skeleton-line"></div>
-                        </div>
-                        <div class="mock-content">
-                            <div class="mock-metrics">
-                                <div class="metric-card">
-                                    <i data-lucide="users" class="text-blue"></i>
-                                    <h4>Contas Ativas</h4>
-                                    <p>145,200</p>
-                                </div>
-                                <div class="metric-card">
-                                    <i data-lucide="activity" class="text-purple"></i>
-                                    <h4>Ativação Pix</h4>
-                                    <p>82%</p>
-                                </div>
-                            </div>
-                            <div class="mock-chart">
-                                <div class="chart-bar" style="height: 40%"></div>
-                                <div class="chart-bar" style="height: 60%"></div>
-                                <div class="chart-bar" style="height: 30%"></div>
-                                <div class="chart-bar" style="height: 80%"></div>
-                                <div class="chart-bar" style="height: 100%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
-    <!-- O QUE É UM PRODUCT MANAGER -->
-    <section id="oque-e-pm" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>O que é um Product Manager?</h2>
-                <p>O maestro que não toca os instrumentos, mas garante que Negócio, Tecnologia, UX, Dados, Usuários e
-                    Estratégia toquem a mesma música.</p>
-            </div>
-
-            <div class="pm-diagram-container">
-                <div class="pm-diagram">
-                    <div class="node center-node">
-                        <i data-lucide="brain-circuit"></i>
-                        <span>PM</span>
+    <!-- TRADUTOR TECH DEMO -->
+    <section class="py-24 bg-surface relative border-y border-gray-800 overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2">
+                    <div class="inline-block px-3 py-1 bg-white/5 border border-white/10 rounded-full mb-4">
+                        <span class="text-xs font-semibold text-yellow-500 tracking-wider">A FAVORITA DA GALERA ⭐️</span>
                     </div>
-                    <div class="node orbital-node" style="--angle: 0deg; --radius: 220px">
-                        <div class="icon-wrap border-blue"><i data-lucide="target"></i></div>
-                        <span>Estratégia</span>
-                        <div class="node-tooltip">Define direção e impacto. (Ex: Aumentar ativação de clientes reduzindo
-                            abandono no cadastro).</div>
-                    </div>
-                    <div class="node orbital-node" style="--angle: 60deg; --radius: 220px">
-                        <div class="icon-wrap border-green"><i data-lucide="briefcase"></i></div>
-                        <span>Negócio</span>
-                        <div class="node-tooltip">Receita, risco e eficiência. (Ex: Reduzir chamadas no SAC via
-                            autoatendimento).</div>
-                    </div>
-                    <div class="node orbital-node" style="--angle: 120deg; --radius: 220px">
-                        <div class="icon-wrap border-purple"><i data-lucide="code"></i></div>
-                        <span>Tecnologia</span>
-                        <div class="node-tooltip">Viabilidade, APIs e segurança. (Ex: Limitações técnicas antes de
-                            lançar o Pix).</div>
-                    </div>
-                    <div class="node orbital-node" style="--angle: 180deg; --radius: 220px">
-                        <div class="icon-wrap border-pink"><i data-lucide="pen-tool"></i></div>
-                        <span>UX / Design</span>
-                        <div class="node-tooltip">Simplicidade e acessibilidade. (Ex: Transformar telas confusas em
-                            jornadas fluidas).</div>
-                    </div>
-                    <div class="node orbital-node" style="--angle: 240deg; --radius: 220px">
-                        <div class="icon-wrap border-yellow"><i data-lucide="users"></i></div>
-                        <span>Usuários</span>
-                        <div class="node-tooltip">Dores, medos e necessidades reais. (Ex: Clientes idosos com
-                            dificuldade na linguagem digital).</div>
-                    </div>
-                    <div class="node orbital-node" style="--angle: 300deg; --radius: 220px">
-                        <div class="icon-wrap border-teal"><i data-lucide="bar-chart-2"></i></div>
-                        <span>Dados</span>
-                        <div class="node-tooltip">Evidências e comportamento. (Ex: 60% abandonam na tela de
-                            confirmação).</div>
-                    </div>
-                    <svg class="connections" width="480" height="480" viewBox="0 0 480 480">
-                        <circle cx="240" cy="240" r="220" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"
-                            stroke-dasharray="4 4" />
-                    </svg>
-                </div>
-
-                <div class="example-box mt-5 mx-auto max-w-800">
-                    <h4><i data-lucide="git-merge"></i> Como tudo se conecta no dia a dia do PM</h4>
-                    <p class="text-sm text-muted mb-3"><strong>O Problema:</strong> Clientes abandonam o cadastro da
-                        conta digital bancária.</p>
-                    <ul class="check-list">
-                        <li><strong>Usuários:</strong> Mostram a dor (pesquisas indicam frustração).</li>
-                        <li><strong>Dados:</strong> Mostram exatamente <em>onde</em> o abandono acontece (tela de
-                            Selfie).</li>
-                        <li><strong>UX/Design:</strong> Entende a fricção (iluminação exigida é muito restrita).</li>
-                        <li><strong>Tecnologia:</strong> Avalia o que é possível alterar (suavizar algoritmo de
-                            biometria).</li>
-                        <li><strong>Negócio:</strong> Mede o impacto financeiro (quantas contas a mais abriremos?).</li>
-                        <li><strong>Estratégia:</strong> Define a prioridade (isso é mais importante que o novo cartão
-                            de crédito agora?).</li>
-                        <li><strong>O PM:</strong> Conecta tudo, alinha os stakeholders e decide o próximo passo para o
-                            time executar.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CICLO DE VIDA DE UM PRODUTO DIGITAL -->
-    <section id="ciclo" class="section dark-alt">
-        <div class="container">
-            <div class="section-header">
-                <h2>O Ciclo de Vida do Produto</h2>
-                <p>10 Fases estruturadas: da investigação do problema até a escala sustentável.</p>
-            </div>
-
-            <div class="timeline interactive-timeline">
-
-                <div class="timeline-group-title">1. Concepção e Planejamento <span class="text-sm text-muted"
-                        style="display:block; margin-top:4px; font-weight:normal;">Por que e o que fazer?</span></div>
-
-                <!-- 1. Discovery -->
-                <div class="timeline-item expandable">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>1. Product Discovery <span class="en-term"><i data-lucide="info"
-                                        class="icon-info"></i><span class="en-tooltip">Descoberta: investigar problemas
-                                        antes de construir.</span></span></h3>
-                            <i data-lucide="chevron-down" class="expand-icon"></i>
-                        </div>
-                        <div class="timeline-body">
-                            <p><strong>O que é:</strong> Investigar problemas reais antes de construir soluções. O
-                                objetivo é reduzir o risco de criar algo inútil.</p>
-                            <p><strong>Exemplo Bancário:</strong> Baixa adoção ao novo Open Finance. O PM entrevista
-                                usuários e descobre que o medo de compartilhar dados gera bloqueio. Ele investiga
-                                profundamente o problema antes de pensar em código.</p>
-
-                            <div class="grid-2 mt-3">
-                                <div class="bg-card p-3 rounded">
-                                    <h5 class="text-teal mb-2">Perguntas Essenciais</h5>
-                                    <ul class="check-list text-sm">
-                                        <li><i data-lucide="check-square"></i> Qual problema estamos resolvendo?</li>
-                                        <li><i data-lucide="check-square"></i> Quem sente essa dor?</li>
-                                        <li><i data-lucide="check-square"></i> Temos evidências/dados?</li>
-                                        <li><i data-lucide="check-square"></i> É relevante para o negócio?</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h5 class="mb-2">Ferramentas & Frameworks</h5>
-                                    <div class="tags">
-                                        <span class="tag">Miro</span><span class="tag">Figma</span><span
-                                            class="tag">Maze</span><span class="tag">Hotjar</span><span
-                                            class="tag">Double Diamond</span>
-                                    </div>
-                                    <p class="text-sm mt-2 text-red"><strong>Erro comum:</strong> Fazer discovery para
-                                        justificar uma solução que já foi decidida pelo CEO.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2. Strategy -->
-                <div class="timeline-item expandable">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>2. Product Strategy</h3>
-                            <i data-lucide="chevron-down" class="expand-icon"></i>
-                        </div>
-                        <div class="timeline-body">
-                            <p><strong>O que é:</strong> O plano de jogo. Definir visão, posicionamento e como o produto
-                                vai gerar valor sustentável.</p>
-                            <p><strong>Exemplo Bancário:</strong> A estratégia não é apenas "ter uma funcionalidade de
-                                Investimentos", mas sim "ser a principal ponte para que o brasileiro comece a adotar
-                                investimentos de forma simples".</p>
-                            <div class="grid-2 mt-3">
-                                <div class="bg-card p-3 rounded">
-                                    <h5 class="text-teal mb-2">Perguntas Essenciais</h5>
-                                    <ul class="check-list text-sm">
-                                        <li><i data-lucide="check-square"></i> Qual a visão do produto?</li>
-                                        <li><i data-lucide="check-square"></i> Qual a proposta de valor?</li>
-                                        <li><i data-lucide="check-square"></i> Quais métricas definem sucesso?</li>
-                                        <li><i data-lucide="check-square"></i> Quais trade-offs assumiremos?</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h5 class="mb-2">Ferramentas</h5>
-                                    <div class="tags"><span class="tag">OKR</span><span class="tag">Lean
-                                            Canvas</span><span class="tag">North Star Metric</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3. Roadmap -->
-                <div class="timeline-item expandable">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>3. Roadmap <span class="en-term"><i data-lucide="info" class="icon-info"></i><span
-                                        class="en-tooltip">Mapa de rota visual da estratégia.</span></span></h3>
-                            <i data-lucide="chevron-down" class="expand-icon"></i>
-                        </div>
-                        <div class="timeline-body">
-                            <p><strong>O que é:</strong> Transformar a estratégia em um plano visual de evolução.
-                                Comunica a direção aos stakeholders.</p>
-                            <div class="grid-2 mt-3">
-                                <div class="bg-card p-3 rounded">
-                                    <h5 class="text-teal mb-2">Perguntas Essenciais</h5>
-                                    <ul class="check-list text-sm">
-                                        <li><i data-lucide="check-square"></i> Reflete a estratégia?</li>
-                                        <li><i data-lucide="check-square"></i> Focado em resultado ou só entregas?</li>
-                                        <li><i data-lucide="check-square"></i> Stakeholders estão alinhados?</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h5 class="mb-2">Ferramentas</h5>
-                                    <div class="tags"><span class="tag">Jira</span><span
-                                            class="tag">Productboard</span><span class="tag">Notion</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4. Priorização -->
-                <div class="timeline-item expandable">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>4. Priorização</h3>
-                            <i data-lucide="chevron-down" class="expand-icon"></i>
-                        </div>
-                        <div class="timeline-body">
-                            <p><strong>O que é:</strong> A arte de dizer "Não". Decidir o que entra agora, depois ou
-                                nunca, equilibrando esforço, impacto e risco.</p>
-                            <div class="grid-2 mt-3">
-                                <div class="bg-card p-3 rounded">
-                                    <h5 class="text-teal mb-2">Perguntas Essenciais</h5>
-                                    <ul class="check-list text-sm">
-                                        <li><i data-lucide="check-square"></i> Qual iniciativa gera mais impacto?</li>
-                                        <li><i data-lucide="check-square"></i> Qual o esforço técnico?</li>
-                                        <li><i data-lucide="check-square"></i> Qual o custo de atraso (Cost of Delay)?
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h5 class="mb-2">Frameworks</h5>
-                                    <div class="tags"><span class="tag">RICE</span><span class="tag">Kano</span><span
-                                            class="tag">MoSCoW</span><span class="tag">Esforço x Impacto</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-group-title" style="margin-top: 32px;">2. Execução e Lançamento <span
-                        class="text-sm text-muted" style="display:block; margin-top:4px; font-weight:normal;">Construção
-                        e Chegada ao Mercado</span></div>
-
-                <!-- 5. Delivery -->
-                <div class="timeline-item expandable">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>5. Delivery <span class="en-term"><i data-lucide="info" class="icon-info"></i><span
-                                        class="en-tooltip">Execução e desenvolvimento de software.</span></span></h3>
-                            <i data-lucide="chevron-down" class="expand-icon"></i>
-                        </div>
-                        <div class="timeline-body">
-                            <p><strong>O que é:</strong> Transformar ideias validadas em software real com engenharia e
-                                design.</p>
-                            <div class="grid-2 mt-3">
-                                <div class="bg-card p-3 rounded">
-                                    <h5 class="text-teal mb-2">Perguntas Essenciais</h5>
-                                    <ul class="check-list text-sm">
-                                        <li><i data-lucide="check-square"></i> Histórias estão claras (DoR)?</li>
-                                        <li><i data-lucide="check-square"></i> Temos critérios de aceite (DoD)?</li>
-                                        <li><i data-lucide="check-square"></i> O escopo inicial é viável?</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h5 class="mb-2">Cerimônias / Artefatos</h5>
-                                    <div class="tags"><span class="tag">Scrum</span><span class="tag">Kanban</span><span
-                                            class="tag">User Stories</span><span class="tag">Refinamento</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 6. GTM -->
-                <div class="timeline-item expandable">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>6. Go To Market (GTM)</h3>
-                            <i data-lucide="chevron-down" class="expand-icon"></i>
-                        </div>
-                        <div class="timeline-body">
-                            <p><strong>O que é:</strong> Estratégia de lançamento. Comunicação, adoção e treinamento.
-                            </p>
-                            <p><strong>Exemplo Bancário:</strong> Lançamento do "Auto-Investimentos". A estratégia de
-                                adoção precisa de e-mails educacionais, banners no app e treinamento do SAC para
-                                garantir que os usuários entendam e ativem o serviço.</p>
-                            <div class="grid-2 mt-3">
-                                <div class="bg-card p-3 rounded">
-                                    <h5 class="text-teal mb-2">Perguntas Essenciais</h5>
-                                    <ul class="check-list text-sm">
-                                        <li><i data-lucide="check-square"></i> Quem precisa ser treinado (Atendimento)?
-                                        </li>
-                                        <li><i data-lucide="check-square"></i> O rollout será gradual (20%, 50%, 100%)?
-                                        </li>
-                                        <li><i data-lucide="check-square"></i> Como mediremos a adoção no dia 1?</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h5 class="mb-2">Ferramentas</h5>
-                                    <div class="tags"><span class="tag">Feature Flag</span><span class="tag">Release
-                                            Notes</span><span class="tag">Plano de Comunicação</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-group-title" style="margin-top: 32px;">3. Aprendizado e Evolução <span
-                        class="text-sm text-muted" style="display:block; margin-top:4px; font-weight:normal;">Melhoria
-                        contínua e Escala</span></div>
-
-                <!-- 7. Métricas -->
-                <div class="timeline-item expandable">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>7. Métricas e Analytics</h3>
-                            <i data-lucide="chevron-down" class="expand-icon"></i>
-                        </div>
-                        <div class="timeline-body">
-                            <p><strong>O que é:</strong> Acompanhamento do uso real do produto (conversão, retenção,
-                                engajamento e taxa de adoção) para entender se a solução gera o valor esperado.</p>
-                            <div class="grid-2 mt-3">
-                                <div class="bg-card p-3 rounded">
-                                    <h5 class="text-teal mb-2">Perguntas Essenciais</h5>
-                                    <ul class="check-list text-sm">
-                                        <li><i data-lucide="check-square"></i> Qual métrica mostra sucesso?</li>
-                                        <li><i data-lucide="check-square"></i> Qual métrica mostra risco operacional?
-                                        </li>
-                                        <li><i data-lucide="check-square"></i> Onde os usuários desistem no funil?</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h5 class="mb-2">Ferramentas</h5>
-                                    <div class="tags"><span class="tag">Amplitude</span><span
-                                            class="tag">Mixpanel</span><span class="tag">GA4</span><span
-                                            class="tag">Power BI</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 8. Experimentação -->
-                <div class="timeline-item expandable">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>8. Experimentação</h3>
-                            <i data-lucide="chevron-down" class="expand-icon"></i>
-                        </div>
-                        <div class="timeline-body">
-                            <p><strong>O que é:</strong> Testar hipóteses de forma controlada antes de escalar para toda
-                                a base.</p>
-                            <p><strong>Exemplo Bancário:</strong> Para aumentar a adoção da Carteira Digital, o time
-                                roda um Teste A/B com dois banners diferentes na tela inicial, validando qual atrai mais
-                                cliques qualificados.</p>
-                            <div class="grid-2 mt-3">
-                                <div class="bg-card p-3 rounded">
-                                    <h5 class="text-teal mb-2">Perguntas Essenciais</h5>
-                                    <ul class="check-list text-sm">
-                                        <li><i data-lucide="check-square"></i> Qual a hipótese central?</li>
-                                        <li><i data-lucide="check-square"></i> Qual critério estatístico define o
-                                            vencedor?</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h5 class="mb-2">Ferramentas</h5>
-                                    <div class="tags"><span class="tag">Teste A/B</span><span
-                                            class="tag">MVP</span><span class="tag">Optimizely</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 9. Escalabilidade -->
-                <div class="timeline-item expandable">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>9. Escalabilidade</h3>
-                            <i data-lucide="chevron-down" class="expand-icon"></i>
-                        </div>
-                        <div class="timeline-body">
-                            <p><strong>O que é:</strong> Quando o produto encontra um forte Product-Market Fit e alta
-                                adoção, foca-se em otimizar infraestrutura, processos e marketing para crescer
-                                exponencialmente.</p>
-                            <p><strong>Exemplo Bancário:</strong> A funcionalidade de Open Finance estourou em adesão.
-                                Agora o PM foca em garantir que a arquitetura e integrações suportem 10x mais acessos
-                                simultâneos sem lentidão.</p>
-                            <div class="grid-2 mt-3">
-                                <div class="bg-card p-3 rounded">
-                                    <h5 class="text-teal mb-2">Perguntas Essenciais</h5>
-                                    <ul class="check-list text-sm">
-                                        <li><i data-lucide="check-square"></i> O sistema suporta 10x mais acesso?</li>
-                                        <li><i data-lucide="check-square"></i> O custo cresce proporcionalmente?</li>
-                                        <li><i data-lucide="check-square"></i> Temos alarmes de queda (SLO)?</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h5 class="mb-2">Ferramentas</h5>
-                                    <div class="tags"><span class="tag">Datadog</span><span
-                                            class="tag">CloudWatch</span><span class="tag">FinOps</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 10. Evolução -->
-                <div class="timeline-item expandable">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>10. Evolução Contínua</h3>
-                            <i data-lucide="chevron-down" class="expand-icon"></i>
-                        </div>
-                        <div class="timeline-body">
-                            <p><strong>O que é:</strong> O ciclo nunca termina. A partir das métricas e feedbacks sobre
-                                o uso, o processo de descoberta reinicia para corrigir falhas e adicionar
-                                funcionalidades.</p>
-                            <div class="grid-2 mt-3">
-                                <div class="bg-card p-3 rounded">
-                                    <h5 class="text-teal mb-2">Perguntas Essenciais</h5>
-                                    <ul class="check-list text-sm">
-                                        <li><i data-lucide="check-square"></i> O produto ainda resolve a dor original?
-                                        </li>
-                                        <li><i data-lucide="check-square"></i> É hora de pagar a dívida técnica?</li>
-                                        <li><i data-lucide="check-square"></i> É hora de descontinuar o produto
-                                            (Sunset)?</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h5 class="mb-2">Ferramentas</h5>
-                                    <div class="tags"><span class="tag">NPS</span><span class="tag">Feedback
-                                            Loop</span><span class="tag">Sunset Plan</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRODUCT DISCOVERY: JORNADA VISUAL -->
-    <section id="discovery" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="badge">A Prática</span>
-                <h2>Product Discovery: A Jornada</h2>
-                <p>Discovery é como acender a luz antes de atravessar uma sala cheia de móveis. Sem ele, o PM tropeça em
-                    achismos.</p>
-            </div>
-
-            <div class="discovery-journey grid-3">
-                <div class="card p-4">
-                    <div class="d-step">1</div>
-                    <h4>Observar Sinais</h4>
-                    <p class="text-sm">Notar quedas em conversão, aumento de chamados no SAC ou fuga de clientes.</p>
-                    <span class="text-muted text-sm"><i data-lucide="wrench" class="icon-sm"></i> Dashboards,
-                        Analytics.</span>
-                </div>
-                <div class="card p-4">
-                    <div class="d-step">2</div>
-                    <h4>Formular Hipótese</h4>
-                    <p class="text-sm">"Abandonam o cadastro porque o termo 'Comprovante de Residência' gera dúvida."
+                    <h2 class="text-4xl font-display font-bold mb-6 text-white">Tradutor Tech <span class="text-2xl">🪄</span></h2>
+                    <p class="text-gray-400 text-lg mb-8">
+                        Cansado de jargões que todo mundo finge entender nas reuniões? Nós traduzimos conceitos complexos para analogias do mundo real.
                     </p>
-                    <span class="text-muted text-sm"><i data-lucide="wrench" class="icon-sm"></i> Opportunity Solution
-                        Tree.</span>
-                </div>
-                <div class="card p-4">
-                    <div class="d-step">3</div>
-                    <h4>Conversar (Usuários)</h4>
-                    <p class="text-sm">Entrevistar clientes que pararam na etapa X para entender o "porquê".</p>
-                    <span class="text-muted text-sm"><i data-lucide="wrench" class="icon-sm"></i> Typeform, Google
-                        Meet.</span>
-                </div>
-                <div class="card p-4">
-                    <div class="d-step">4</div>
-                    <h4>Mapear Jornada</h4>
-                    <p class="text-sm">Desenhar a jornada atual apontando exatamente o ponto de fricção.</p>
-                    <span class="text-muted text-sm"><i data-lucide="wrench" class="icon-sm"></i> FigJam, Miro.</span>
-                </div>
-                <div class="card p-4 border-top-teal">
-                    <div class="d-step text-teal">5</div>
-                    <h4>Testar Solução</h4>
-                    <p class="text-sm">Criar um protótipo com textos mais amigáveis e ver se o usuário avança.</p>
-                    <span class="text-muted text-sm"><i data-lucide="wrench" class="icon-sm"></i> Figma, Maze.</span>
-                </div>
-                <div class="card p-4 border-top-purple">
-                    <div class="d-step text-purple">6</div>
-                    <h4>Decidir</h4>
-                    <p class="text-sm">Baseado no teste: Construir, Ajustar, Descartar ou Investigar mais.</p>
-                    <span class="text-muted text-sm"><i data-lucide="wrench" class="icon-sm"></i> Matriz Impacto,
-                        RICE.</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- KIT DE FERRAMENTAS DO PM -->
-    <section id="ferramentas" class="section dark-alt">
-        <div class="container">
-            <div class="section-header">
-                <h2>O Kit de Ferramentas do PM</h2>
-                <p>Métodos e frameworks organizados por fase do ciclo de vida.</p>
-            </div>
-
-            <div class="table-responsive bg-card rounded p-4 border border-color">
-                <table class="comparative-table w-100">
-                    <thead>
-                        <tr>
-                            <th>Fase</th>
-                            <th>O que usar?</th>
-                            <th>Objetivo Principal</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>1. Discovery</strong></td>
-                            <td>Design Thinking, Double Diamond, Jobs To Be Done (JTBD), Opportunity Solution Tree.</td>
-                            <td>Entender o problema, o "trabalho" que o usuário quer resolver e mapear oportunidades de
-                                solução.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>2. Estratégia</strong></td>
-                            <td>OKRs, North Star Metric, Lean Canvas, Product Vision Board, Value Proposition Canvas.
-                            </td>
-                            <td>Definir a métrica guia da empresa, focar nos resultados (KRs) e garantir alinhamento
-                                executivo.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>3. Priorização</strong></td>
-                            <td>RICE, ICE, Kano Model, MoSCoW, Esforço x Impacto, Cost of Delay.</td>
-                            <td>Ordenar iniciativas matematicamente ou visualmente para maximizar o retorno sob
-                                restrição de tempo.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>4. Métricas</strong></td>
-                            <td>Funil de Conversão (AARRR), Cohort Analysis, Testes A/B, Árvore de Métricas.</td>
-                            <td>Medir Aquisição, Ativação, Retenção, Receita. Isolar grupos (Cohorts) para ver impacto
-                                real de features.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>5. Delivery</strong></td>
-                            <td>Scrum, Kanban, User Stories, Roadmap Ágil, Definition of Done/Ready.</td>
-                            <td>Garantir clareza nos requisitos técnicos, fluxo contínuo de trabalho e qualidade da
-                                entrega final.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>6. GTM / Fim de Vida</strong></td>
-                            <td>Feature Flags, Release Notes, Sunset Plan (Descontinuação).</td>
-                            <td>Lançar com segurança reduzindo impacto. Ou matar funcionalidades legadas com comunicação
-                                clara.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- FRAMEWORKS DE PRIORIZAÇÃO -->
-    <section id="priorizacao" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="badge">Decisões Difíceis</span>
-                <h2>Frameworks de Priorização</h2>
-                <p>Como dizer "Não" para o CEO sem ser demitido: use métodos.</p>
-            </div>
-
-            <div class="accordion-container">
-
-                <!-- RICE -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <div class="acc-title"><i data-lucide="calculator"></i>
-                            <h3>RICE Score</h3>
-                        </div>
-                        <i data-lucide="chevron-down"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Contexto (Quando usar):</strong> Ideal para quando você tem muitas iniciativas
-                            promissoras disputando os mesmos recursos limitados e precisa remover o "achismo" ou o viés
-                            de quem grita mais alto na decisão.</p>
-                        <div class="mt-3">
-                            <ul class="text-sm">
-                                <li><strong>R (Reach - Alcance):</strong> Quantos usuários/clientes serão impactados por
-                                    essa iniciativa em um determinado período (ex: por mês)?</li>
-                                <li><strong>I (Impact - Impacto):</strong> O quanto isso afeta nossa métrica principal?
-                                    (Geralmente medido em: 3 = Massivo, 2 = Alto, 1 = Médio, 0.5 = Baixo, 0.25 =
-                                    Mínimo).</li>
-                                <li><strong>C (Confidence - Confiança):</strong> Qual o nosso nível de certeza sobre o
-                                    alcance e impacto previstos? (Geralmente: 100% = Alta/Comprovada, 80% = Média, 50% =
-                                    Baixa/Palpite).</li>
-                                <li><strong>E (Effort - Esforço):</strong> Quanto tempo a equipe levará para concluir?
-                                    (Ex: 3 pessoas x 1 mês = 3 Pessoas/Mês).</li>
-                            </ul>
-                        </div>
-                        <p class="mt-2"><strong>Fórmula:</strong> (R × I × C) ÷ E</p>
-                        <div class="bg-card p-4 rounded mt-3">
-                            <p class="text-sm"><strong>Exemplo de como usar:</strong> Projeto de Melhoria do Onboarding
-                                da Conta Digital.</p>
-                            <ul class="text-sm mb-2 text-muted">
-                                <li><strong>Reach:</strong> 20.000 usuários acessam a tela por mês.</li>
-                                <li><strong>Impact:</strong> 3 (Massivo, pois ativa novas contas diretamente).</li>
-                                <li><strong>Confidence:</strong> 80% (Pesquisa com usuários apontou que a mudança
-                                    ajuda).</li>
-                                <li><strong>Effort:</strong> 4 meses (Tempo de Engenharia + Design).</li>
-                            </ul>
-                            <div class="tag bg-purple text-white p-2">Score RICE = (20.000 * 3 * 0.8) / 4 = 12.000
-                                pontos.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ICE -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <div class="acc-title"><i data-lucide="zap"></i>
-                            <h3>ICE Score</h3>
-                        </div>
-                        <i data-lucide="chevron-down"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Contexto (Quando usar):</strong> Excelente para priorizações ultra-rápidas, como
-                            testes de Growth Hacking, marketing ou dinâmicas de ideação onde você não tem dados
-                            absolutos e precisa de velocidade acima da precisão matemática.</p>
-                        <div class="mt-3">
-                            <ul class="text-sm">
-                                <li><strong>I (Impact - Impacto):</strong> Quão grande será o resultado positivo se isso
-                                    funcionar? (Nota de 1 a 10).</li>
-                                <li><strong>C (Confidence - Confiança):</strong> Quão certos estamos de que a hipótese
-                                    vai se provar real? (Nota de 1 a 10).</li>
-                                <li><strong>E (Ease - Facilidade):</strong> Quão rápido ou barato é construir isso? Aqui
-                                    avalia-se a *facilidade* (10 é muito fácil) em vez de esforço. (Nota de 1 a 10).
-                                </li>
-                            </ul>
-                        </div>
-                        <p class="mt-2"><strong>Fórmula:</strong> I × C × E</p>
-                        <div class="bg-card p-4 rounded mt-3">
-                            <p class="text-sm"><strong>Exemplo de como usar:</strong> Adicionar botão de PIX na tela
-                                principal do carrinho.</p>
-                            <ul class="text-sm mb-2 text-muted">
-                                <li><strong>Impact:</strong> 9 (Espera-se um salto gigante em conversão).</li>
-                                <li><strong>Confidence:</strong> 8 (Forte, pois os concorrentes já utilizam com
-                                    sucesso).</li>
-                                <li><strong>Ease:</strong> 6 (Média, pois exige integração com a API do Banco Central).
-                                </li>
-                            </ul>
-                            <div class="tag bg-blue text-white p-2">Score ICE = 9 * 8 * 6 = 432 pontos.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- MoSCoW -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <div class="acc-title"><i data-lucide="filter"></i>
-                            <h3>MoSCoW</h3>
-                        </div>
-                        <i data-lucide="chevron-down"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Contexto (Quando usar):</strong> Ideal para definir o corte exato do escopo de um MVP
-                            (Mínimo Produto Viável) e alinhar expectativas de lançamento com Stakeholders não-técnicos.
-                        </p>
-                        <div class="mt-3">
-                            <ul class="text-sm">
-                                <li><strong>M (Must Have - Obrigatório):</strong> Itens inegociáveis. Se a
-                                    funcionalidade não estiver presente, o lançamento falha, é ilegal ou inseguro.</li>
-                                <li><strong>S (Should Have - Importante):</strong> Itens de alto valor, mas que se não
-                                    entrarem agora, o produto ainda pode ser lançado (com alguma dor ou trabalho manual
-                                    temporário).</li>
-                                <li><strong>C (Could Have - Desejável):</strong> "Nice to have". É o que chamamos de
-                                    brilho ou encanto. Faremos apenas se sobrar tempo no ciclo de entrega.</li>
-                                <li><strong>W (Won't Have - Fora do escopo):</strong> Funcionalidades explicitamente
-                                    rejeitadas para este lançamento. Ajuda a evitar frustrações futuras.</li>
-                            </ul>
-                        </div>
-                        <div class="bg-card p-4 rounded mt-3">
-                            <p class="text-sm mb-2"><strong>Exemplo de como usar:</strong> Construção do aplicativo
-                                "Carteira Digital".</p>
-                            <div class="grid-2">
-                                <div class="bg-card p-3 rounded border-left-red text-sm"><strong>Must Have:</strong>
-                                    Envio de Token SMS para segurança. Sem isso o Banco Central barra.</div>
-                                <div class="bg-card p-3 rounded border-left-yellow text-sm"><strong>Should
-                                        Have:</strong> Notificação Push de compra. Muito útil, mas se falhar no v1, o
-                                    extrato ainda mostra a compra.</div>
-                                <div class="bg-card p-3 rounded border-left-blue text-sm"><strong>Could Have:</strong>
-                                    Tema escuro (Dark Mode).</div>
-                                <div class="bg-card p-3 rounded border-left-gray text-sm"><strong>Won't Have:</strong>
-                                    Cashback em compras online. Acordado com a diretoria que só virá no trimestre
-                                    seguinte.</div>
+                    <div class="space-y-4">
+                        <div class="p-5 rounded-xl bg-background border border-gray-800 hover:border-blue-500/50 transition-all cursor-pointer group shadow-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold text-gray-200 text-lg">API</h4>
+                                <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded">Engenharia</span>
                             </div>
+                            <p class="text-gray-500 text-sm group-hover:hidden transition-all italic">"Interface de Programação de Aplicações que conecta servidores..."</p>
+                            <p class="text-blue-400 text-sm hidden group-hover:block transition-all animate-fade-in-up">
+                                <strong>Analogia:</strong> É o garçom do restaurante. Você (cliente) faz o pedido para o garçom (API), que vai até a cozinha (backend) e traz o seu prato (dados).
+                            </p>
+                        </div>
+                        <div class="p-5 rounded-xl bg-background border border-gray-800 hover:border-amber-500/50 transition-all cursor-pointer group shadow-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold text-gray-200 text-lg">Kubernetes</h4>
+                                <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded">Arquitetura</span>
+                            </div>
+                            <p class="text-gray-500 text-sm group-hover:hidden transition-all italic">"Sistema open-source de orquestração de containers..."</p>
+                            <p class="text-amber-400 text-sm hidden group-hover:block transition-all animate-fade-in-up">
+                                <strong>Analogia:</strong> O gerente de um porto de navios. Ele decide onde cada container (aplicação) vai ficar, substitui os que quebram automaticamente e organiza o trânsito dos navios.
+                            </p>
+                        </div>
+                        <div class="p-5 rounded-xl bg-background border border-gray-800 hover:border-tech/50 transition-all cursor-pointer group shadow-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold text-gray-200 text-lg">Data Lake</h4>
+                                <span class="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded">Dados</span>
+                            </div>
+                            <p class="text-gray-500 text-sm group-hover:hidden transition-all italic">"Repositório centralizado que permite armazenar dados estruturados e não estruturados..."</p>
+                            <p class="text-tech text-sm hidden group-hover:block transition-all animate-fade-in-up">
+                                <strong>Analogia:</strong> Uma grande caixa d'água bruta (lago). Você joga toda a água lá dentro sem filtrar. Depois, o analista pega um balde, filtra a água e transforma em insights.
+                            </p>
                         </div>
                     </div>
                 </div>
-
-                <!-- KANO MODEL -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <div class="acc-title"><i data-lucide="smile"></i>
-                            <h3>Kano Model</h3>
+                <div class="lg:w-1/2 relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-20 blur-[100px] rounded-full mix-blend-screen"></div>
+                    <!-- Mockup de Dicionário Interativo -->
+                    <div class="relative z-10 bg-gray-900 border border-gray-800 rounded-2xl p-6 shadow-2xl glass-panel transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                        <div class="flex items-center gap-2 mb-6 pb-4 border-b border-gray-800">
+                            <i data-lucide="search" class="w-5 h-5 text-gray-500"></i>
+                            <span class="text-gray-500">Busque um termo tech...</span>
                         </div>
-                        <i data-lucide="chevron-down"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Contexto (Quando usar):</strong> Para equilibrar inovação com o "básico bem feito".
-                            Em vez de priorizar pelo esforço da equipe, você prioriza pelo nível de satisfação do
-                            cliente.</p>
-                        <div class="mt-3">
-                            <h5 class="text-teal mb-2">As Três Categorias:</h5>
-                            <ul class="text-sm">
-                                <li><strong>Básico (Obrigatório):</strong> Funcionalidades que o cliente não vai te
-                                    elogiar por ter, mas vai te odiar se não tiver. Se não existir, a satisfação cai
-                                    drasticamente.</li>
-                                <li><strong>Performance (Linear):</strong> Quanto mais, melhor. A satisfação do cliente
-                                    cresce proporcionalmente à entrega.</li>
-                                <li><strong>Encantador (Uau / Delighter):</strong> O cliente não esperava por isso, logo
-                                    não sente falta se não tiver. Mas se você entregar, a satisfação vai lá no alto.
-                                </li>
-                            </ul>
+                        <div class="space-y-4 opacity-70">
+                            <div class="h-4 bg-gray-800 rounded w-3/4"></div>
+                            <div class="h-4 bg-gray-800 rounded w-1/2"></div>
+                            <div class="h-4 bg-gray-800 rounded w-5/6"></div>
                         </div>
-                        <div class="bg-card p-4 rounded mt-3">
-                            <p class="text-sm mb-2"><strong>Exemplo de como usar:</strong> Mapeando features de um App
-                                Bancário.</p>
-                            <ul class="text-sm text-muted">
-                                <li><strong>Básico:</strong> Fazer Login Seguro e Ver Saldo.</li>
-                                <li><strong>Performance:</strong> O app carregar o extrato em 1 segundo em vez de 5
-                                    segundos.</li>
-                                <li><strong>Encantador:</strong> O app identificar que você pagou a mesma conta duas
-                                    vezes e oferecer o estorno automático antes mesmo de você perceber.</li>
-                            </ul>
+                        <div class="mt-8 pt-6 border-t border-gray-800">
+                            <button class="w-full py-3 bg-gradient-to-r from-primary to-accent rounded-xl text-white font-medium hover:shadow-[0_0_15px_rgba(139,92,246,0.5)] transition-shadow">
+                                Acessar Glossário Completo
+                            </button>
                         </div>
-                    </div>
-                </div>
-
-                <!-- COST OF DELAY -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <div class="acc-title"><i data-lucide="clock"></i>
-                            <h3>Cost of Delay (Custo do Atraso)</h3>
-                        </div>
-                        <i data-lucide="chevron-down"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Contexto (Quando usar):</strong> Quando você está lidando com dívidas técnicas,
-                            compliance, regulamentação ou janelas de mercado muito fechadas (como a Black Friday).</p>
-                        <p class="mt-2"><strong>Como funciona:</strong> Em vez de calcular o que você vai ganhar
-                            lançando a funcionalidade, você calcula qual será a sua PERDA TANGÍVEL (financeira, legal,
-                            de clientes) por cada semana ou mês de atraso.</p>
-                        <div class="bg-card p-4 rounded mt-3">
-                            <p class="text-sm mb-2"><strong>Exemplo de como usar:</strong> Atualização de criptografia
-                                no banco de dados.</p>
-                            <p class="text-sm text-muted">A equipe quer adiar a tarefa de melhoria de segurança porque
-                                ela exige 3 meses de esforço da arquitetura.</p>
-                            <p class="text-sm text-muted">O PM então aplica a ótica do Cost of Delay: <em>"Se não
-                                    fizermos isso até Dezembro, sofreremos multa da Lei de Proteção de Dados no valor de
-                                    R$ 2 Milhões e uma taxa diária de R$ 10.000."</em> O custo de não fazer e o risco
-                                superam o esforço, transformando a tarefa chata em Prioridade Número 1.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </section>
-
-    <!-- ROADMAP E EXECUÇÃO (FLOW) -->
-    <section id="execucao" class="section dark-alt">
-        <div class="container">
-            <div class="section-header">
-                <h2>Execução Ágil: Da Ideia ao Lançamento</h2>
-                <p>O fluxo visual de como uma ideia atravessa a organização até a mão do usuário.</p>
-            </div>
-
-            <div class="execution-flow mt-5">
-                <div class="flow-step"><span>1</span> Ideia/Oportunidade</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step"><span>2</span> Discovery</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step text-purple border-purple"><span>3</span> Priorização</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step"><span>4</span> Backlog (Jira)</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step"><span>5</span> Refinamento</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step text-blue border-blue"><span>6</span> Sprint Planning</div>
-                <br> <!-- line break in visual flow -->
-                <div class="flow-step"><span>7</span> Desenvolvimento</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step"><span>8</span> Daily Sync</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step"><span>9</span> Review (Demo)</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step"><span>10</span> Retrospectiva</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step text-teal border-teal"><span>11</span> Lançamento</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step"><span>12</span> Analytics</div>
-            </div>
-
-            <div class="grid-3 mt-5">
-                <div class="card p-4">
-                    <h4>Backlog vs Roadmap</h4>
-                    <p class="text-sm text-muted">O <strong>Roadmap</strong> é a direção estratégica macro (trimestral).
-                        O <strong>Backlog</strong> é a lista viva, técnica e micro de histórias, bugs e melhorias no
-                        Jira.</p>
-                </div>
-                <div class="card p-4">
-                    <h4>Refinamento</h4>
-                    <p class="text-sm text-muted">O PM senta com os engenheiros antes da Sprint começar para explicar o
-                        "Por quê" e quebrar a tarefa até ela caber na Sprint (Definition of Ready).</p>
-                </div>
-                <div class="card p-4">
-                    <h4>Review & Retro</h4>
-                    <p class="text-sm text-muted"><strong>Review:</strong> O time mostra a tela funcionando.
-                        <br><strong>Retro:</strong> O time discute o processo: "Por que atrasamos? Como melhorar as
-                        dailies?".</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MÉTRICAS -->
-    <section id="metricas" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Métricas & Analytics</h2>
-                <p>Como interpretar dados sem cair em armadilhas de vaidade.</p>
-            </div>
-
-            <div class="metrics-glossary grid-3">
-                <div class="metric-def card">
-                    <h4 class="text-blue">North Star Metric</h4>
-                    <p class="text-sm">A métrica mestre de valor.<br><em>Ex: App Bancário = Clientes ativos fazendo ao
-                            menos 3 transações úteis/mês.</em></p>
-                </div>
-                <div class="metric-def card">
-                    <h4 class="text-purple">OKR vs KR</h4>
-                    <p class="text-sm"><strong>Objetivo:</strong> Melhorar onboarding
-                        (Inspirador).<br><strong>KR:</strong> Aumentar ativação de 45% para 65% (Mensurável).</p>
-                </div>
-                <div class="metric-def card">
-                    <h4 class="text-teal">KPI</h4>
-                    <p class="text-sm">Indicador de saúde operacional.<br><em>Ex: Tempo médio de conclusão do cadastro,
-                            Volume de Pix, Uptime do servidor.</em></p>
-                </div>
-                <div class="metric-def card">
-                    <h4 class="text-yellow">Ativação</h4>
-                    <p class="text-sm">O Aha-moment! O usuário percebeu o valor real.<br><em>Ex: Cliente abriu conta E
-                            realizou a 1ª transferência.</em></p>
-                </div>
-                <div class="metric-def card">
-                    <h4 class="text-green">Retenção vs Churn</h4>
-                    <p class="text-sm"><strong>Retenção:</strong> Quem volta mês que vem.<br><strong>Churn:</strong>
-                        Quem abandona o banco ou cancela o cartão.</p>
-                </div>
-                <div class="metric-def card">
-                    <h4 class="text-red">Cohort Analysis</h4>
-                    <p class="text-sm">Analisar grupos que entraram na mesma época. <em>A Cohort de Fevereiro reteve
-                            mais que a de Janeiro? Por quê?</em></p>
-                </div>
-            </div>
-
-            <h3 class="text-center mt-5 mb-3">Categorias de Métricas</h3>
-            <p class="text-center text-muted mb-4 max-w-800 mx-auto">Dependendo de com quem você está falando (Diretoria, Time de Desenvolvimento ou Stakeholders), o tipo de métrica muda. Veja a divisão e os principais exemplos.</p>
-            
-            <div class="accordion-container mb-5">
-                <!-- Métricas de Produto -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <div class="acc-title"><i data-lucide="smartphone"></i>
-                            <h3>Métricas de Produto</h3>
-                        </div>
-                        <i data-lucide="chevron-down"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p class="mb-3 text-sm"><strong>Foco:</strong> Avaliam como os usuários descobrem, interagem e extraem valor da solução no dia a dia.</p>
-                        <div class="grid-2" style="gap: 16px;">
-                            <div class="bg-card p-3 rounded shadow-sm border-left-blue">
-                                <h5 class="text-blue mb-1">Adoção</h5>
-                                <p class="text-sm text-muted mb-2">Quantos novos usuários começaram a usar a funcionalidade.</p>
-                                <p class="text-sm mb-0"><em>Ex: 15% dos clientes usaram a nova feature na primeira semana.</em></p>
-                            </div>
-                            <div class="bg-card p-3 rounded shadow-sm border-left-purple">
-                                <h5 class="text-purple mb-1">Retenção</h5>
-                                <p class="text-sm text-muted mb-2">A capacidade do produto de fazer o usuário voltar.</p>
-                                <p class="text-sm mb-0"><em>Ex: 40% dos usuários continuam usando o app após 30 dias (D30).</em></p>
-                            </div>
-                            <div class="bg-card p-3 rounded shadow-sm border-left-teal">
-                                <h5 class="text-teal mb-1">Engajamento</h5>
-                                <p class="text-sm text-muted mb-2">A frequência e intensidade de uso.</p>
-                                <p class="text-sm mb-0"><em>Ex: Média de 4 transações por semana por usuário ativo.</em></p>
-                            </div>
-                            <div class="bg-card p-3 rounded shadow-sm border-left-green">
-                                <h5 class="text-green mb-1">Sucesso</h5>
-                                <p class="text-sm text-muted mb-2">Se o usuário atinge o objetivo sem erros ou fricção.</p>
-                                <p class="text-sm mb-0"><em>Ex: 95% de taxa de conclusão no fluxo de pagamento.</em></p>
-                            </div>
-                            <div class="bg-card p-3 rounded shadow-sm border-left-yellow">
-                                <h5 class="text-yellow mb-1">Valor</h5>
-                                <p class="text-sm text-muted mb-2">O benefício tangível entregue ao cliente.</p>
-                                <p class="text-sm mb-0"><em>Ex: NPS subiu 10 pontos; 5 minutos economizados por tarefa.</em></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Métricas Executivas -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <div class="acc-title"><i data-lucide="pie-chart"></i>
-                            <h3>Métricas Executivas</h3>
-                        </div>
-                        <i data-lucide="chevron-down"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p class="mb-3 text-sm"><strong>Foco:</strong> Impacto macro, finanças e estratégia da empresa. A linguagem da Diretoria (C-Level).</p>
-                        <div class="grid-2" style="gap: 16px;">
-                            <div class="bg-card p-3 rounded shadow-sm border-left-green">
-                                <h5 class="text-green mb-1">ROI (Retorno sobre Investimento)</h5>
-                                <p class="text-sm text-muted mb-2">O lucro ou retorno gerado em relação ao custo do projeto.</p>
-                                <p class="text-sm mb-0"><em>Ex: R$ 5 de receita para cada R$ 1 investido na plataforma.</em></p>
-                            </div>
-                            <div class="bg-card p-3 rounded shadow-sm border-left-yellow">
-                                <h5 class="text-yellow mb-1">Eficiência</h5>
-                                <p class="text-sm text-muted mb-2">Fazer mais com os mesmos recursos.</p>
-                                <p class="text-sm mb-0"><em>Ex: Redução de 20% no custo operacional do servidor.</em></p>
-                            </div>
-                            <div class="bg-card p-3 rounded shadow-sm border-left-purple">
-                                <h5 class="text-purple mb-1">Impacto</h5>
-                                <p class="text-sm text-muted mb-2">Efeito direto nas metas estratégicas globais da empresa.</p>
-                                <p class="text-sm mb-0"><em>Ex: Aumento de 5% no Market Share ou crescimento do ARR.</em></p>
-                            </div>
-                            <div class="bg-card p-3 rounded shadow-sm border-left-red">
-                                <h5 class="text-red mb-1">Custo Evitado</h5>
-                                <p class="text-sm text-muted mb-2">Dinheiro economizado ao evitar problemas futuros ou automatizar.</p>
-                                <p class="text-sm mb-0"><em>Ex: R$ 500 mil economizados em chamadas de SAC desviadas.</em></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Métricas Operacionais -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <div class="acc-title"><i data-lucide="settings"></i>
-                            <h3>Métricas Operacionais</h3>
-                        </div>
-                        <i data-lucide="chevron-down"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p class="mb-3 text-sm"><strong>Foco:</strong> Saúde da engenharia, agilidade do processo de delivery e estabilidade técnica.</p>
-                        <div class="grid-2" style="gap: 16px;">
-                            <div class="bg-card p-3 rounded shadow-sm border-left-blue">
-                                <h5 class="text-blue mb-1">LT (Lead Time)</h5>
-                                <p class="text-sm text-muted mb-2">Tempo total desde o pedido da feature até ela estar em produção.</p>
-                                <p class="text-sm mb-0"><em>Ex: Redução do Lead Time de 30 para 14 dias na Squad.</em></p>
-                            </div>
-                            <div class="bg-card p-3 rounded shadow-sm border-left-red">
-                                <h5 class="text-red mb-1">Falha (Change Failure Rate)</h5>
-                                <p class="text-sm text-muted mb-2">A porcentagem de deploys que causam bugs ou incidentes.</p>
-                                <p class="text-sm mb-0"><em>Ex: Apenas 2% dos lançamentos causaram problemas em produção.</em></p>
-                            </div>
-                            <div class="bg-card p-3 rounded shadow-sm border-left-teal">
-                                <h5 class="text-teal mb-1">Throughput (Vazão)</h5>
-                                <p class="text-sm text-muted mb-2">A quantidade de itens ou tarefas entregues em um período de tempo.</p>
-                                <p class="text-sm mb-0"><em>Ex: O time entrega em média 15 User Stories por Sprint.</em></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="example-box mt-5 mx-auto max-w-800 border-left-red bg-card">
-                <h4><i data-lucide="alert-triangle" class="text-red"></i> Armadilhas de Analytics (Como NÃO fazer)</h4>
-                <ul class="text-sm text-muted mt-2">
-                    <li class="mb-2"><strong>Métrica de Vaidade:</strong> Comemorar "1 milhão de downloads" quando a
-                        retenção no D30 (dia 30) é de apenas 2%.</li>
-                    <li class="mb-2"><strong>Correlação não é causalidade:</strong> Usuários que usam o tema escuro
-                        investem mais. (Mudar todo mundo para tema escuro não fará eles investirem, eles apenas são
-                        usuários mais "heavy users").</li>
-                    <li class="mb-2"><strong>Média Mentirosa:</strong> "Tempo médio de resposta do app é 2s" — mas 10%
-                        da base demora 15s e desiste.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRODUCT STRATEGY -->
-    <section id="estrategia" class="section dark-alt">
-        <div class="container">
-            <div class="section-header">
-                <h2>Product Strategy</h2>
-                <p>Do sonho corporativo até a tarefa no Jira do Desenvolvedor.</p>
-            </div>
-
-            <div class="strategy-tree">
-                <div class="tree-node north-star">
-                    <strong>Visão de Produto</strong>
-                    <span>"Ser o app que dá autonomia financeira ao brasileiro."</span>
-                </div>
-                <div class="tree-branches">
-                    <div class="tree-node kpi border-purple">
-                        <strong>Objetivo Estratégico (O)</strong>
-                        <span>Aumentar a autonomia digital</span>
-                    </div>
-                </div>
-                <div class="tree-branches sub">
-                    <div class="tree-node kr border-blue">
-                        <strong>Key Result (KR 1)</strong>
-                        <span>Reduzir contatos no SAC em 20%</span>
-                    </div>
-                    <div class="tree-node kr border-blue">
-                        <strong>Key Result (KR 2)</strong>
-                        <span>Aumentar uso do autoatendimento em 35%</span>
-                    </div>
-                </div>
-                <div class="tree-branches sub mt-2">
-                    <div class="tree-node kr bg-card">
-                        <strong>Iniciativas (Roadmap)</strong>
-                        <span class="text-sm">1. Melhorar busca no app.<br>2. Criar central de contestação de
-                            Pix.</span>
-                    </div>
-                </div>
-                <div class="tree-branches sub mt-2">
-                    <div class="tree-node kr border-teal">
-                        <strong>Experimento (Sprint)</strong>
-                        <span class="text-sm">Teste A/B: Botão "Ajuda" flutuante vs Menu fixo.</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- COMO INFLUENCIAR TIMES COM DADOS -->
-    <section id="influencia" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Influência com Dados</h2>
-                <p>O PM não manda no time de engenharia. Ele influencia com clareza, contexto analítico e evidências
-                    matemáticas.</p>
-            </div>
+    <!-- FOOTER INJECTED VIA JS -->
+    <div id="footer-container"></div>
 
-            <div class="bg-card p-4 rounded shadow-sm border-color mb-5 mx-auto max-w-800">
-                <h4 class="mb-3 text-center" style="display:flex; align-items:center; justify-content:center; gap:8px;">
-                    <i data-lucide="bar-chart-2" class="text-teal"></i> Mapeando o Produto com Dados</h4>
-                <p class="text-sm text-center text-muted mb-4">O segredo da influência é cruzar a camada de negócio com
-                    a saúde da infraestrutura. Se a conversão caiu, foi problema de usabilidade (UX) ou o servidor caiu
-                    (Tech)? Dados matam o "achismo" na raiz.</p>
-
-                <div class="grid-2" style="gap: 16px;">
-                    <div class="p-3 rounded"
-                        style="background: rgba(100,200,255,0.05); border: 1px solid rgba(100,200,255,0.1);">
-                        <h5 class="text-blue mb-3" style="display:flex; align-items:center; gap:6px;"><i
-                                data-lucide="users" style="width:16px;"></i> Visão de Negócio</h5>
-                        <ul class="text-sm text-muted check-list">
-                            <li class="mb-2"><strong>Volume de Usuários (MAU/DAU):</strong> Quantos estão ativos hoje?
-                            </li>
-                            <li class="mb-2"><strong>Uso de Funcionalidade:</strong> Quantos clicaram na feature X?</li>
-                            <li><strong>Funil de Conversão:</strong> Onde exatamente estão abandonando a jornada?</li>
-                        </ul>
-                    </div>
-                    <div class="p-3 rounded"
-                        style="background: rgba(255,100,100,0.05); border: 1px solid rgba(255,100,100,0.1);">
-                        <h5 class="text-red mb-3" style="display:flex; align-items:center; gap:6px;"><i
-                                data-lucide="server" style="width:16px;"></i> Visão Técnica</h5>
-                        <ul class="text-sm text-muted check-list">
-                            <li class="mb-2"><strong>Status 200 (Sucesso):</strong> A API respondeu corretamente e sem
-                                demora.</li>
-                            <li class="mb-2"><strong>Status 400 (Client Error):</strong> Ex: Usuário enviou formato de
-                                CPF inválido.</li>
-                            <li><strong>Status 500 (Timeout):</strong> O servidor caiu. O cliente clica e nada acontece.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="mt-4 p-3 border-left-teal rounded" style="background: rgba(0,0,0,0.2);">
-                    <h5 class="text-white text-sm mb-2">Diagnóstico Rápido:</h5>
-                    <p class="text-sm text-muted mb-0">Se a conversão na tela de pagamento despencou hoje e o painel
-                        técnico da Engenharia mostra um pico de <strong>Status 500</strong> na API do parceiro de cartão
-                        de crédito, o problema não é a cor do botão. É infraestrutura. Com essa evidência visual, o PM
-                        mobiliza o time técnico em minutos.</p>
-                </div>
-            </div>
-
-            <div class="grid-2 align-start mt-4">
-                <div class="bg-card p-4 rounded border-left-red">
-                    <h4 class="text-red mb-2"><i data-lucide="x-circle"></i> O jeito Chefe (Errado)</h4>
-                    <p class="text-sm text-muted">"Time, quero que mudem a tela de cadastro amanhã. É urgente, o CEO
-                        pediu."</p>
-                    <p class="text-sm mt-2"><em>Reação: A Engenharia fica frustrada, executa de má vontade e não se
-                            sente dona do produto.</em></p>
-                </div>
-
-                <div class="bg-card p-4 rounded border-left-teal">
-                    <h4 class="text-teal mb-2"><i data-lucide="check-circle"></i> O jeito PM Analítico</h4>
-                    <p class="text-sm text-muted">"Time, o monitoramento mostra que 30% das tentativas de upload batem
-                        em 'Status 400' (Bad Request). Isso impacta 5.000 usuários por semana. O que acham de
-                        investigarmos se o formato da imagem está quebrando o limite de payload?"</p>
-                    <p class="text-sm mt-2"><em>Reação: O time entende a dor exata, sabe a escala do problema e atua
-                            como parceiro na solução técnica.</em></p>
-                </div>
-            </div>
-
-            <h4 class="text-center mt-5 mb-4">Os 6 Passos Dinâmicos da Influência</h4>
-            <div class="grid-3" style="gap: 20px;">
-                <div class="bg-card p-3 rounded shadow-sm border-top-gray">
-                    <h5 class="mb-2"><span class="text-muted">1.</span> Comece pelo Problema</h5>
-                    <p class="text-sm text-muted">Apresente a dor do usuário, não uma tela desenhada. Traga o "O Quê" e
-                        o "Por Quê". Deixe o "Como" para depois.</p>
-                </div>
-                <div class="bg-card p-3 rounded shadow-sm border-top-blue">
-                    <h5 class="mb-2"><span class="text-blue">2.</span> Traga as Evidências</h5>
-                    <p class="text-sm text-muted">Qual o volume de impacto? É um bug que afeta 10 usuários (Status 404
-                        isolado) ou 10.000 usuários?</p>
-                </div>
-                <div class="bg-card p-3 rounded shadow-sm border-top-purple">
-                    <h5 class="mb-2"><span class="text-purple">3.</span> Conecte ao Negócio</h5>
-                    <p class="text-sm text-muted">Mostre como resolver esse problema ajuda a bater a meta (OKR) do
-                        trimestre. Isso alinha todo mundo.</p>
-                </div>
-                <div class="bg-card p-3 rounded shadow-sm border-top-yellow">
-                    <h5 class="mb-2"><span class="text-yellow">4.</span> Mapeie Trade-offs</h5>
-                    <p class="text-sm text-muted">Seja honesto: "Para focar nisso agora, teremos que pausar o
-                        desenvolvimento da feature Y. O ganho compensa?"</p>
-                </div>
-                <div class="bg-card p-3 rounded shadow-sm border-top-teal">
-                    <h5 class="mb-2"><span class="text-teal">5.</span> Co-construa a Solução</h5>
-                    <p class="text-sm text-muted">Trabalhe junto com o Tech Lead. Eles sabem as limitações de
-                        arquitetura melhor que ninguém.</p>
-                </div>
-                <div class="bg-card p-3 rounded shadow-sm border-top-green">
-                    <h5 class="mb-2"><span class="text-green">6.</span> Decisão Clara</h5>
-                    <p class="text-sm text-muted">Saia da reunião com papéis definidos, métricas de sucesso anotadas e o
-                        risco assumido e documentado.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- BIG TECHS -->
-    <section id="bigtechs" class="section dark-alt">
-        <div class="container">
-            <div class="section-header">
-                <h2>Cultura das Big Techs</h2>
-                <p>Métodos, ferramentas e boas práticas que definem o ritmo global de inovação digital.</p>
-            </div>
-
-            <div class="companies-grid"
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px;">
-                <!-- Amazon -->
-                <div class="company-card border-top-yellow bg-card p-4 rounded shadow-sm">
-                    <h3 class="gradient-text mb-2" style="display:flex; align-items:center; gap:8px;"><i
-                            data-lucide="shopping-cart"></i> Amazon</h3>
-                    <p class="text-sm text-white mb-3" style="font-weight: 600;">Working Backwards & Six Pager</p>
-                    <p class="text-sm text-muted" style="line-height: 1.6;">O PM da Amazon não usa PowerPoint. Ele
-                        escreve um documento narrativo longo (<strong>Six Pager</strong>) ou um comunicado de imprensa
-                        futuro (<strong>PRFAQ</strong>) antes mesmo do desenvolvimento começar. O objetivo é validar de
-                        forma profunda se a ideia tem real valor para o cliente. Se o documento não convencer a
-                        diretoria durante os 20 minutos de leitura silenciosa na reunião, o produto nem é iniciado.</p>
-                </div>
-
-                <!-- Google -->
-                <div class="company-card border-top-blue bg-card p-4 rounded shadow-sm">
-                    <h3 class="gradient-text mb-2" style="display:flex; align-items:center; gap:8px;"><i
-                            data-lucide="search"></i> Google</h3>
-                    <p class="text-sm text-white mb-3" style="font-weight: 600;">10x Thinking & SRE</p>
-                    <p class="text-sm text-muted" style="line-height: 1.6;">A cultura foca em soluções que melhorem
-                        processos em 10 vezes (10x), não apenas 10%. Tudo é testado em altíssima escala usando testes
-                        A/B. Como bilhões de pessoas usam os produtos, a figura do Engenheiro de Confiabilidade
-                        (<strong>SRE</strong>) é tão vital quanto o PM, garantindo que o sistema aguente o tráfego
-                        global massivo sem cair.</p>
-                </div>
-
-                <!-- Netflix -->
-                <div class="company-card border-top-red bg-card p-4 rounded shadow-sm">
-                    <h3 class="gradient-text mb-2" style="display:flex; align-items:center; gap:8px;"><i
-                            data-lucide="play"></i> Netflix</h3>
-                    <p class="text-sm text-white mb-3" style="font-weight: 600;">Chaos Engineering & Densidade de
-                        Talento</p>
-                    <p class="text-sm text-muted" style="line-height: 1.6;">Eles aplicam o conceito de <strong>Chaos
-                            Monkey</strong>, uma ferramenta que derruba os próprios servidores da Netflix em produção de
-                        propósito. Por quê? Para garantir que a arquitetura seja tão resiliente que consiga se curar
-                        sozinha sem o usuário sequer perceber na TV de casa. Cultivam uma cultura de times extremamente
-                        enxutos, mas com altíssima densidade de talento e remuneração.</p>
-                </div>
-
-                <!-- Spotify -->
-                <div class="company-card border-top-green bg-card p-4 rounded shadow-sm">
-                    <h3 class="gradient-text mb-2" style="display:flex; align-items:center; gap:8px;"><i
-                            data-lucide="music"></i> Spotify</h3>
-                    <p class="text-sm text-white mb-3" style="font-weight: 600;">Squads, Tribes & Autonomia Total</p>
-                    <p class="text-sm text-muted" style="line-height: 1.6;">Pioneira no modelo de escala ágil. Cada
-                        pequeno time opera como uma mini-startup 100% autônoma (com PM, Engenheiros e Designers)
-                        dedicada a uma missão muito específica. Essa arquitetura permite que eles atualizem partes do
-                        aplicativo de forma totalmente independente, sem precisar de aprovação pesada do resto da
-                        organização corporativa.</p>
-                </div>
-
-                <!-- Mercado Livre -->
-                <div class="company-card border-top-yellow bg-card p-4 rounded shadow-sm">
-                    <h3 class="gradient-text mb-2" style="display:flex; align-items:center; gap:8px;"><i
-                            data-lucide="package"></i> Mercado Livre</h3>
-                    <p class="text-sm text-white mb-3" style="font-weight: 600;">Continuous Deployment & Ecossistema</p>
-                    <p class="text-sm text-muted" style="line-height: 1.6;">Possui uma das engenharias mais agressivas e
-                        eficientes da América Latina. Através de sua plataforma proprietária (Fury), o Meli lança
-                        milhares de pequenas versões de código todos os dias. O PM pensa puramente em "Ecossistema",
-                        sabendo que uma pequena mudança no carrinho de compras impacta toda a malha de pagamentos
-                        (Mercado Pago) e logística (Mercado Envios).</p>
-                </div>
-
-                <!-- Nubank -->
-                <div class="company-card border-top-purple bg-card p-4 rounded shadow-sm">
-                    <h3 class="gradient-text mb-2" style="display:flex; align-items:center; gap:8px;"><i
-                            data-lucide="credit-card"></i> Nubank</h3>
-                    <p class="text-sm text-white mb-3" style="font-weight: 600;">Obsessão por Simplicidade & Feature
-                        Flags</p>
-                    <p class="text-sm text-muted" style="line-height: 1.6;">O principal inimigo do Nubank é a
-                        complexidade bancária. Os PMs focam em reduzir atritos a zero e utilizam extensivamente
-                        <strong>Feature Flags</strong>. Isso permite ligar ou desligar botões e serviços no aplicativo
-                        dos usuários em tempo real via servidor, sem precisar forçar uma nova e demorada atualização na
-                        loja de aplicativos da Apple ou Google caso ocorra um bug grave.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ARENA DO PM (QUIZ INTERATIVO) -->
-    <section id="quiz" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="badge">Quiz Interativo</span>
-                <h2>Arena do Product Manager</h2>
-                <p>Teste seus conhecimentos. Escolha a resposta certa e veja qual é o seu nível de maturidade em
-                    Produto.</p>
-            </div>
-
-            <div class="quiz-container max-w-800 mx-auto bg-card p-4 rounded border-color shadow-lg" id="quiz-app">
-                <!-- Tela Inicial do Quiz -->
-                <div id="quiz-start" class="text-center py-5">
-                    <i data-lucide="swords" class="icon-brand" style="width:64px; height:64px; margin-bottom:16px;"></i>
-                    <h3>Pronto para o desafio?</h3>
-                    <p class="text-muted mb-4">São 10 perguntas rápidas sobre o dia a dia e decisões de um PM.</p>
-                    <button class="btn-primary" onclick="startQuiz()">Iniciar Quiz</button>
-                </div>
-
-                <!-- Tela de Perguntas (Injetado via JS) -->
-                <div id="quiz-question-container" style="display:none;">
-                    <div class="quiz-progress mb-3 text-sm text-muted">Pergunta <span id="q-current">1</span> de <span
-                            id="q-total">10</span></div>
-                    <h4 id="question-text" class="mb-4">Texto da Pergunta</h4>
-                    <div id="options-container" class="options-grid">
-                        <!-- Botões de opções aqui -->
-                    </div>
-                </div>
-
-                <!-- Tela de Resultado -->
-                <div id="quiz-result" class="text-center py-5" style="display:none;">
-                    <i data-lucide="award" class="icon-brand text-yellow"
-                        style="width:64px; height:64px; margin-bottom:16px;"></i>
-                    <h3 id="result-title">Sua Pontuação</h3>
-                    <h1 class="gradient-text" style="font-size: 3rem;" id="result-score">8/10</h1>
-                    <p class="text-muted mt-3 mb-4" id="result-message">Mensagem personalizada.</p>
-                    <button class="btn-secondary" onclick="resetQuiz()"><i data-lucide="rotate-ccw"></i> Tentar
-                        Novamente</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ROADMAP DE EVOLUÇÃO (RPG) -->
-    <section id="evolucao" class="section dark-alt">
-        <div class="container">
-            <div class="section-header">
-                <h2>Roadmap de Carreira Detalhado</h2>
-                <p>O que se espera de você em cada nível de maturidade e como dar o próximo salto na carreira de
-                    Produto.</p>
-            </div>
-
-            <div class="career-path"
-                style="display: flex; flex-direction: column; gap: 20px; max-width: 900px; margin: 0 auto;">
-                <div class="path-step bg-card p-4 rounded border-color shadow-sm"
-                    style="display: flex; gap: 20px; align-items: flex-start;">
-                    <div class="level-badge" style="min-width:80px; text-align:center;">Jr</div>
-                    <div class="step-info">
-                        <h3 class="text-white">Associate / Junior PM</h3>
-                        <p class="text-sm text-muted mb-2"><strong>Foco:</strong> Delivery, Execução e Processo Tático.
-                        </p>
-                        <p class="text-sm text-muted mb-2">Garante que a máquina rode. Escreve user stories impecáveis,
-                            ajuda o time de engenharia a não ter bloqueios durante a Sprint, responde chamados de bugs e
-                            aprende a ler dashboards básicos de Analytics.</p>
-                        <p class="text-sm text-teal mb-0"><em>👉 Para ser promovido:</em> Precisa parar de apenas "tirar
-                            pedidos" e começar a fazer perguntas investigativas (Discovery) antes de escrever as
-                            histórias.</p>
-                    </div>
-                </div>
-
-                <div class="path-step bg-card p-4 rounded border-color shadow-sm"
-                    style="display: flex; gap: 20px; align-items: flex-start;">
-                    <div class="level-badge" style="min-width:80px; text-align:center;">Pleno</div>
-                    <div class="step-info">
-                        <h3 class="text-white">PM Pleno (Middle)</h3>
-                        <p class="text-sm text-muted mb-2"><strong>Foco:</strong> Discovery, Dados e Priorização da
-                            Squad.</p>
-                        <p class="text-sm text-muted mb-2">Dono autônomo da sua Squad. Identifica dores dos usuários
-                            cruzando métricas quantitativas (funis) com entrevistas qualitativas. Usa métodos como RICE
-                            para justificar por que "A" entra na frente de "B". Sabe dizer "Não" para Stakeholders.</p>
-                        <p class="text-sm text-teal mb-0"><em>👉 Para ser promovido:</em> Precisa sair do escopo da
-                            própria Squad e começar a entender como o seu produto impacta a receita global da empresa
-                            (Visão de P&L - Profit and Loss).</p>
-                    </div>
-                </div>
-
-                <div class="path-step bg-card p-4 rounded border-left-purple shadow-sm"
-                    style="display: flex; gap: 20px; align-items: flex-start;">
-                    <div class="level-badge border-purple text-purple" style="min-width:80px; text-align:center;">Sr
-                    </div>
-                    <div class="step-info">
-                        <h3 class="text-white">Senior PM</h3>
-                        <p class="text-sm text-muted mb-2"><strong>Foco:</strong> Estratégia de Domínio, Ambiguidade e
-                            Negócios.</p>
-                        <p class="text-sm text-muted mb-2">Recebe problemas enormes e abstratos do CEO (ex: "Aumentar
-                            faturamento na vertical de crédito em 20%") e descobre sozinho como quebrar isso em dezenas
-                            de iniciativas acionáveis. Costuma mentorar PMs mais novos e navega politicamente por toda a
-                            empresa.</p>
-                        <p class="text-sm text-purple mb-0"><em>👉 Para ser promovido:</em> Precisa demonstrar
-                            excelência em liderança indireta e estar pronto para construir cultura, organizar portfólios
-                            e contratar talentos.</p>
-                    </div>
-                </div>
-
-                <div class="path-step bg-card p-4 rounded border-left-blue shadow-sm"
-                    style="display: flex; gap: 20px; align-items: flex-start;">
-                    <div class="level-badge boss-minor" style="min-width:80px; text-align:center;">GPM</div>
-                    <div class="step-info">
-                        <h3 class="text-white">Group PM / Head of Product</h3>
-                        <p class="text-sm text-muted mb-2"><strong>Foco:</strong> Liderança de Pessoas, Organização
-                            Organizacional e Alocação de Orçamento.</p>
-                        <p class="text-sm text-muted mb-2">Gestor de Gestores. Não escreve mais tickets no Jira. Seu
-                            trabalho agora é gerenciar, contratar, demitir e desenvolver outros Product Managers.
-                            Garante que 3, 4 ou 5 squads diferentes não estejam construindo funcionalidades redundantes
-                            e conflituosas.</p>
-                    </div>
-                </div>
-
-                <div class="path-step bg-card p-4 rounded border-left-yellow shadow-sm"
-                    style="display: flex; gap: 20px; align-items: flex-start;">
-                    <div class="level-badge boss" style="min-width:80px; text-align:center;">VP/CPO</div>
-                    <div class="step-info">
-                        <h3 class="text-white">Diretor / VP / CPO</h3>
-                        <p class="text-sm text-muted mb-2"><strong>Foco:</strong> Expansão de Mercado, Aquisições (M&A)
-                            e Investidores.</p>
-                        <p class="text-sm text-muted mb-2">Conecta a estratégia do Produto diretamente com as demandas
-                            do mercado financeiro, investidores e Board de Diretores. Define para onde a empresa como um
-                            todo vai nos próximos 3 a 5 anos.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- BIBLIOTECA DE MODELOS (PLAYBOOK) -->
-    <section id="playbook" class="section dark-alt">
-        <div class="container">
-            <div class="section-header">
-                <span class="badge">Download Templates</span>
-                <h2>Modelos e Guias para o PM</h2>
-                <p>Copie e cole no seu Notion, ou baixe em formato Imagem, Excel e Word para preencher dinamicamente.
-                </p>
-            </div>
-
-            <div class="accordion-container">
-
-                <!-- Modelo 1 -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <div class="acc-title"><i data-lucide="file-text"></i>
-                            <h3>Modelo — Alinhamento Estratégico</h3>
-                        </div>
-                        <i data-lucide="chevron-down"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="download-actions"
-                            style="display:flex; gap:12px; margin-bottom: 24px; flex-wrap: wrap;">
-                            <button class="btn-sm btn-secondary text-green"
-                                onclick="downloadExcel('mod-1', 'Alinhamento Estratégico Inicial')"><i
-                                    data-lucide="table"></i> Baixar Excel</button>
-                            <button class="btn-sm btn-secondary text-blue"
-                                onclick="downloadWord('mod-1', 'Alinhamento Estratégico Inicial')"><i
-                                    data-lucide="file-text"></i> Baixar Word</button>
-                            <button class="btn-sm btn-secondary"
-                                onclick="document.getElementById('ex-1').scrollIntoView({behavior:'smooth', block:'center'})"><i
-                                    data-lucide="eye"></i> Ver exemplo preenchido</button>
-                        </div>
-
-                        <div class="grid-2 align-start" style="gap: 24px;">
-                            <!-- Esquerda: Exemplos e Template -->
-                            <div>
-                                <div id="ex-1" class="bg-card p-4 rounded border-color mb-4 shadow-sm">
-                                    <h4 class="mb-3 text-teal" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="check-circle" style="width:20px;"></i> Exemplo Preenchido</h4>
-                                    <div class="text-sm text-muted"
-                                        style="white-space: pre-wrap; font-family: var(--font-main);">
-                                        <strong>Produto:</strong> Onboarding da Conta Digital
-                                        <strong>Problema:</strong> 48% dos usuários abandonam o cadastro antes da
-                                        ativação da conta.
-                                        <strong>Impacto:</strong> perda de aquisição, aumento de custo de mídia, aumento
-                                        de chamadas no atendimento, redução de conversão.
-                                        <strong>Hipótese:</strong> Usuários abandonam principalmente na etapa de envio
-                                        de documentos devido à insegurança e excesso de campos.
-                                        <strong>Objetivo Estratégico:</strong> Aumentar ativação digital de novos
-                                        clientes.
-                                        <strong>Resultado Esperado:</strong> Aumentar conversão do onboarding de 52%
-                                        para 70%.
-                                        <strong>Métricas:</strong> Conversão onboarding, Tempo médio de cadastro, Taxa
-                                        de abandono, NPS da jornada, Ativação D7.
-                                        <strong>Stakeholders:</strong> Produto, Engenharia, UX, Dados, Compliance,
-                                        Atendimento.
-                                        <strong>Riscos:</strong> Integração com OCR, Regras regulatórias, Dependência de
-                                        fornecedor.
-                                        <strong>Trade-offs:</strong> Priorizar onboarding agora significa adiar
-                                        melhorias na área de cartões.
-                                        <strong>Próximos passos:</strong> discovery, entrevistas, análise do funil, MVP
-                                        simplificado, experimento A/B.
-                                    </div>
-                                </div>
-
-                                <div class="bg-card p-4 rounded border-color shadow-sm">
-                                    <h4 class="mb-3 text-blue" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="file-text" style="width:20px;"></i> Template Estrutural</h4>
-                                    <div id="mod-1" class="template-box text-sm text-muted"
-                                        style="white-space: pre-wrap; font-family: monospace; line-height: 1.6; overflow-x: auto;">
-                                        1. Nome do Produto/Iniciativa
-                                        2. Qual problema estamos tentando resolver?
-                                        3. Quem é impactado?
-                                        4. Qual hipótese temos?
-                                        5. Qual objetivo estratégico?
-                                        6. Qual resultado esperado?
-                                        7. Quais métricas acompanharemos?
-                                        8. Qual impacto esperado no negócio?
-                                        9. Stakeholders envolvidos
-                                        10. Dependências
-                                        11. Riscos
-                                        12. Critério de sucesso
-                                        13. Trade-offs
-                                        14. Próximos passos</div>
-                                </div>
-                            </div>
-
-                            <!-- Direita: Mentor, Maturidade, Erros e Formatos -->
-                            <div class="d-flex flex-column" style="display: flex; flex-direction: column; gap: 24px;">
-                                <div class="bg-card p-4 rounded border-left-purple shadow-sm">
-                                    <h5 class="text-purple mb-2" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="user-check" style="width:20px;"></i> Modo Mentor</h5>
-                                    <p class="text-sm text-muted mb-0"><strong>O que um PM Senior faria
-                                            aqui?</strong><br>Um PM senior validaria impacto financeiro e dor real do
-                                        usuário antes de expandir o escopo ou engajar a engenharia.</p>
-                                </div>
-
-                                <div class="bg-card p-4 rounded border-left-red shadow-sm">
-                                    <h5 class="text-red mb-2" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="alert-triangle" style="width:20px;"></i> Erros Comuns</h5>
-                                    <ul class="text-sm text-muted mb-0"
-                                        style="list-style-type: none; padding-left: 0; display:flex; flex-direction:column; gap:6px;">
-                                        <li>❌ Começar falando solução antes do problema</li>
-                                        <li>❌ Não alinhar stakeholders cedo</li>
-                                        <li>❌ Não definir métrica de sucesso</li>
-                                        <li>❌ Roadmap virar lista de desejos</li>
-                                        <li>❌ Não mapear dependências</li>
-                                        <li>❌ Não documentar trade-offs</li>
-                                    </ul>
-                                </div>
-
-                                <div class="bg-card p-4 rounded border-left-green shadow-sm">
-                                    <h5 class="text-green mb-3" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="check-square" style="width:20px;"></i> Maturidade do PM</h5>
-                                    <ul class="check-list text-sm">
-                                        <li><i data-lucide="check-square"></i> Mapeou dor real do usuário</li>
-                                        <li><i data-lucide="check-square"></i> Alinhou impacto financeiro</li>
-                                        <li><i data-lucide="check-square"></i> Definiu métrica clara</li>
-                                        <li><i data-lucide="check-square"></i> Mapeou riscos e trade-offs</li>
-                                    </ul>
-                                    <div class="mt-3 pt-3" style="border-top: 1px solid rgba(255,255,255,0.1);">
-                                        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-                                            <strong class="text-sm">Maturidade do Alinhamento</strong><strong
-                                                class="text-sm text-green">90%</strong></div>
-                                        <div
-                                            style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 4px;">
-                                            <div
-                                                style="width: 90%; height: 100%; background: var(--accent-green); border-radius: 4px;">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="bg-card p-3 rounded text-sm text-muted shadow-sm">
-                                    <strong>Figma:</strong> Strategic Alignment Template, Cards grandes, Sticky notes,
-                                    Progress bar.<br><br>
-                                    <strong>Word:</strong> Formato executivo. Capa, Resumo, Problema, Hipótese,
-                                    Riscos.<br><br>
-                                    <strong>Excel:</strong> Abas: Visão geral, Métricas, Stakeholders, Riscos, Timeline.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modelo 2 -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <div class="acc-title"><i data-lucide="search"></i>
-                            <h3>Modelo — Product Discovery</h3>
-                        </div>
-                        <i data-lucide="chevron-down"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="download-actions"
-                            style="display:flex; gap:12px; margin-bottom: 24px; flex-wrap: wrap;">
-                            <button class="btn-sm btn-secondary text-green"
-                                onclick="downloadExcel('mod-2', 'Product Discovery')"><i data-lucide="table"></i> Baixar
-                                Excel</button>
-                            <button class="btn-sm btn-secondary text-blue"
-                                onclick="downloadWord('mod-2', 'Product Discovery')"><i data-lucide="file-text"></i>
-                                Baixar Word</button>
-                            <button class="btn-sm btn-secondary"
-                                onclick="document.getElementById('ex-2').scrollIntoView({behavior:'smooth', block:'center'})"><i
-                                    data-lucide="eye"></i> Ver exemplo preenchido</button>
-                        </div>
-
-                        <div class="grid-2 align-start" style="gap: 24px;">
-                            <div>
-                                <div id="ex-2" class="bg-card p-4 rounded border-color mb-4 shadow-sm">
-                                    <h4 class="mb-3 text-teal" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="check-circle" style="width:20px;"></i> Exemplo Preenchido</h4>
-                                    <div class="text-sm text-muted"
-                                        style="white-space: pre-wrap; font-family: var(--font-main);">
-                                        <strong>Problema:</strong> Usuários abandonam o fluxo de contratação de
-                                        empréstimo.
-                                        <strong>Evidências:</strong> 62% abandono na comprovação de renda, aumento de
-                                        reclamações, baixo NPS.
-                                        <strong>Quem é impactado:</strong> Clientes de 25 a 45 anos.
-                                        <strong>Hipótese:</strong> O fluxo está complexo e gera insegurança.
-                                        <strong>Pesquisa Qualitativa:</strong> 10 entrevistas realizadas.
-                                        <strong>Principais insights:</strong> linguagem difícil, medo de fraude, excesso
-                                        de documentos.
-                                        <strong>Pesquisa Quantitativa:</strong> análise do funil, cohort, mapa de calor,
-                                        tempo por etapa.
-                                        <strong>Concorrência:</strong> Nubank possui fluxo com menos etapas.
-                                        <strong>Oportunidades:</strong> simplificar textos, reduzir campos, explicação
-                                        contextual.
-                                        <strong>MVP:</strong> Novo fluxo simplificado apenas para clientes Android.
-                                        <strong>Validação:</strong> Teste A/B por 2 semanas.
-                                        <strong>Métrica de sucesso:</strong> Aumentar conversão em 20%.
-                                    </div>
-                                </div>
-
-                                <div class="bg-card p-4 rounded border-color shadow-sm">
-                                    <h4 class="mb-3 text-blue" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="file-text" style="width:20px;"></i> Template Estrutural</h4>
-                                    <div id="mod-2" class="template-box text-sm text-muted"
-                                        style="white-space: pre-wrap; font-family: monospace; line-height: 1.6; overflow-x: auto;">
-                                        1. Problema identificado
-                                        2. Evidências do problema
-                                        3. Quem sente essa dor?
-                                        4. Qual frequência do problema?
-                                        5. Qual impacto do problema?
-                                        6. Qual hipótese principal?
-                                        7. Perguntas obrigatórias para discovery
-                                        8. Pesquisa qualitativa
-                                        9. Pesquisa quantitativa
-                                        10. Concorrência
-                                        11. Jornada atual do usuário
-                                        12. Oportunidades encontradas
-                                        13. Possíveis soluções
-                                        14. MVP sugerido
-                                        15. Como validaremos?
-                                        16. Métrica de sucesso</div>
-                                </div>
-                            </div>
-
-                            <div class="d-flex flex-column" style="display: flex; flex-direction: column; gap: 24px;">
-                                <div class="bg-card p-4 rounded border-left-purple shadow-sm">
-                                    <h5 class="text-purple mb-2" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="user-check" style="width:20px;"></i> Modo Mentor</h5>
-                                    <p class="text-sm text-muted mb-0"><strong>O que um PM Senior faria
-                                            aqui?</strong><br>Um PM senior sabe que Discovery não é só perguntar o que o
-                                        cliente quer, mas cruzar dados quantitativos com qualitativos para provar que a
-                                        dor justifica o esforço.</p>
-                                </div>
-
-                                <div class="bg-card p-4 rounded border-left-red shadow-sm">
-                                    <h5 class="text-red mb-2" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="alert-triangle" style="width:20px;"></i> Erros Comuns</h5>
-                                    <ul class="text-sm text-muted mb-0"
-                                        style="list-style-type: none; padding-left: 0; display:flex; flex-direction:column; gap:6px;">
-                                        <li>❌ Discovery superficial</li>
-                                        <li>❌ Fazer perguntas enviesadas</li>
-                                        <li>❌ Ignorar dados quantitativos</li>
-                                        <li>❌ Confundir opinião com evidência</li>
-                                        <li>❌ Pular validação</li>
-                                        <li>❌ Construir solução cedo demais</li>
-                                    </ul>
-                                </div>
-
-                                <div class="bg-card p-4 rounded border-left-green shadow-sm">
-                                    <h5 class="text-green mb-3" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="check-square" style="width:20px;"></i> Maturidade do PM</h5>
-                                    <ul class="check-list text-sm">
-                                        <li><i data-lucide="check-square"></i> Entrevistou usuários reais</li>
-                                        <li><i data-lucide="check-square"></i> Validou hipótese</li>
-                                        <li><i data-lucide="check-square"></i> Tem evidência quantitativa</li>
-                                        <li><i data-lucide="check-square"></i> Mapeou riscos e oportunidades</li>
-                                    </ul>
-                                    <div class="mt-3 pt-3" style="border-top: 1px solid rgba(255,255,255,0.1);">
-                                        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-                                            <strong class="text-sm">Maturidade do Discovery</strong><strong
-                                                class="text-sm text-green">82%</strong></div>
-                                        <div
-                                            style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 4px;">
-                                            <div
-                                                style="width: 82%; height: 100%; background: var(--accent-green); border-radius: 4px;">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="bg-card p-3 rounded text-sm text-muted shadow-sm">
-                                    <strong>Figma:</strong> Jornada do usuário, Sticky notes, Mapa de dores, Opportunity
-                                    Tree, Funil visual.<br><br>
-                                    <strong>Word:</strong> Contexto, hipóteses, entrevistas, dados, oportunidades,
-                                    MVP.<br><br>
-                                    <strong>Excel:</strong> Abas: entrevistas, insights, métricas, benchmark,
-                                    oportunidades.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modelo 3 -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <div class="acc-title"><i data-lucide="box"></i>
-                            <h3>Modelo — Delivery / Execução</h3>
-                        </div>
-                        <i data-lucide="chevron-down"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="download-actions"
-                            style="display:flex; gap:12px; margin-bottom: 24px; flex-wrap: wrap;">
-                            <button class="btn-sm btn-secondary text-green"
-                                onclick="downloadExcel('mod-3', 'Delivery / Execução')"><i data-lucide="table"></i>
-                                Baixar Excel</button>
-                            <button class="btn-sm btn-secondary text-blue"
-                                onclick="downloadWord('mod-3', 'Delivery / Execução')"><i data-lucide="file-text"></i>
-                                Baixar Word</button>
-                            <button class="btn-sm btn-secondary"
-                                onclick="document.getElementById('ex-3').scrollIntoView({behavior:'smooth', block:'center'})"><i
-                                    data-lucide="eye"></i> Ver exemplo preenchido</button>
-                        </div>
-
-                        <div class="grid-2 align-start" style="gap: 24px;">
-                            <div>
-                                <div id="ex-3" class="bg-card p-4 rounded border-color mb-4 shadow-sm">
-                                    <h4 class="mb-3 text-teal" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="check-circle" style="width:20px;"></i> Exemplo Preenchido</h4>
-                                    <div class="text-sm text-muted"
-                                        style="white-space: pre-wrap; font-family: var(--font-main);">
-                                        <strong>Objetivo:</strong> Melhorar onboarding digital.
-                                        <strong>Escopo:</strong> nova tela de documentos, textos simplificados,
-                                        validação automática.
-                                        <strong>Fora do escopo:</strong> biometria facial, redesign completo.
-                                        <strong>User Story:</strong> Como cliente, Quero enviar documentos facilmente,
-                                        Para concluir minha abertura de conta sem insegurança.
-                                        <strong>Critérios de aceite:</strong> upload funcionando, feedback visual claro,
-                                        erro amigável, tracking ativo.
-                                        <strong>Dependências:</strong> OCR, backend, analytics.
-                                        <strong>Sprint:</strong> Sprint 18
-                                        <strong>Riscos:</strong> atraso OCR, falha integração, tracking incompleto.
-                                        <strong>Checklist pré-lançamento:</strong> testes feitos, dashboard criado,
-                                        atendimento alinhado, rollback definido.
-                                        <strong>Pós lançamento:</strong> Conversão aumentou 14%.
-                                    </div>
-                                </div>
-
-                                <div class="bg-card p-4 rounded border-color shadow-sm">
-                                    <h4 class="mb-3 text-blue" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="file-text" style="width:20px;"></i> Template Estrutural</h4>
-                                    <div id="mod-3" class="template-box text-sm text-muted"
-                                        style="white-space: pre-wrap; font-family: monospace; line-height: 1.6; overflow-x: auto;">
-                                        1. Objetivo da entrega
-                                        2. Escopo (In/Out)
-                                        3. Histórias de usuário
-                                        4. Critérios de aceite
-                                        5. Dependências
-                                        6. Riscos
-                                        7. Planejamento da sprint
-                                        8. Cerimônias
-                                        9. Checklist antes do desenvolvimento
-                                        10. Checklist antes do lançamento
-                                        11. Pós-lançamento
-                                        12. Lições aprendidas</div>
-                                </div>
-                            </div>
-
-                            <div class="d-flex flex-column" style="display: flex; flex-direction: column; gap: 24px;">
-                                <div class="bg-card p-4 rounded border-left-purple shadow-sm">
-                                    <h5 class="text-purple mb-2" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="user-check" style="width:20px;"></i> Modo Mentor</h5>
-                                    <p class="text-sm text-muted mb-0"><strong>O que um PM Senior faria
-                                            aqui?</strong><br>Um PM senior não gerencia apenas tarefas, ele gerencia
-                                        riscos. Ele negocia escopo, corta excessos e foca no menor pedaço de valor (MVP)
-                                        testável.</p>
-                                </div>
-
-                                <div class="bg-card p-4 rounded border-left-red shadow-sm">
-                                    <h5 class="text-red mb-2" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="alert-triangle" style="width:20px;"></i> Erros Comuns</h5>
-                                    <ul class="text-sm text-muted mb-0"
-                                        style="list-style-type: none; padding-left: 0; display:flex; flex-direction:column; gap:6px;">
-                                        <li>❌ Refinamento fraco</li>
-                                        <li>❌ Critério de aceite confuso</li>
-                                        <li>❌ Falta de alinhamento técnico</li>
-                                        <li>❌ Escopo gigante</li>
-                                        <li>❌ Não planejar tracking</li>
-                                        <li>❌ Não preparar rollback</li>
-                                    </ul>
-                                </div>
-
-                                <div class="bg-card p-4 rounded border-left-green shadow-sm">
-                                    <h5 class="text-green mb-3" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="check-square" style="width:20px;"></i> Maturidade do PM</h5>
-                                    <ul class="check-list text-sm">
-                                        <li><i data-lucide="check-square"></i> Histórias refinadas (DoR)</li>
-                                        <li><i data-lucide="check-square"></i> Tracking definido antes do código</li>
-                                        <li><i data-lucide="check-square"></i> Riscos técnicos mitigados</li>
-                                        <li><i data-lucide="check-square"></i> Plano de rollback claro</li>
-                                    </ul>
-                                    <div class="mt-3 pt-3" style="border-top: 1px solid rgba(255,255,255,0.1);">
-                                        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-                                            <strong class="text-sm">Maturidade de Delivery</strong><strong
-                                                class="text-sm text-green">88%</strong></div>
-                                        <div
-                                            style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 4px;">
-                                            <div
-                                                style="width: 88%; height: 100%; background: var(--accent-green); border-radius: 4px;">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="bg-card p-3 rounded text-sm text-muted shadow-sm">
-                                    <strong>Figma:</strong> Board Kanban, cards sprint, roadmap visual, fluxo
-                                    entrega.<br><br>
-                                    <strong>Word:</strong> Especificação técnica leve, regras de negócio.<br><br>
-                                    <strong>Excel:</strong> Abas: backlog, sprint, histórias, dependências, riscos.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modelo 4 -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <div class="acc-title"><i data-lucide="bar-chart-2"></i>
-                            <h3>Modelo — Acompanhamento de Métricas</h3>
-                        </div>
-                        <i data-lucide="chevron-down"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="download-actions"
-                            style="display:flex; gap:12px; margin-bottom: 24px; flex-wrap: wrap;">
-                            <button class="btn-sm btn-secondary text-green"
-                                onclick="downloadExcel('mod-4', 'Acompanhamento de Métricas')"><i
-                                    data-lucide="table"></i> Baixar Excel</button>
-                            <button class="btn-sm btn-secondary text-blue"
-                                onclick="downloadWord('mod-4', 'Acompanhamento de Métricas')"><i
-                                    data-lucide="file-text"></i> Baixar Word</button>
-                            <button class="btn-sm btn-secondary"
-                                onclick="document.getElementById('ex-4').scrollIntoView({behavior:'smooth', block:'center'})"><i
-                                    data-lucide="eye"></i> Ver exemplo preenchido</button>
-                        </div>
-
-                        <div class="grid-2 align-start" style="gap: 24px;">
-                            <div>
-                                <div id="ex-4" class="bg-card p-4 rounded border-color mb-4 shadow-sm">
-                                    <h4 class="mb-3 text-teal" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="check-circle" style="width:20px;"></i> Exemplo Preenchido</h4>
-                                    <div class="text-sm text-muted"
-                                        style="white-space: pre-wrap; font-family: var(--font-main);">
-                                        <strong>Produto:</strong> Conta Digital
-                                        <strong>Objetivo:</strong> Aumentar ativação.
-                                        <strong>North Star Metric:</strong> Clientes ativos realizando transações úteis.
-                                        <strong>KPIs:</strong> ativação, retenção D30, churn, NPS, conversão.
-                                        <strong>Meta:</strong> 70% ativação.
-                                        <strong>Resultado Atual:</strong> 61%.
-                                        <strong>Tendência:</strong> Subindo.
-                                        <strong>Insights:</strong> Android converte melhor, abandono maior no iOS,
-                                        documentos geram fricção.
-                                        <strong>Riscos:</strong> aumento de erro backend, lentidão OCR.
-                                        <strong>Próximas ações:</strong> melhorar UX, novo experimento, otimização
-                                        técnica.
-                                    </div>
-                                </div>
-
-                                <div class="bg-card p-4 rounded border-color shadow-sm">
-                                    <h4 class="mb-3 text-blue" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="file-text" style="width:20px;"></i> Template Estrutural</h4>
-                                    <div id="mod-4" class="template-box text-sm text-muted"
-                                        style="white-space: pre-wrap; font-family: monospace; line-height: 1.6; overflow-x: auto;">
-                                        1. Nome do Produto/Funcionalidade
-                                        2. Objetivo principal
-                                        3. North Star Metric
-                                        4. KPIs principais
-                                        5. Métricas operacionais
-                                        6. Dashboard principal (Links)
-                                        7. Meta atual
-                                        8. Resultado atual
-                                        9. Tendência
-                                        10. Principais insights
-                                        11. Riscos identificados
-                                        12. Próximas ações
-                                        13. Frequência de acompanhamento
-                                        14. Responsáveis</div>
-                                </div>
-                            </div>
-
-                            <div class="d-flex flex-column" style="display: flex; flex-direction: column; gap: 24px;">
-                                <div class="bg-card p-4 rounded border-left-purple shadow-sm">
-                                    <h5 class="text-purple mb-2" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="user-check" style="width:20px;"></i> Modo Mentor</h5>
-                                    <p class="text-sm text-muted mb-0"><strong>O que um PM Senior faria
-                                            aqui?</strong><br>Um PM senior não é um leitor de dashboards. Ele caça
-                                        tendências de retenção para ditar apostas e sabe exatamente o motivo de uma
-                                        métrica subir ou cair.</p>
-                                </div>
-
-                                <div class="bg-card p-4 rounded border-left-red shadow-sm">
-                                    <h5 class="text-red mb-2" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="alert-triangle" style="width:20px;"></i> Erros Comuns</h5>
-                                    <ul class="text-sm text-muted mb-0"
-                                        style="list-style-type: none; padding-left: 0; display:flex; flex-direction:column; gap:6px;">
-                                        <li>❌ Métrica de vaidade</li>
-                                        <li>❌ Não definir North Star</li>
-                                        <li>❌ Olhar só aquisição</li>
-                                        <li>❌ Ignorar retenção</li>
-                                        <li>❌ Não acompanhar tendência</li>
-                                        <li>❌ Dashboard sem ação</li>
-                                    </ul>
-                                </div>
-
-                                <div class="bg-card p-4 rounded border-left-green shadow-sm">
-                                    <h5 class="text-green mb-3" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="check-square" style="width:20px;"></i> Maturidade do PM</h5>
-                                    <ul class="check-list text-sm">
-                                        <li><i data-lucide="check-square"></i> North Star Metric clara</li>
-                                        <li><i data-lucide="check-square"></i> Acompanha retenção de verdade</li>
-                                        <li><i data-lucide="check-square"></i> Insights geram ações</li>
-                                        <li><i data-lucide="check-square"></i> Não se engana com métrica de vaidade</li>
-                                    </ul>
-                                    <div class="mt-3 pt-3" style="border-top: 1px solid rgba(255,255,255,0.1);">
-                                        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-                                            <strong class="text-sm">Maturidade Analítica</strong><strong
-                                                class="text-sm text-green">95%</strong></div>
-                                        <div
-                                            style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 4px;">
-                                            <div
-                                                style="width: 95%; height: 100%; background: var(--accent-green); border-radius: 4px;">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="bg-card p-3 rounded text-sm text-muted shadow-sm">
-                                    <strong>Figma:</strong> Dashboard executivo, gráficos, cohort, funil, KPI
-                                    cards.<br><br>
-                                    <strong>Word:</strong> Relatório mensal de performance.<br><br>
-                                    <strong>Excel:</strong> Abas: KPIs, OKRs, cohort, funil, NPS, histórico.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modelo 5 -->
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <div class="acc-title"><i data-lucide="presentation"></i>
-                            <h3>Modelo — Status Executivo para Liderança</h3>
-                        </div>
-                        <i data-lucide="chevron-down"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="download-actions"
-                            style="display:flex; gap:12px; margin-bottom: 24px; flex-wrap: wrap;">
-                            <button class="btn-sm btn-secondary text-green"
-                                onclick="downloadExcel('mod-5', 'Status Executivo')"><i data-lucide="table"></i> Baixar
-                                Excel</button>
-                            <button class="btn-sm btn-secondary text-blue"
-                                onclick="downloadWord('mod-5', 'Status Executivo')"><i data-lucide="file-text"></i>
-                                Baixar Word</button>
-                            <button class="btn-sm btn-secondary"
-                                onclick="document.getElementById('ex-5').scrollIntoView({behavior:'smooth', block:'center'})"><i
-                                    data-lucide="eye"></i> Ver exemplo preenchido</button>
-                        </div>
-
-                        <div class="grid-2 align-start" style="gap: 24px;">
-                            <div>
-                                <div id="ex-5" class="bg-card p-4 rounded border-color mb-4 shadow-sm">
-                                    <h4 class="mb-3 text-teal" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="check-circle" style="width:20px;"></i> Exemplo Preenchido</h4>
-                                    <div class="text-sm text-muted"
-                                        style="white-space: pre-wrap; font-family: var(--font-main);"><strong>Objetivo
-                                            Estratégico:</strong> Aumentar ativação digital.
-                                        <strong>Status:</strong> 🟡 Amarelo
-                                        <strong>Avanços:</strong> novo onboarding entregue, tracking implementado,
-                                        experimento iniciado.
-                                        <strong>Métricas:</strong> conversão: +14%, abandono: -11%, NPS: +9 pontos.
-                                        <strong>Riscos:</strong> dependência OCR, instabilidade backend.
-                                        <strong>Decisões necessárias:</strong> Aprovação para rollout completo.
-                                        <strong>Trade-offs:</strong> Adiado projeto de cashback.
-                                        <strong>Próximos passos:</strong> finalizar experimento, ampliar rollout,
-                                        monitorar estabilidade.
-                                        <strong>Resumo executivo:</strong> A nova jornada apresentou melhora
-                                        significativa na ativação. O principal risco atual está relacionado à
-                                        estabilidade da integração OCR.
-                                    </div>
-                                </div>
-
-                                <div class="bg-card p-4 rounded border-color shadow-sm">
-                                    <h4 class="mb-3 text-blue" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="file-text" style="width:20px;"></i> Template Estrutural</h4>
-                                    <div id="mod-5" class="template-box text-sm text-muted"
-                                        style="white-space: pre-wrap; font-family: monospace; line-height: 1.6; overflow-x: auto;">
-                                        1. Objetivo estratégico
-                                        2. Status geral (Cores)
-                                        3. Principais avanços
-                                        4. Métricas principais
-                                        5. Principais riscos
-                                        6. Decisões necessárias da liderança
-                                        7. Trade-offs
-                                        8. Próximos passos
-                                        9. Impacto esperado
-                                        10. Resumo executivo</div>
-                                </div>
-                            </div>
-
-                            <div class="d-flex flex-column" style="display: flex; flex-direction: column; gap: 24px;">
-                                <div class="bg-card p-4 rounded border-left-purple shadow-sm">
-                                    <h5 class="text-purple mb-2" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="user-check" style="width:20px;"></i> Modo Mentor</h5>
-                                    <p class="text-sm text-muted mb-0"><strong>O que um PM Senior faria
-                                            aqui?</strong><br>Um PM senior comunica para cima focando apenas em impacto,
-                                        riscos e decisões pendentes. Ele remove ruído técnico e não tem medo de
-                                        apresentar status vermelho.</p>
-                                </div>
-
-                                <div class="bg-card p-4 rounded border-left-red shadow-sm">
-                                    <h5 class="text-red mb-2" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="alert-triangle" style="width:20px;"></i> Erros Comuns</h5>
-                                    <ul class="text-sm text-muted mb-0"
-                                        style="list-style-type: none; padding-left: 0; display:flex; flex-direction:column; gap:6px;">
-                                        <li>❌ Status muito técnico</li>
-                                        <li>❌ Texto gigante</li>
-                                        <li>❌ Não mostrar risco</li>
-                                        <li>❌ Não pedir decisão clara</li>
-                                        <li>❌ Métrica sem contexto</li>
-                                        <li>❌ Liderança sem visibilidade</li>
-                                    </ul>
-                                </div>
-
-                                <div class="bg-card p-4 rounded border-left-green shadow-sm">
-                                    <h5 class="text-green mb-3" style="display:flex; align-items:center; gap:8px;"><i
-                                            data-lucide="check-square" style="width:20px;"></i> Maturidade do PM</h5>
-                                    <ul class="check-list text-sm">
-                                        <li><i data-lucide="check-square"></i> Comunica de forma executiva</li>
-                                        <li><i data-lucide="check-square"></i> Escala bloqueios rápido</li>
-                                        <li><i data-lucide="check-square"></i> Apresenta dados e não apenas feeling</li>
-                                        <li><i data-lucide="check-square"></i> Traz opções de decisão</li>
-                                    </ul>
-                                    <div class="mt-3 pt-3" style="border-top: 1px solid rgba(255,255,255,0.1);">
-                                        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-                                            <strong class="text-sm">Maturidade Executiva</strong><strong
-                                                class="text-sm text-green">100%</strong></div>
-                                        <div
-                                            style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 4px;">
-                                            <div
-                                                style="width: 100%; height: 100%; background: var(--accent-green); border-radius: 4px;">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="bg-card p-3 rounded text-sm text-muted shadow-sm">
-                                    <strong>Figma:</strong> Executive Dashboard, semáforo, timeline, resumo
-                                    executivo.<br><br>
-                                    <strong>Word:</strong> Resumo one-pager para board de diretores.<br><br>
-                                    <strong>Excel:</strong> Abas: status semanal, riscos, roadmap, blockers.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-quote text-center max-w-800 mx-auto mb-5">
-                <h3 class="gradient-text mb-3" style="font-size:1.8rem;">Produto bom não nasce de achismo.</h3>
-                <p class="text-muted" style="font-size:1.1rem;">Nasce de problema bem entendido, decisão bem priorizada,
-                    execução bem alinhada e aprendizado contínuo.</p>
-            </div>
-
-            <div class="footer-bottom mt-5">
-                <p>&copy; 2026 PM Journey. Criado para Product Managers de alta performance por Pricilla Cruz &lt;3</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="./script.js"></script>
+    <script src="./app.js"></script>
+    <script>
+        // Init Lucide once app.js is loaded
+        setTimeout(() => {
+            if(window.lucide) {
+                window.lucide.createIcons();
+            }
+        }, 100);
+    </script>
 </body>
-
 </html>

@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados | Tech Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#030712',
+                        surface: '#111827',
+                        primary: '#3b82f6',
+                        accent: '#8b5cf6',
+                        tech: '#10b981', // emerald-500
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="bg-background text-gray-200 font-sans antialiased selection:bg-tech selection:text-white overflow-x-hidden">
+    
+    <div id="nav-container"></div>
+
+    <!-- HERO SECTION -->
+    <main class="relative pt-32 pb-16 min-h-[60vh] flex flex-col justify-center border-b border-gray-800">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-tech/20 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-tech/10 border border-tech/30 text-tech mb-8 animate-fade-in-up">
+                <i data-lucide="bar-chart-2" class="w-4 h-4"></i>
+                <span class="text-sm font-bold tracking-widest uppercase">Sistema Nervoso</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-display font-bold tracking-tight mb-6 animate-fade-in-up" style="animation-delay: 0.1s;">
+                O Universo dos <span class="text-transparent bg-clip-text bg-gradient-to-r from-tech to-emerald-300">Dados</span>
+            </h1>
+            
+            <p class="mt-4 text-xl text-gray-400 max-w-3xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s;">
+                Dados são como o sistema nervoso da empresa: eles capturam a realidade, levam a informação até o cérebro e permitem respostas rápidas. Aprenda como isso funciona na prática.
+            </p>
+        </div>
+    </main>
+
+    <!-- A JORNADA DO DADO -->
+    <section class="py-24 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-display font-bold mb-4 text-white">A Jornada de um Dado (Pipeline)</h2>
+                <p class="text-gray-400">Como uma simples ação do usuário vira um gráfico na mesa do CEO.</p>
+            </div>
+
+            <div class="relative max-w-5xl mx-auto">
+                <!-- Linha de conexão central (Desktop) -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-800 -translate-y-1/2 z-0">
+                    <div class="h-full bg-tech w-full origin-left animate-pulse opacity-50"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative z-10">
+                    
+                    <!-- Passo 1: Tracking -->
+                    <div class="glass-panel p-6 rounded-2xl border-t-2 border-t-blue-500 hover:-translate-y-2 transition-transform bg-gray-900 shadow-xl group">
+                        <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center mb-4 border border-blue-500/30 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                            <i data-lucide="mouse-pointer-click" class="w-6 h-6 text-blue-500 group-hover:text-white"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-white">1. Tracking (Evento)</h4>
+                        <p class="text-sm text-gray-400 mb-3">O usuário clica no botão "Comprar". Um código (rastreador) no frontend captura essa ação com hora, id do usuário e valor.</p>
+                        <div class="text-xs font-mono bg-black/50 p-2 rounded text-blue-400 border border-gray-800">
+                            { "event": "click_buy", "user": 102 }
+                        </div>
+                    </div>
+
+                    <!-- Passo 2: ETL / ELT -->
+                    <div class="glass-panel p-6 rounded-2xl border-t-2 border-t-amber-500 hover:-translate-y-2 transition-transform bg-gray-900 shadow-xl group">
+                        <div class="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center mb-4 border border-amber-500/30 group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                            <i data-lucide="arrow-right-left" class="w-6 h-6 text-amber-500 group-hover:text-white"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-white">2. Pipeline (ETL)</h4>
+                        <p class="text-sm text-gray-400 mb-3"><strong>E</strong>xtract, <strong>T</strong>ransform, <strong>L</strong>oad. Os dados são puxados do app, limpos (ex: remover nomes falsos) e preparados para viagem.</p>
+                        <div class="text-xs text-amber-500 bg-black/50 p-2 rounded border border-gray-800">
+                            Analogia: O caminhão de entrega pegando o produto na fábrica.
+                        </div>
+                    </div>
+
+                    <!-- Passo 3: Data Lake / Warehouse -->
+                    <div class="glass-panel p-6 rounded-2xl border-t-2 border-t-tech hover:-translate-y-2 transition-transform bg-gray-900 shadow-xl group">
+                        <div class="w-12 h-12 rounded-full bg-tech/10 flex items-center justify-center mb-4 border border-tech/30 group-hover:bg-tech group-hover:text-white transition-colors">
+                            <i data-lucide="database" class="w-6 h-6 text-tech group-hover:text-white"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-white">3. Armazenamento</h4>
+                        <p class="text-sm text-gray-400 mb-3">Tudo cai no <strong>Data Lake</strong> (lago gigante sem regras). Depois, os dados importantes vão pro <strong>Data Warehouse</strong> (prateleiras organizadas).</p>
+                        <div class="text-xs font-mono bg-black/50 p-2 rounded text-tech border border-gray-800">
+                            Snowflake, Redshift, BigQuery
+                        </div>
+                    </div>
+
+                    <!-- Passo 4: Analytics -->
+                    <div class="glass-panel p-6 rounded-2xl border-t-2 border-t-pink-500 hover:-translate-y-2 transition-transform bg-gray-900 shadow-xl group">
+                        <div class="w-12 h-12 rounded-full bg-pink-500/10 flex items-center justify-center mb-4 border border-pink-500/30 group-hover:bg-pink-500 group-hover:text-white transition-colors">
+                            <i data-lucide="pie-chart" class="w-6 h-6 text-pink-500 group-hover:text-white"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-white">4. BI & Analytics</h4>
+                        <p class="text-sm text-gray-400 mb-3">Os dados organizados são conectados a ferramentas visuais. Aqui, o PM e os diretores olham os dashboards para tomar decisões.</p>
+                        <div class="text-xs font-mono bg-black/50 p-2 rounded text-pink-400 border border-gray-800">
+                            Tableau, PowerBI, Amplitude
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- CLOUD, LINGUAGENS E FERRAMENTAS -->
+    <section class="py-24 relative z-10 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-display font-bold mb-4 text-white">Ecossistema de Dados</h2>
+                <p class="text-gray-400">Onde vivem, que línguas falam e que ferramentas usam.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                
+                <!-- DADOS NA CLOUD -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 flex items-center gap-3"><i data-lucide="cloud" class="text-blue-400"></i> Dados na Nuvem (Cloud)</h3>
+                    <p class="text-gray-400 mb-6">Antigamente, as empresas precisavam comprar servidores caríssimos e deixar em salas refrigeradas. Hoje, os dados moram na nuvem, onde você aluga espaço e poder de processamento sob demanda.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="glass-panel p-5 rounded-xl border-l-4 border-l-amber-500">
+                            <h4 class="font-bold text-white mb-1">AWS (Amazon)</h4>
+                            <p class="text-sm text-gray-400">O líder de mercado. Usa o <strong class="text-amber-500">Amazon S3</strong> como Data Lake (onde você guarda tudo muito barato) e o <strong class="text-amber-500">Redshift</strong> como Data Warehouse (para análises pesadas).</p>
+                        </div>
+                        <div class="glass-panel p-5 rounded-xl border-l-4 border-l-blue-400">
+                            <h4 class="font-bold text-white mb-1">Google Cloud (GCP)</h4>
+                            <p class="text-sm text-gray-400">Famoso pelo <strong class="text-blue-400">BigQuery</strong>. Uma ferramenta gigantesca que consegue analisar Petabytes de dados (bilhões de linhas) em segundos, como se fosse uma pesquisa no Google.</p>
+                        </div>
+                        <div class="glass-panel p-5 rounded-xl border-l-4 border-l-blue-600">
+                            <h4 class="font-bold text-white mb-1">Microsoft Azure</h4>
+                            <p class="text-sm text-gray-400">A escolha de grandes corporações tradicionais. Usa o <strong class="text-blue-600">Azure Synapse</strong> para integrar todo o ecossistema de dados com ferramentas como Excel e PowerBI.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LINGUAGENS E FERRAMENTAS -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 flex items-center gap-3"><i data-lucide="code-2" class="text-tech"></i> Linguagens & Ferramentas</h3>
+                    <p class="text-gray-400 mb-6">Como os engenheiros e cientistas conversam com os dados para extrair valor, criar algoritmos ou montar gráficos bonitos.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="glass-panel p-5 rounded-xl bg-gradient-to-r from-gray-900 to-transparent">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded font-bold">SQL</span>
+                                <h4 class="font-bold text-white">A Língua Universal</h4>
+                            </div>
+                            <p class="text-sm text-gray-400"><strong class="text-white">Analogia:</strong> É como o Inglês. Todo mundo precisa saber um pouco. Serve para fazer perguntas diretas ao banco de dados: <em>"Quantos usuários compraram hoje?"</em>. É a linguagem base de qualquer analista de dados.</p>
+                        </div>
+
+                        <div class="glass-panel p-5 rounded-xl bg-gradient-to-r from-gray-900 to-transparent">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="px-2 py-1 bg-yellow-500/20 text-yellow-400 text-xs rounded font-bold">Python</span>
+                                <h4 class="font-bold text-white">A Oficina Mecânica</h4>
+                            </div>
+                            <p class="text-sm text-gray-400"><strong class="text-white">Analogia:</strong> Um canivete suíço super poderoso. É a linguagem principal para criar Machine Learning (IA) e fazer análises estatísticas complexas usando bibliotecas como o <strong>Pandas</strong>.</p>
+                        </div>
+
+                        <div class="glass-panel p-5 rounded-xl bg-gradient-to-r from-gray-900 to-transparent">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="px-2 py-1 bg-orange-500/20 text-orange-400 text-xs rounded font-bold">Spark</span>
+                                <h4 class="font-bold text-white">A Fábrica Pesada</h4>
+                            </div>
+                            <p class="text-sm text-gray-400"><strong class="text-white">Analogia:</strong> Quando você tem 100 caixas, você leva de carro (Python). Quando você tem 10 milhões de caixas, você precisa de uma frota de caminhões trabalhando juntos. Isso é o <strong>Apache Spark</strong>: processamento massivo distribuído (Big Data).</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- TRADUTOR DE TERMOS DE DADOS -->
+    <section class="py-24 bg-surface border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-display font-bold mb-12 text-center text-white">O Tradutor Tech de Dados</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <!-- Item -->
+                <div class="p-6 rounded-xl border border-gray-800 bg-background hover:border-tech transition-colors">
+                    <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2"><i data-lucide="droplets" class="text-tech w-5 h-5"></i> Data Lake</h3>
+                    <p class="text-sm text-gray-500 italic mb-3">"Repositório centralizado de dados em sua forma bruta."</p>
+                    <p class="text-gray-300 text-sm"><strong class="text-tech">Simplificando:</strong> Uma represa gigante. Toda a água (dados) da chuva cai lá, misturada (fotos, textos, números). Você não bebe dessa água diretamente, ela precisa ser tratada primeiro.</p>
+                </div>
+                
+                <!-- Item -->
+                <div class="p-6 rounded-xl border border-gray-800 bg-background hover:border-blue-500 transition-colors">
+                    <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2"><i data-lucide="layout-grid" class="text-blue-500 w-5 h-5"></i> Data Warehouse</h3>
+                    <p class="text-sm text-gray-500 italic mb-3">"Sistema usado para reporting e análise de dados estruturados."</p>
+                    <p class="text-gray-300 text-sm"><strong class="text-blue-500">Simplificando:</strong> O supermercado organizado. A água da represa (Lake) foi tratada, engarrafada e colocada na prateleira certa, pronta para o cliente (analista) comprar e usar.</p>
+                </div>
+
+                <!-- Item -->
+                <div class="p-6 rounded-xl border border-gray-800 bg-background hover:border-amber-500 transition-colors">
+                    <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2"><i data-lucide="shield-check" class="text-amber-500 w-5 h-5"></i> Governança de Dados</h3>
+                    <p class="text-sm text-gray-500 italic mb-3">"Gerenciamento da disponibilidade, usabilidade e segurança dos dados."</p>
+                    <p class="text-gray-300 text-sm"><strong class="text-amber-500">Simplificando:</strong> O segurança do prédio. Ele decide quem pode ver o quê. O estagiário não pode acessar os cartões de crédito dos clientes, mas o sistema de pagamentos pode.</p>
+                </div>
+
+                <!-- Item -->
+                <div class="p-6 rounded-xl border border-gray-800 bg-background hover:border-pink-500 transition-colors">
+                    <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2"><i data-lucide="activity" class="text-pink-500 w-5 h-5"></i> Observabilidade (Data Quality)</h3>
+                    <p class="text-sm text-gray-500 italic mb-3">"Capacidade de entender o estado interno do sistema de dados."</p>
+                    <p class="text-gray-300 text-sm"><strong class="text-pink-500">Simplificando:</strong> O alarme de incêndio. Se o banco de dados parar de receber as vendas às 3h da manhã, a observabilidade apita no celular do engenheiro avisando que algo quebrou.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div id="footer-container"></div>
+
+    <script src="./app.js"></script>
+    <script>
+        setTimeout(() => {
+            if(window.lucide) window.lucide.createIcons();
+        }, 100);
+    </script>
+</body>
+</html>

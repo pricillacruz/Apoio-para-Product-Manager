@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX Design | Tech Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#030712',
+                        surface: '#111827',
+                        primary: '#3b82f6',
+                        accent: '#8b5cf6',
+                        ux: '#ec4899', // pink-500
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="bg-background text-gray-200 font-sans antialiased selection:bg-ux selection:text-white overflow-x-hidden">
+    
+    <div id="nav-container"></div>
+
+    <!-- HERO SECTION -->
+    <main class="relative pt-32 pb-16 border-b border-gray-800">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-ux/20 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ux/10 border border-ux/30 text-ux mb-6 animate-fade-in-up">
+                <i data-lucide="pen-tool" class="w-4 h-4"></i>
+                <span class="text-sm font-bold tracking-widest uppercase">A Experiência</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-display font-bold tracking-tight mb-6 animate-fade-in-up" style="animation-delay: 0.1s;">
+                User <span class="text-transparent bg-clip-text bg-gradient-to-r from-ux to-rose-400">Experience</span>
+            </h1>
+            
+            <p class="mt-4 text-xl text-gray-400 max-w-3xl mx-auto mb-10 animate-fade-in-up" style="animation-delay: 0.2s;">
+                O produto pode ter o código mais limpo e a infraestrutura mais robusta. Mas se for confuso para o usuário, ele desinstala em 5 segundos.
+            </p>
+        </div>
+    </main>
+
+    <!-- UX vs UI -->
+    <section class="py-24 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-display font-bold mb-4 text-white">Não é "fazer tela bonita"</h2>
+                <p class="text-gray-400">A maior confusão do mercado: achar que UX e UI são a mesma coisa.</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8 max-w-4xl mx-auto">
+                <!-- UX -->
+                <div class="flex-1 glass-panel p-8 rounded-2xl border-t-2 border-ux relative group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-16 h-16 rounded-full bg-ux/10 flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(236,72,153,0.3)] text-ux">
+                        <i data-lucide="brain-circuit" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">UX (Experiência)</h3>
+                    <p class="text-gray-400 text-sm mb-6">É a ciência de entender o comportamento humano. Onde o usuário clica? Por que ele desiste da compra? O botão faz sentido estar ali?</p>
+                    
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-ux"></i> Pesquisas e Entrevistas</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-ux"></i> Arquitetura de Informação</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-ux"></i> Wireframes (Rascunhos)</li>
+                    </ul>
+                </div>
+
+                <!-- UI -->
+                <div class="flex-1 glass-panel p-8 rounded-2xl border-t-2 border-blue-500 relative group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(59,130,246,0.3)] text-blue-500">
+                        <i data-lucide="palette" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">UI (Interface)</h3>
+                    <p class="text-gray-400 text-sm mb-6">É a estética visual. As cores corretas, o tamanho da fonte, a sombra no botão e o espaçamento para deixar tudo harmônico.</p>
+                    
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-500"></i> Design Systems</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-500"></i> Cores e Tipografia</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-500"></i> Protótipos de Alta Fidelidade</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center max-w-2xl mx-auto">
+                <div class="bg-surface border border-gray-700 p-4 rounded-xl text-sm text-gray-400">
+                    <strong class="text-white">Analogia da Casa:</strong> UX é a planta baixa da casa (decidir que o banheiro deve ficar perto do quarto e não na cozinha). UI é a pintura, os móveis bonitos e a decoração final.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O FLUXO DE UX COM PRODUTO E ENG -->
+    <section class="py-24 bg-surface border-y border-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-display font-bold mb-12 text-center text-white">Como UX atua na Equipe?</h2>
+
+            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+                <!-- PM -->
+                <div class="p-6 bg-background rounded-2xl border border-gray-800 text-center relative z-10">
+                    <div class="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-500 mx-auto mb-4 border border-blue-500/30">
+                        <i data-lucide="target" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-white mb-2">Com Produto (PM)</h4>
+                    <p class="text-sm text-gray-400">O PM diz <em>"Temos um problema de abandono de carrinho"</em>. O UX conduz entrevistas com clientes para entender o porquê.</p>
+                </div>
+
+                <!-- UX -->
+                <div class="p-6 bg-background rounded-2xl border border-ux shadow-[0_0_20px_rgba(236,72,153,0.15)] text-center relative z-10 scale-105">
+                    <div class="w-16 h-16 bg-ux/10 rounded-full flex items-center justify-center text-ux mx-auto mb-4 border border-ux/30">
+                        <i data-lucide="pen-tool" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="font-bold text-white mb-2">UX / Product Designer</h4>
+                    <p class="text-sm text-gray-400">Mapeia a jornada do usuário e desenha um fluxo simplificado no Figma. Testa com 5 clientes reais antes de pedir para construir.</p>
+                </div>
+
+                <!-- Engenharia -->
+                <div class="p-6 bg-background rounded-2xl border border-gray-800 text-center relative z-10">
+                    <div class="w-12 h-12 bg-gray-500/10 rounded-full flex items-center justify-center text-gray-400 mx-auto mb-4 border border-gray-500/30">
+                        <i data-lucide="code-2" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-white mb-2">Com Engenharia</h4>
+                    <p class="text-sm text-gray-400">Passa as telas prontas via Hand-off (Figma). Discute com os devs se aquela animação mirabolante é viável de programar a tempo.</p>
+                </div>
+
+                <!-- Linha de conexão invisível atrás -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-800 -translate-y-1/2 z-0"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div id="footer-container"></div>
+
+    <script src="./app.js"></script>
+    <script>
+        setTimeout(() => {
+            if(window.lucide) window.lucide.createIcons();
+        }, 100);
+    </script>
+</body>
+</html>

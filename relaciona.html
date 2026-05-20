@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como Tudo Se Relaciona | Tech Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#030712',
+                        surface: '#111827',
+                        primary: '#3b82f6',
+                        accent: '#8b5cf6',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="./style.css">
+    
+    <style>
+        .flow-line {
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, rgba(59,130,246,0.5), transparent);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+            height: 100%;
+        }
+        
+        .pulse-dot {
+            width: 12px;
+            height: 12px;
+            background: #3b82f6;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: travelDown 4s infinite linear;
+            box-shadow: 0 0 15px #3b82f6;
+            z-index: 10;
+        }
+
+        @keyframes travelDown {
+            0% { top: 0; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-background text-gray-200 font-sans antialiased selection:bg-accent selection:text-white overflow-x-hidden">
+    
+    <div id="nav-container"></div>
+
+    <!-- HERO -->
+    <main class="relative pt-32 pb-16 text-center">
+        <div class="container mx-auto px-6 relative z-10">
+            <h1 class="text-5xl font-display font-bold tracking-tight mb-4 text-white">
+                Como Tudo Se <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Relaciona</span>
+            </h1>
+            <p class="text-gray-400 max-w-2xl mx-auto">A jornada completa de ponta a ponta na construção de um produto digital.</p>
+        </div>
+    </main>
+
+    <!-- O FLUXO END-TO-END -->
+    <section class="py-12 relative">
+        <div class="container mx-auto px-6 max-w-4xl relative">
+            
+            <!-- Linha de Fluxo Central -->
+            <div class="flow-line hidden md:block"></div>
+            <div class="pulse-dot hidden md:block" style="animation-delay: 0s;"></div>
+            <div class="pulse-dot hidden md:block" style="animation-delay: 2s;"></div>
+
+            <!-- 1. Cliente & Dor -->
+            <div class="relative z-10 flex flex-col md:flex-row items-center justify-between mb-16">
+                <div class="md:w-5/12 text-right hidden md:block"></div>
+                <div class="w-16 h-16 bg-yellow-500/20 rounded-full border-2 border-yellow-500 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(234,179,8,0.3)] z-10">
+                    <i data-lucide="user-x" class="w-8 h-8 text-yellow-500"></i>
+                </div>
+                <div class="md:w-5/12 text-left mt-4 md:mt-0 glass-panel p-6 rounded-2xl border-l-4 border-l-yellow-500">
+                    <h3 class="text-xl font-bold text-white mb-2">1. A Dor do Cliente</h3>
+                    <p class="text-sm text-gray-400">Tudo começa com um problema. O cliente reclama que "É muito difícil pagar boletos pelo app".</p>
+                </div>
+            </div>
+
+            <!-- 2. Produto -->
+            <div class="relative z-10 flex flex-col md:flex-row items-center justify-between mb-16">
+                <div class="md:w-5/12 text-right md:text-right mt-4 md:mt-0 glass-panel p-6 rounded-2xl border-r-4 border-r-blue-500 md:order-1 order-3">
+                    <h3 class="text-xl font-bold text-white mb-2">2. Product Manager (O Porquê)</h3>
+                    <p class="text-sm text-gray-400">O PM avalia se vale a pena resolver isso (Estratégia/Negócio). "Se resolvermos isso, aumentaremos a receita em 10%. Vamos priorizar."</p>
+                </div>
+                <div class="w-16 h-16 bg-blue-500/20 rounded-full border-2 border-blue-500 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(59,130,246,0.3)] z-10 md:order-2 order-2">
+                    <i data-lucide="target" class="w-8 h-8 text-blue-500"></i>
+                </div>
+                <div class="md:w-5/12 hidden md:block md:order-3 order-1"></div>
+            </div>
+
+            <!-- 3. UX Design -->
+            <div class="relative z-10 flex flex-col md:flex-row items-center justify-between mb-16">
+                <div class="md:w-5/12 hidden md:block"></div>
+                <div class="w-16 h-16 bg-pink-500/20 rounded-full border-2 border-pink-500 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(236,72,153,0.3)] z-10">
+                    <i data-lucide="pen-tool" class="w-8 h-8 text-pink-500"></i>
+                </div>
+                <div class="md:w-5/12 text-left mt-4 md:mt-0 glass-panel p-6 rounded-2xl border-l-4 border-l-pink-500">
+                    <h3 class="text-xl font-bold text-white mb-2">3. UX Design (O Como)</h3>
+                    <p class="text-sm text-gray-400">O Designer estuda o comportamento, remove as 5 telas difíceis de pagamento e cria um fluxo de "Pagamento com 1 clique" (Protótipo).</p>
+                </div>
+            </div>
+
+            <!-- 4. Engenharia & Arq -->
+            <div class="relative z-10 flex flex-col md:flex-row items-center justify-between mb-16">
+                <div class="md:w-5/12 text-right md:text-right mt-4 md:mt-0 glass-panel p-6 rounded-2xl border-r-4 border-r-gray-500 md:order-1 order-3">
+                    <h3 class="text-xl font-bold text-white mb-2">4. Engenharia & Arq (A Construção)</h3>
+                    <p class="text-sm text-gray-400">Os devs pegam a tela do UX. O Frontend faz a interface. O Backend conecta na API do banco. A Arquitetura garante que o servidor não vai cair na Black Friday.</p>
+                </div>
+                <div class="w-16 h-16 bg-gray-500/20 rounded-full border-2 border-gray-500 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(107,114,128,0.3)] z-10 md:order-2 order-2">
+                    <i data-lucide="code-2" class="w-8 h-8 text-gray-400"></i>
+                </div>
+                <div class="md:w-5/12 hidden md:block md:order-3 order-1"></div>
+            </div>
+
+            <!-- 5. IA -->
+            <div class="relative z-10 flex flex-col md:flex-row items-center justify-between mb-16">
+                <div class="md:w-5/12 hidden md:block"></div>
+                <div class="w-16 h-16 bg-fuchsia-500/20 rounded-full border-2 border-fuchsia-500 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(217,70,239,0.3)] z-10">
+                    <i data-lucide="sparkles" class="w-8 h-8 text-fuchsia-500"></i>
+                </div>
+                <div class="md:w-5/12 text-left mt-4 md:mt-0 glass-panel p-6 rounded-2xl border-l-4 border-l-fuchsia-500">
+                    <h3 class="text-xl font-bold text-white mb-2">5. Inteligência Artificial (O Diferencial)</h3>
+                    <p class="text-sm text-gray-400">Para deixar ainda melhor, a IA lê o boleto com a câmera automaticamente (OCR) e preenche os dados. Mágica pura para o usuário.</p>
+                </div>
+            </div>
+
+            <!-- 6. Dados -->
+            <div class="relative z-10 flex flex-col md:flex-row items-center justify-between mb-16">
+                <div class="md:w-5/12 text-right md:text-right mt-4 md:mt-0 glass-panel p-6 rounded-2xl border-r-4 border-r-emerald-500 md:order-1 order-3">
+                    <h3 class="text-xl font-bold text-white mb-2">6. Dados (O Impacto)</h3>
+                    <p class="text-sm text-gray-400">A feature vai para o ar. A área de Dados captura que o tempo de pagamento caiu de 3 min para 10s, e 20% mais pessoas pagaram. O PM comemora.</p>
+                </div>
+                <div class="w-16 h-16 bg-emerald-500/20 rounded-full border-2 border-emerald-500 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(16,185,129,0.3)] z-10 md:order-2 order-2">
+                    <i data-lucide="bar-chart-2" class="w-8 h-8 text-emerald-500"></i>
+                </div>
+                <div class="md:w-5/12 hidden md:block md:order-3 order-1"></div>
+            </div>
+
+            <!-- Final: Evolução Contínua -->
+            <div class="relative z-10 text-center mt-12 bg-surface p-8 border border-gray-800 rounded-2xl shadow-xl">
+                <i data-lucide="refresh-cw" class="w-12 h-12 text-accent mx-auto mb-4 animate-[spin_10s_linear_infinite]"></i>
+                <h3 class="text-2xl font-bold text-white mb-2">Evolução Contínua</h3>
+                <p class="text-gray-400 max-w-md mx-auto text-sm">O ciclo nunca acaba. Novos dados mostram novos problemas dos usuários, e o ciclo reinicia. Isso é construir produtos digitais!</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div id="footer-container"></div>
+
+    <script src="./app.js"></script>
+    <script>
+        setTimeout(() => {
+            if(window.lucide) window.lucide.createIcons();
+        }, 100);
+    </script>
+</body>
+</html>
