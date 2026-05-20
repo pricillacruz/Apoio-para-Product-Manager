@@ -25,6 +25,7 @@ const Navbar = `
                     <a href="engenharia.html" class="px-4 py-2 hover:bg-white/5 text-sm text-gray-300 hover:text-white transition-colors flex items-center gap-2"><i data-lucide="code-2" class="w-4 h-4 text-gray-400"></i> Engenharia</a>
                     <a href="ia.html" class="px-4 py-2 hover:bg-white/5 text-sm text-gray-300 hover:text-white transition-colors flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-fuchsia-500"></i> IA</a>
                     <a href="ux.html" class="px-4 py-2 hover:bg-white/5 text-sm text-gray-300 hover:text-white transition-colors flex items-center gap-2"><i data-lucide="pen-tool" class="w-4 h-4 text-pink-500"></i> UX Design</a>
+                    <a href="certificacoes.html" class="px-4 py-2 hover:bg-white/5 text-sm text-gray-300 hover:text-white transition-colors flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-amber-500"></i> Certificações</a>
                 </div>
             </li>
             <li><a href="relaciona.html" class="nav-link text-accent">Como Tudo se Relaciona</a></li>
@@ -48,6 +49,7 @@ const Navbar = `
             <a href="engenharia.html" class="text-gray-300 hover:text-white pl-4">Engenharia</a>
             <a href="ia.html" class="text-gray-300 hover:text-white pl-4">IA</a>
             <a href="ux.html" class="text-gray-300 hover:text-white pl-4">UX Design</a>
+            <a href="certificacoes.html" class="text-gray-300 hover:text-white pl-4">Certificações</a>
             <div class="h-px bg-gray-800 w-full my-2"></div>
             <a href="relaciona.html" class="text-accent hover:text-accent">Como Tudo se Relaciona</a>
             <a href="sobre.html" class="text-gray-300 hover:text-white">Quem Sou Eu</a>
