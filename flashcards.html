@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards PM | Product Manager Pricilla S. Cruz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#030712',
+                        surface: '#111827',
+                        primary: '#3b82f6',
+                        accent: '#8b5cf6',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        .flip-card { cursor: pointer; perspective: 1000px; min-height: 220px; }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            min-height: 220px;
+            transform-style: preserve-3d;
+            transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute; top: 0; left: 0;
+            width: 100%; min-height: 220px;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 16px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            padding: 24px; text-align: center;
+        }
+        .flip-card-back { transform: rotateY(180deg); }
+        .flip-hint { font-size: 0.7rem; opacity: 0.5; margin-top: 12px; letter-spacing: 0.05em; text-transform: uppercase; }
+    </style>
+</head>
+<body class="bg-background text-gray-200 font-sans antialiased selection:bg-accent selection:text-white overflow-x-hidden">
+
+    <div id="nav-container"></div>
+
+    <!-- HERO -->
+    <main class="relative pt-32 pb-12">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/15 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-accent/15 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface/50 border border-gray-800 backdrop-blur-sm mb-6 animate-fade-in-up">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                <span class="text-sm font-medium text-gray-300">Memorização Ativa</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tight mb-4 animate-fade-in-up" style="animation-delay:0.1s;">
+                Flashcards <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-accent">PM</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-10 animate-fade-in-up" style="animation-delay:0.2s;">
+                Clique em cada card para revelar a resposta. 3 níveis · 30 cards no total.
+            </p>
+
+            <!-- Tabs de nível -->
+            <div class="flex justify-center gap-3 mb-4 flex-wrap animate-fade-in-up" style="animation-delay:0.3s;">
+                <button onclick="showDeck('facil')" id="tab-facil"
+                    class="px-6 py-2.5 rounded-full font-semibold text-sm transition-all border border-emerald-500 bg-emerald-500/20 text-emerald-300">
+                    🟢 Fácil — 10 cards
+                </button>
+                <button onclick="showDeck('medio')" id="tab-medio"
+                    class="px-6 py-2.5 rounded-full font-semibold text-sm transition-all border border-gray-700 text-gray-500 hover:border-amber-500/50 hover:text-amber-400">
+                    🟡 Intermediário — 10 cards
+                </button>
+                <button onclick="showDeck('dificil')" id="tab-dificil"
+                    class="px-6 py-2.5 rounded-full font-semibold text-sm transition-all border border-gray-700 text-gray-500 hover:border-red-500/50 hover:text-red-400">
+                    🔴 Difícil — 10 cards
+                </button>
+            </div>
+            <p class="text-xs text-gray-600 animate-fade-in-up" style="animation-delay:0.35s;">Clique no card para virar · Clique novamente para voltar</p>
+        </div>
+    </main>
+
+    <!-- DECKS -->
+    <section class="pb-24">
+        <div class="container mx-auto px-6">
+
+            <!-- DECK FÁCIL -->
+            <div id="deck-facil" class="deck">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+                    <!-- Card 1 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-emerald-900/60 to-emerald-800/30 border border-emerald-500/30">
+                                <span class="text-xs font-bold text-emerald-400 tracking-widest uppercase mb-3">Conceito Básico</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é um Product Manager?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-emerald-700/40 to-emerald-600/20 border border-emerald-400/50">
+                                <span class="text-xs font-bold text-emerald-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Profissional responsável por definir a <strong>visão e estratégia</strong> do produto, conectando negócio, tecnologia e usuário para resolver problemas reais.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-emerald-900/60 to-emerald-800/30 border border-emerald-500/30">
+                                <span class="text-xs font-bold text-emerald-400 tracking-widest uppercase mb-3">Conceito Básico</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é Backlog?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-emerald-700/40 to-emerald-600/20 border border-emerald-400/50">
+                                <span class="text-xs font-bold text-emerald-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Lista <strong>priorizada</strong> de tudo que o time deve construir, investigar ou resolver. É vivo: muda conforme o aprendizado e a estratégia evoluem.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-emerald-900/60 to-emerald-800/30 border border-emerald-500/30">
+                                <span class="text-xs font-bold text-emerald-400 tracking-widest uppercase mb-3">Conceito Básico</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é uma Sprint?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-emerald-700/40 to-emerald-600/20 border border-emerald-400/50">
+                                <span class="text-xs font-bold text-emerald-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Período <strong>fixo e curto</strong> de trabalho (geralmente 2 semanas) em que o time entrega um incremento de produto testável e potencialmente utilizável.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-emerald-900/60 to-emerald-800/30 border border-emerald-500/30">
+                                <span class="text-xs font-bold text-emerald-400 tracking-widest uppercase mb-3">Conceito Básico</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é Stakeholder?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-emerald-700/40 to-emerald-600/20 border border-emerald-400/50">
+                                <span class="text-xs font-bold text-emerald-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Qualquer <strong>pessoa ou grupo</strong> com interesse ou que é impactado pelo produto — inclui executivos, clientes, time de engenharia e parceiros.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-emerald-900/60 to-emerald-800/30 border border-emerald-500/30">
+                                <span class="text-xs font-bold text-emerald-400 tracking-widest uppercase mb-3">Conceito Básico</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é MVP?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-emerald-700/40 to-emerald-600/20 border border-emerald-400/50">
+                                <span class="text-xs font-bold text-emerald-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed"><strong>Minimum Viable Product</strong>: a versão mais simples do produto que gera aprendizado real com usuários reais, gastando o mínimo de esforço possível.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-emerald-900/60 to-emerald-800/30 border border-emerald-500/30">
+                                <span class="text-xs font-bold text-emerald-400 tracking-widest uppercase mb-3">Conceito Básico</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é User Story?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-emerald-700/40 to-emerald-600/20 border border-emerald-400/50">
+                                <span class="text-xs font-bold text-emerald-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Descrição de funcionalidade do <strong>ponto de vista do usuário</strong>: <em>"Como [perfil], quero [ação] para que [benefício]."</em> Foco em valor, não em solução técnica.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 7 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-emerald-900/60 to-emerald-800/30 border border-emerald-500/30">
+                                <span class="text-xs font-bold text-emerald-400 tracking-widest uppercase mb-3">Conceito Básico</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é Discovery?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-emerald-700/40 to-emerald-600/20 border border-emerald-400/50">
+                                <span class="text-xs font-bold text-emerald-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Fase de <strong>investigação contínua</strong> para entender problemas reais e validar hipóteses antes de construir. Reduz o risco de criar algo que ninguém precisa.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 8 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-emerald-900/60 to-emerald-800/30 border border-emerald-500/30">
+                                <span class="text-xs font-bold text-emerald-400 tracking-widest uppercase mb-3">Conceito Básico</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é KPI?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-emerald-700/40 to-emerald-600/20 border border-emerald-400/50">
+                                <span class="text-xs font-bold text-emerald-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed"><strong>Key Performance Indicator</strong>: métrica usada para medir o desempenho em relação a um objetivo estratégico. Ex: taxa de ativação, retenção D7, receita por usuário.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 9 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-emerald-900/60 to-emerald-800/30 border border-emerald-500/30">
+                                <span class="text-xs font-bold text-emerald-400 tracking-widest uppercase mb-3">Conceito Básico</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é Roadmap?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-emerald-700/40 to-emerald-600/20 border border-emerald-400/50">
+                                <span class="text-xs font-bold text-emerald-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Planejamento <strong>visual e comunicativo</strong> da evolução do produto ao longo do tempo. Não é uma lista de tarefas — é a expressão da estratégia para os stakeholders.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 10 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-emerald-900/60 to-emerald-800/30 border border-emerald-500/30">
+                                <span class="text-xs font-bold text-emerald-400 tracking-widest uppercase mb-3">Conceito Básico</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é Feedback Loop?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-emerald-700/40 to-emerald-600/20 border border-emerald-400/50">
+                                <span class="text-xs font-bold text-emerald-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Ciclo contínuo de <strong>coletar → analisar → agir</strong> sobre feedbacks de usuários e dados. Quanto mais curto o loop, mais rápido o aprendizado do time.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- DECK INTERMEDIÁRIO -->
+            <div id="deck-medio" class="deck hidden">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+                    <!-- Card 1 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-amber-900/60 to-amber-800/30 border border-amber-500/30">
+                                <span class="text-xs font-bold text-amber-400 tracking-widest uppercase mb-3">Intermediário</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é o framework RICE?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-amber-700/40 to-amber-600/20 border border-amber-400/50">
+                                <span class="text-xs font-bold text-amber-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Framework de priorização: <strong>Reach × Impact × Confidence ÷ Effort</strong>. Quanto maior o score, mais prioritário. Elimina o vício de priorizar pelo grito do stakeholder.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-amber-900/60 to-amber-800/30 border border-amber-500/30">
+                                <span class="text-xs font-bold text-amber-400 tracking-widest uppercase mb-3">Intermediário</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é North Star Metric?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-amber-700/40 to-amber-600/20 border border-amber-400/50">
+                                <span class="text-xs font-bold text-amber-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">A <strong>única métrica principal</strong> que melhor representa o valor central entregue ao usuário. Alinha o time em torno do que realmente importa no longo prazo.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-amber-900/60 to-amber-800/30 border border-amber-500/30">
+                                <span class="text-xs font-bold text-amber-400 tracking-widest uppercase mb-3">Intermediário</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é OKR?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-amber-700/40 to-amber-600/20 border border-amber-400/50">
+                                <span class="text-xs font-bold text-amber-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed"><strong>Objectives and Key Results</strong>: framework de metas com objetivo inspirador (qualitativo) e resultados mensuráveis (quantitativos). Conecta estratégia à execução.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-amber-900/60 to-amber-800/30 border border-amber-500/30">
+                                <span class="text-xs font-bold text-amber-400 tracking-widest uppercase mb-3">Intermediário</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é Churn?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-amber-700/40 to-amber-600/20 border border-amber-400/50">
+                                <span class="text-xs font-bold text-amber-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Taxa de <strong>cancelamento ou abandono</strong> do produto por usuários em um período. Alto churn indica que o produto não está entregando valor suficiente para reter.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-amber-900/60 to-amber-800/30 border border-amber-500/30">
+                                <span class="text-xs font-bold text-amber-400 tracking-widest uppercase mb-3">Intermediário</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é Feature Flag?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-amber-700/40 to-amber-600/20 border border-amber-400/50">
+                                <span class="text-xs font-bold text-amber-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Mecanismo técnico que permite <strong>ligar ou desligar funcionalidades</strong> em produção sem novo deploy. Viabiliza rollouts graduais e testes A/B com segurança.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-amber-900/60 to-amber-800/30 border border-amber-500/30">
+                                <span class="text-xs font-bold text-amber-400 tracking-widest uppercase mb-3">Intermediário</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é Product-Market Fit?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-amber-700/40 to-amber-600/20 border border-amber-400/50">
+                                <span class="text-xs font-bold text-amber-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Estágio em que o produto <strong>resolve tão bem o problema</strong> que a demanda cresce organicamente. Usuários recomendam, retornam e ficam frustrados se o produto sumir.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 7 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-amber-900/60 to-amber-800/30 border border-amber-500/30">
+                                <span class="text-xs font-bold text-amber-400 tracking-widest uppercase mb-3">Intermediário</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é Teste A/B?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-amber-700/40 to-amber-600/20 border border-amber-400/50">
+                                <span class="text-xs font-bold text-amber-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Experimento que compara <strong>duas versões</strong> de uma funcionalidade expostas a grupos distintos para determinar, com dados, qual performa melhor.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 8 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-amber-900/60 to-amber-800/30 border border-amber-500/30">
+                                <span class="text-xs font-bold text-amber-400 tracking-widest uppercase mb-3">Intermediário</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é UX Research?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-amber-700/40 to-amber-600/20 border border-amber-400/50">
+                                <span class="text-xs font-bold text-amber-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Conjunto de métodos (entrevistas, testes de usabilidade, mapas de calor) para <strong>entender comportamento, motivações e dores</strong> dos usuários com evidências.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 9 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-amber-900/60 to-amber-800/30 border border-amber-500/30">
+                                <span class="text-xs font-bold text-amber-400 tracking-widest uppercase mb-3">Intermediário</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é GTM (Go To Market)?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-amber-700/40 to-amber-600/20 border border-amber-400/50">
+                                <span class="text-xs font-bold text-amber-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Estratégia de <strong>lançamento de produto ou feature</strong>: comunicação, treinamento de suporte, rollout gradual e adoção pelos usuários. Garante que a entrega seja usada.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 10 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-amber-900/60 to-amber-800/30 border border-amber-500/30">
+                                <span class="text-xs font-bold text-amber-400 tracking-widest uppercase mb-3">Intermediário</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é Cost of Delay?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-amber-700/40 to-amber-600/20 border border-amber-400/50">
+                                <span class="text-xs font-bold text-amber-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Custo ou <strong>perda financeira/estratégica</strong> gerada pelo atraso no lançamento de uma iniciativa. Ajuda a justificar prioridades além do esforço técnico.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- DECK DIFÍCIL -->
+            <div id="deck-dificil" class="deck hidden">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+                    <!-- Card 1 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-red-900/60 to-red-800/30 border border-red-500/30">
+                                <span class="text-xs font-bold text-red-400 tracking-widest uppercase mb-3">Avançado</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">Qual a diferença entre Output e Outcome?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-red-700/40 to-red-600/20 border border-red-400/50">
+                                <span class="text-xs font-bold text-red-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed"><strong>Output</strong> = entrega (feature criada). <strong>Outcome</strong> = resultado de negócio gerado. PMs de alto nível gerenciam outcomes, não apenas outputs.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-red-900/60 to-red-800/30 border border-red-500/30">
+                                <span class="text-xs font-bold text-red-400 tracking-widest uppercase mb-3">Avançado</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é Continuous Discovery?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-red-700/40 to-red-600/20 border border-red-400/50">
+                                <span class="text-xs font-bold text-red-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Prática de realizar <strong>pesquisa com usuários de forma contínua e sistemática</strong> durante toda a execução — não apenas em fases isoladas antes do roadmap.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-red-900/60 to-red-800/30 border border-red-500/30">
+                                <span class="text-xs font-bold text-red-400 tracking-widest uppercase mb-3">Avançado</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é Jobs to be Done (JTBD)?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-red-700/40 to-red-600/20 border border-red-400/50">
+                                <span class="text-xs font-bold text-red-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Framework que analisa qual <strong>"tarefa" o usuário "contrata" o produto para fazer</strong> em seu contexto real — independente das características do produto.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-red-900/60 to-red-800/30 border border-red-500/30">
+                                <span class="text-xs font-bold text-red-400 tracking-widest uppercase mb-3">Avançado</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">Qual a diferença entre Métricas de Saúde e de Impacto?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-red-700/40 to-red-600/20 border border-red-400/50">
+                                <span class="text-xs font-bold text-red-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed"><strong>Saúde</strong> = o produto funciona? (uptime, latência, bugs). <strong>Impacto</strong> = o produto gera valor? (retenção, ativação, receita). Ambas são necessárias.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-red-900/60 to-red-800/30 border border-red-500/30">
+                                <span class="text-xs font-bold text-red-400 tracking-widest uppercase mb-3">Avançado</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é o Triângulo de Ferro?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-red-700/40 to-red-600/20 border border-red-400/50">
+                                <span class="text-xs font-bold text-red-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Restrição clássica: <strong>Escopo, Custo e Tempo</strong>. Aumentar o escopo exige mais tempo ou dinheiro. O PM gerencia esse trade-off com os stakeholders.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-red-900/60 to-red-800/30 border border-red-500/30">
+                                <span class="text-xs font-bold text-red-400 tracking-widest uppercase mb-3">Avançado</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é Dark Launch?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-red-700/40 to-red-600/20 border border-red-400/50">
+                                <span class="text-xs font-bold text-red-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Lançar uma feature para <strong>usuários reais em produção sem exibi-la na interface</strong>. Testa performance e estabilidade com tráfego real antes do rollout visual.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 7 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-red-900/60 to-red-800/30 border border-red-500/30">
+                                <span class="text-xs font-bold text-red-400 tracking-widest uppercase mb-3">Avançado</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é o anti-pattern "Feature Factory"?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-red-700/40 to-red-600/20 border border-red-400/50">
+                                <span class="text-xs font-bold text-red-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Time focado em <strong>lançar features sem medir impacto</strong> ou validar resultados. Muita entrega, pouco aprendizado. O product sense fica atrofiado.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 8 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-red-900/60 to-red-800/30 border border-red-500/30">
+                                <span class="text-xs font-bold text-red-400 tracking-widest uppercase mb-3">Avançado</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é "Liderança por Contexto"?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-red-700/40 to-red-600/20 border border-red-400/50">
+                                <span class="text-xs font-bold text-red-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Compartilhar o <strong>contexto estratégico</strong> (problema, dados, objetivos) para que o time tome decisões autônomas e alinhadas — sem controlar cada tarefa.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 9 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-red-900/60 to-red-800/30 border border-red-500/30">
+                                <span class="text-xs font-bold text-red-400 tracking-widest uppercase mb-3">Avançado</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é "Hipótese como Fato"?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-red-700/40 to-red-600/20 border border-red-400/50">
+                                <span class="text-xs font-bold text-red-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Anti-pattern de <strong>tratar suposições não validadas como verdades</strong>, pulando o discovery. Leva a construir soluções para problemas que não existem.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 10 -->
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front bg-gradient-to-br from-red-900/60 to-red-800/30 border border-red-500/30">
+                                <span class="text-xs font-bold text-red-400 tracking-widest uppercase mb-3">Avançado</span>
+                                <h3 class="text-lg font-display font-bold text-white leading-snug">O que é o Paradoxo da Inovação em escala?</h3>
+                                <p class="flip-hint text-gray-500">Toque para revelar</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-red-700/40 to-red-600/20 border border-red-400/50">
+                                <span class="text-xs font-bold text-red-300 tracking-widest uppercase mb-3">Resposta</span>
+                                <p class="text-gray-200 text-sm leading-relaxed">Quanto mais um produto <strong>gera receita e escala</strong>, mais difícil é justificar apostas de inovação disruptiva — pois o risco de perturbar o negócio atual aumenta.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+
+    <script src="./app.js"></script>
+    <script>
+        const TABS = {
+            facil:  { border: 'border-emerald-500', bg: 'bg-emerald-500/20', text: 'text-emerald-300' },
+            medio:  { border: 'border-amber-500',   bg: 'bg-amber-500/20',   text: 'text-amber-300'   },
+            dificil:{ border: 'border-red-500',      bg: 'bg-red-500/20',     text: 'text-red-300'     },
+        };
+
+        function showDeck(level) {
+            document.querySelectorAll('.deck').forEach(d => d.classList.add('hidden'));
+            document.getElementById('deck-' + level).classList.remove('hidden');
+
+            ['facil','medio','dificil'].forEach(l => {
+                const btn = document.getElementById('tab-' + l);
+                btn.className = 'px-6 py-2.5 rounded-full font-semibold text-sm transition-all border';
+                if (l === level) {
+                    btn.classList.add(TABS[l].border, TABS[l].bg, TABS[l].text);
+                } else {
+                    btn.classList.add('border-gray-700','text-gray-500','hover:border-gray-500','hover:text-gray-300');
+                }
+            });
+
+            // reset all flipped cards in the shown deck
+            document.querySelectorAll('#deck-' + level + ' .flip-card').forEach(c => c.classList.remove('flipped'));
+        }
+
+        window.showDeck = showDeck;
+
+        setTimeout(() => { if(window.lucide) window.lucide.createIcons(); }, 100);
+    </script>
+</body>
+</html>

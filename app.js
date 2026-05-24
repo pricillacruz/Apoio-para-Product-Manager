@@ -6,7 +6,7 @@ const Navbar = `
                 <i data-lucide="layers" class="w-5 h-5"></i>
             </div>
             <span class="font-display font-bold text-xl tracking-tight text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-accent transition-all">
-                Product Manager Pricilla Cruz
+                Product Manager Pricilla S. Cruz
             </span>
         </a>
         
@@ -26,6 +26,9 @@ const Navbar = `
                     <a href="ia.html" class="px-4 py-2 hover:bg-white/5 text-sm text-gray-300 hover:text-white transition-colors flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-fuchsia-500"></i> IA</a>
                     <a href="ux.html" class="px-4 py-2 hover:bg-white/5 text-sm text-gray-300 hover:text-white transition-colors flex items-center gap-2"><i data-lucide="pen-tool" class="w-4 h-4 text-pink-500"></i> UX Design</a>
                     <a href="certificacoes.html" class="px-4 py-2 hover:bg-white/5 text-sm text-gray-300 hover:text-white transition-colors flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-amber-500"></i> Certificações</a>
+                    <div class="h-px bg-gray-800 mx-2 my-1"></div>
+                    <a href="flashcards.html" class="px-4 py-2 hover:bg-white/5 text-sm text-gray-300 hover:text-white transition-colors flex items-center gap-2"><i data-lucide="layers" class="w-4 h-4 text-emerald-400"></i> Flashcards PM</a>
+                    <a href="quiz.html" class="px-4 py-2 hover:bg-white/5 text-sm text-gray-300 hover:text-white transition-colors flex items-center gap-2"><i data-lucide="help-circle" class="w-4 h-4 text-primary"></i> Quiz PM</a>
                 </div>
             </li>
             <li><a href="relaciona.html" class="nav-link text-accent">Como Tudo se Relaciona</a></li>
@@ -50,6 +53,9 @@ const Navbar = `
             <a href="ia.html" class="text-gray-300 hover:text-white pl-4">IA</a>
             <a href="ux.html" class="text-gray-300 hover:text-white pl-4">UX Design</a>
             <a href="certificacoes.html" class="text-gray-300 hover:text-white pl-4">Certificações</a>
+            <div class="text-sm text-gray-500 font-bold mt-2 uppercase tracking-wider">Praticar</div>
+            <a href="flashcards.html" class="text-emerald-400 hover:text-emerald-300 pl-4">Flashcards PM</a>
+            <a href="quiz.html" class="text-primary hover:text-blue-300 pl-4">Quiz PM</a>
             <div class="h-px bg-gray-800 w-full my-2"></div>
             <a href="relaciona.html" class="text-accent hover:text-accent">Como Tudo se Relaciona</a>
             <a href="sobre.html" class="text-gray-300 hover:text-white">Quem Sou Eu</a>
@@ -64,7 +70,7 @@ const Footer = `
     <div class="container mx-auto px-6 text-center relative z-10">
         <a href="index.html" class="inline-flex items-center gap-2 mb-6 opacity-50 hover:opacity-100 transition-opacity">
             <i data-lucide="layers" class="w-5 h-5 text-white"></i>
-            <span class="font-display font-bold text-xl tracking-tight text-white">Product Manager Pricilla Cruz</span>
+            <span class="font-display font-bold text-xl tracking-tight text-white">Product Manager Pricilla S. Cruz</span>
         </a>
         <p class="text-gray-500 text-sm max-w-md mx-auto">
             Transformando conceitos técnicos complexos em conhecimentos acessíveis, visuais e humanos.
@@ -78,7 +84,7 @@ const Footer = `
             </a>
         </div>
         <div class="mt-8 text-gray-700 text-xs">
-            © ${new Date().getFullYear()} Product Manager Pricilla Cruz · Desenvolvido por
+            © ${new Date().getFullYear()} Product Manager Pricilla S. Cruz · Desenvolvido por
             <a href="https://www.linkedin.com/in/pricilla-souza/" target="_blank" class="text-gray-400 font-semibold hover:text-primary transition-colors">Pricilla Souza</a>
             ·
             <a href="https://github.com/pricillacruz" target="_blank" class="text-gray-400 hover:text-white transition-colors">GitHub</a>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz PM | Product Manager Pricilla S. Cruz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        background: '#030712',
+                        surface: '#111827',
+                        primary: '#3b82f6',
+                        accent: '#8b5cf6',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        .quiz-option {
+            width: 100%; text-align: left; padding: 14px 18px;
+            border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03); color: #d1d5db;
+            cursor: pointer; transition: all 0.2s; font-size: 0.95rem;
+            margin-bottom: 10px; display: block;
+        }
+        .quiz-option:hover:not(:disabled) { border-color: rgba(139,92,246,0.5); background: rgba(139,92,246,0.08); color: #fff; }
+        .quiz-option.correct  { border-color: #10b981; background: rgba(16,185,129,0.15); color: #6ee7b7; font-weight: 600; }
+        .quiz-option.wrong    { border-color: #ef4444; background: rgba(239,68,68,0.15);  color: #fca5a5; }
+        .quiz-option:disabled { cursor: not-allowed; }
+        .fade-in  { animation: fadeIn  0.35s ease forwards; }
+        .fade-out { animation: fadeOut 0.25s ease forwards; }
+        @keyframes fadeIn  { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes fadeOut { from { opacity:1; } to { opacity:0; } }
+        .progress-bar { height: 4px; border-radius: 2px; transition: width 0.4s ease; }
+    </style>
+</head>
+<body class="bg-background text-gray-200 font-sans antialiased selection:bg-accent selection:text-white overflow-x-hidden">
+
+    <div id="nav-container"></div>
+
+    <!-- HERO -->
+    <main class="relative pt-32 pb-12">
+        <div class="absolute top-0 left-1/3 w-96 h-96 bg-primary/15 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute top-0 right-1/3 w-96 h-96 bg-accent/15 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface/50 border border-gray-800 backdrop-blur-sm mb-6 animate-fade-in-up">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <span class="text-sm font-medium text-gray-300">Teste seu conhecimento</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tight mb-4 animate-fade-in-up" style="animation-delay:0.1s;">
+                Quiz <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">PM</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-10 animate-fade-in-up" style="animation-delay:0.2s;">
+                3 quizzes · 10 perguntas cada · perguntas embaralhadas a cada rodada.
+            </p>
+
+            <!-- Tabs de nível -->
+            <div class="flex justify-center gap-3 mb-2 flex-wrap animate-fade-in-up" style="animation-delay:0.3s;">
+                <button onclick="switchQuiz('facil')" id="qtab-facil"
+                    class="px-6 py-2.5 rounded-full font-semibold text-sm transition-all border border-emerald-500 bg-emerald-500/20 text-emerald-300">
+                    🟢 Fácil
+                </button>
+                <button onclick="switchQuiz('medio')" id="qtab-medio"
+                    class="px-6 py-2.5 rounded-full font-semibold text-sm transition-all border border-gray-700 text-gray-500 hover:border-amber-500/50 hover:text-amber-400">
+                    🟡 Médio
+                </button>
+                <button onclick="switchQuiz('dificil')" id="qtab-dificil"
+                    class="px-6 py-2.5 rounded-full font-semibold text-sm transition-all border border-gray-700 text-gray-500 hover:border-red-500/50 hover:text-red-400">
+                    🔴 Difícil
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- QUIZ CONTAINERS -->
+    <section class="pb-24">
+        <div class="container mx-auto px-6 max-w-2xl">
+
+            <!-- QUIZ FÁCIL -->
+            <div id="quiz-facil" class="quiz-panel">
+                <div id="qstart-facil" class="text-center py-12 glass-panel rounded-3xl border border-gray-800 p-8">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h2 class="text-2xl font-display font-bold text-white mb-2">Quiz Fácil</h2>
+                    <p class="text-gray-400 mb-8">10 perguntas sobre fundamentos de PM. Ideal para quem está começando.</p>
+                    <button onclick="startQuizLevel('facil')" class="px-8 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-semibold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                        Iniciar Quiz Fácil
+                    </button>
+                </div>
+                <div id="qquestion-facil" style="display:none;" class="glass-panel rounded-3xl border border-gray-800 p-8">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-sm text-gray-500">Pergunta <span id="qcur-facil">1</span> de <span id="qtot-facil">10</span></span>
+                        <span class="text-sm font-semibold text-emerald-400">🟢 Fácil</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full mb-6">
+                        <div id="qprog-facil" class="progress-bar bg-emerald-500" style="width:10%"></div>
+                    </div>
+                    <h3 id="qtext-facil" class="text-lg font-semibold text-white mb-6 leading-relaxed"></h3>
+                    <div id="qopts-facil"></div>
+                </div>
+                <div id="qresult-facil" style="display:none;" class="text-center glass-panel rounded-3xl border border-gray-800 p-10">
+                    <div id="qemoji-facil" class="text-5xl mb-4"></div>
+                    <h2 class="text-2xl font-display font-bold text-white mb-2">Resultado</h2>
+                    <p class="text-5xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-primary mb-4" id="qscore-facil"></p>
+                    <p class="text-gray-400 mb-8" id="qmsg-facil"></p>
+                    <button onclick="startQuizLevel('facil')" class="px-8 py-3 rounded-xl bg-emerald-500/20 border border-emerald-500/50 text-emerald-300 hover:bg-emerald-500 hover:text-white font-semibold transition-all">
+                        Jogar Novamente
+                    </button>
+                </div>
+            </div>
+
+            <!-- QUIZ MÉDIO -->
+            <div id="quiz-medio" class="quiz-panel hidden">
+                <div id="qstart-medio" class="text-center py-12 glass-panel rounded-3xl border border-gray-800 p-8">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h2 class="text-2xl font-display font-bold text-white mb-2">Quiz Médio</h2>
+                    <p class="text-gray-400 mb-8">10 perguntas de nível intermediário sobre frameworks, métricas e estratégia.</p>
+                    <button onclick="startQuizLevel('medio')" class="px-8 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-white font-semibold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(245,158,11,0.3)]">
+                        Iniciar Quiz Médio
+                    </button>
+                </div>
+                <div id="qquestion-medio" style="display:none;" class="glass-panel rounded-3xl border border-gray-800 p-8">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-sm text-gray-500">Pergunta <span id="qcur-medio">1</span> de <span id="qtot-medio">10</span></span>
+                        <span class="text-sm font-semibold text-amber-400">🟡 Médio</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full mb-6">
+                        <div id="qprog-medio" class="progress-bar bg-amber-500" style="width:10%"></div>
+                    </div>
+                    <h3 id="qtext-medio" class="text-lg font-semibold text-white mb-6 leading-relaxed"></h3>
+                    <div id="qopts-medio"></div>
+                </div>
+                <div id="qresult-medio" style="display:none;" class="text-center glass-panel rounded-3xl border border-gray-800 p-10">
+                    <div id="qemoji-medio" class="text-5xl mb-4"></div>
+                    <h2 class="text-2xl font-display font-bold text-white mb-2">Resultado</h2>
+                    <p class="text-5xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-primary mb-4" id="qscore-medio"></p>
+                    <p class="text-gray-400 mb-8" id="qmsg-medio"></p>
+                    <button onclick="startQuizLevel('medio')" class="px-8 py-3 rounded-xl bg-amber-500/20 border border-amber-500/50 text-amber-300 hover:bg-amber-500 hover:text-white font-semibold transition-all">
+                        Jogar Novamente
+                    </button>
+                </div>
+            </div>
+
+            <!-- QUIZ DIFÍCIL -->
+            <div id="quiz-dificil" class="quiz-panel hidden">
+                <div id="qstart-dificil" class="text-center py-12 glass-panel rounded-3xl border border-gray-800 p-8">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h2 class="text-2xl font-display font-bold text-white mb-2">Quiz Difícil</h2>
+                    <p class="text-gray-400 mb-8">10 perguntas avançadas sobre estratégia, anti-patterns e liderança em produto.</p>
+                    <button onclick="startQuizLevel('dificil')" class="px-8 py-3 rounded-xl bg-red-500 hover:bg-red-400 text-white font-semibold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(239,68,68,0.3)]">
+                        Iniciar Quiz Difícil
+                    </button>
+                </div>
+                <div id="qquestion-dificil" style="display:none;" class="glass-panel rounded-3xl border border-gray-800 p-8">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-sm text-gray-500">Pergunta <span id="qcur-dificil">1</span> de <span id="qtot-dificil">10</span></span>
+                        <span class="text-sm font-semibold text-red-400">🔴 Difícil</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full mb-6">
+                        <div id="qprog-dificil" class="progress-bar bg-red-500" style="width:10%"></div>
+                    </div>
+                    <h3 id="qtext-dificil" class="text-lg font-semibold text-white mb-6 leading-relaxed"></h3>
+                    <div id="qopts-dificil"></div>
+                </div>
+                <div id="qresult-dificil" style="display:none;" class="text-center glass-panel rounded-3xl border border-gray-800 p-10">
+                    <div id="qemoji-dificil" class="text-5xl mb-4"></div>
+                    <h2 class="text-2xl font-display font-bold text-white mb-2">Resultado</h2>
+                    <p class="text-5xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-accent mb-4" id="qscore-dificil"></p>
+                    <p class="text-gray-400 mb-8" id="qmsg-dificil"></p>
+                    <button onclick="startQuizLevel('dificil')" class="px-8 py-3 rounded-xl bg-red-500/20 border border-red-500/50 text-red-300 hover:bg-red-500 hover:text-white font-semibold transition-all">
+                        Jogar Novamente
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+
+    <script src="./app.js"></script>
+    <script>
+    // ── BANCO DE PERGUNTAS ──────────────────────────────────────────────────
+
+    const QUESTIONS = {
+        facil: [
+            { q: "Qual é a principal responsabilidade do Product Manager?", opts: ["Programar todas as funcionalidades do produto","Conectar negócio, tecnologia e usuário para entregar valor","Gerenciar o orçamento da empresa","Fazer o design de todas as telas"], c: 1 },
+            { q: "O que é um Backlog de produto?", opts: ["Lista de bugs apenas","Documento de requisitos jurídicos","Lista priorizada de tudo que o time deve construir ou investigar","Ata de reuniões da Sprint"], c: 2 },
+            { q: "O que é uma Sprint no contexto ágil?", opts: ["Uma reunião diária de 15 minutos","Período fixo de trabalho (geralmente 2 semanas) com entrega incremental","Um relatório mensal de métricas","Uma fase exclusiva de testes"], c: 1 },
+            { q: "O que significa a sigla MVP?", opts: ["Most Valuable Player","Maximum Vision Plan","Minimum Viable Product","Main Value Proposition"], c: 2 },
+            { q: "O que é um Stakeholder?", opts: ["Somente os desenvolvedores do time","Apenas o CEO da empresa","Qualquer pessoa ou grupo com interesse ou impacto no produto","Somente os usuários finais do produto"], c: 2 },
+            { q: "O que é uma User Story?", opts: ["A história de como a empresa foi fundada","Descrição de funcionalidade do ponto de vista do usuário","Um relatório de analytics","O portfólio de design da empresa"], c: 1 },
+            { q: "Qual é o principal objetivo do Product Discovery?", opts: ["Escrever código mais rápido","Contratar mais pessoas para o time","Investigar problemas reais antes de construir soluções","Aprovar o orçamento da próxima Sprint"], c: 2 },
+            { q: "O que é um Roadmap de produto?", opts: ["Lista de tarefas técnicas diárias","Documento de RH para avaliação de desempenho","Planejamento visual que comunica a evolução estratégica do produto","Mapa de localização do escritório"], c: 2 },
+            { q: "O que é um KPI em gestão de produto?", opts: ["Um tipo de reunião ágil","Métrica que mede o desempenho em relação a um objetivo","Um bug crítico em produção","Uma ferramenta de design"], c: 1 },
+            { q: "Qual cerimônia Scrum define o que o time fará na próxima Sprint?", opts: ["Daily Standup","Retrospectiva","Sprint Review","Sprint Planning"], c: 3 },
+        ],
+        medio: [
+            { q: "O que o framework RICE avalia na priorização?", opts: ["Revenue, Investment, Cost, Execution","Reach, Impact, Confidence, Effort","Risk, Innovation, Confidence, Estimate","Reach, Investment, Complexity, Effort"], c: 1 },
+            { q: "O que é a North Star Metric?", opts: ["A meta de vendas trimestral","A métrica mais fácil de medir","A métrica central que representa o valor entregue aos usuários","O maior número no dashboard"], c: 2 },
+            { q: "O que é Churn?", opts: ["Taxa de crescimento de novos usuários","Taxa de cancelamento ou abandono do produto","Taxa de conversão do funil de vendas","Taxa de bugs por Sprint"], c: 1 },
+            { q: "O que significa Product-Market Fit?", opts: ["Quando o produto tem muitas funcionalidades","Quando o produto resolve tão bem o problema que cresce organicamente","Quando o orçamento é aprovado","Quando o time atinge 100% das metas de Sprint"], c: 1 },
+            { q: "Para que serve o framework MoSCoW?", opts: ["Para analisar dados de retenção","Para priorizar requisitos em Must, Should, Could e Won't","Para mapear a arquitetura do sistema","Para estruturar a apresentação executiva"], c: 1 },
+            { q: "O que é um Feature Flag?", opts: ["Uma flag de bug no Jira","Ícone de favorito no produto","Mecanismo para ligar/desligar funcionalidades sem novo deploy","Tipo de notificação push para usuários"], c: 2 },
+            { q: "O que mede o NPS (Net Promoter Score)?", opts: ["Número de novas features lançadas","Velocidade do time de desenvolvimento","Probabilidade do usuário recomendar o produto","Custo por aquisição de cliente (CAC)"], c: 2 },
+            { q: "Qual a diferença entre dado quantitativo e qualitativo?", opts: ["Não há diferença em produto","Qualitativo são números; quantitativo são relatos","Quantitativo são números e métricas; qualitativo são relatos e percepções","Quantitativo é sempre mais importante"], c: 2 },
+            { q: "O que é Cost of Delay?", opts: ["Custo de contratar um novo PM","Custo ou perda gerada pelo atraso no lançamento de uma iniciativa de alto impacto","Custo de um bug em produção","Custo de infraestrutura em cloud"], c: 1 },
+            { q: "O que é um Teste A/B?", opts: ["Comparação de duas tecnologias diferentes","Comparação de dois candidatos a PM","Experimento que compara duas versões de uma funcionalidade para ver qual performa melhor","Teste de carga no servidor"], c: 2 },
+        ],
+        dificil: [
+            { q: "Qual a diferença fundamental entre Output e Outcome em produto?", opts: ["Output é resultado de negócio; Outcome é a entrega técnica","Output é a entrega (feature criada); Outcome é o resultado de negócio gerado","Ambos significam a mesma coisa","Output é uma métrica de UX; Outcome é de engenharia"], c: 1 },
+            { q: "No Jobs to be Done, o que o usuário 'contrata' o produto para fazer?", opts: ["Comprar mais funcionalidades premium","Realizar uma tarefa específica em seu contexto real de vida","Aumentar o NPS da empresa","Substituir atendimento humano"], c: 1 },
+            { q: "Em que situação o PM deve recusar uma feature pedida por um executivo?", opts: ["Nunca — o executivo sempre tem razão","Quando o time de engenharia não quer construir","Quando não há dados que justifiquem o impacto esperado","Quando o prazo é muito curto"], c: 2 },
+            { q: "O que é Continuous Discovery?", opts: ["Fase única de pesquisa antes do roadmap anual","Prática de pesquisar usuários de forma contínua e sistemática ao longo de toda a execução","Discovery feito apenas por UX researchers externos","Análise de concorrentes uma vez por trimestre"], c: 1 },
+            { q: "Qual o principal risco de otimizar apenas métricas de vaidade?", opts: ["O time fica motivado demais e entrega rápido","O produto cresce em números mas sem gerar valor real, escondendo problemas estruturais","O NPS sobe além do esperado","O backlog fica vazio rapidamente"], c: 1 },
+            { q: "O que é um Dark Launch?", opts: ["Lançamento feito às 00h para evitar usuários","Feature lançada para usuários reais em produção sem exibi-la na interface","Um modo escuro de interface para usuários","Feature cancelada antes do lançamento"], c: 1 },
+            { q: "O que caracteriza o anti-pattern 'Feature Factory'?", opts: ["Time que entrega poucas features por trimestre","Time focado em lançar features sem medir impacto ou validar resultados","Empresa com muitas fontes de receita simultâneas","PM que rejeita todas as solicitações dos stakeholders"], c: 1 },
+            { q: "O que é Liderança por Contexto (Context, not Control)?", opts: ["Controlar cada decisão do time para garantir alinhamento","Compartilhar contexto estratégico para que o time tome decisões autônomas e alinhadas","Delegar tudo sem fornecer qualquer direção","Definir todas as tarefas técnicas da engenharia"], c: 1 },
+            { q: "Qual é a principal armadilha do anti-pattern 'Solução em Busca de Problema'?", opts: ["Validar hipóteses demais antes de construir","Tratar suposições não validadas como verdades, pulando o discovery","Construir features que já existem na concorrência","Priorizar problemas de nicho em vez de problemas amplos"], c: 1 },
+            { q: "Por que o Paradoxo da Inovação é um desafio para PMs em empresas maduras?", opts: ["Porque os usuários não gostam de novidades","Quanto mais o produto gera receita e escala, mais difícil é justificar apostas de inovação disruptiva","Porque a engenharia não tem capacidade técnica","Porque o orçamento de produto é sempre cortado"], c: 1 },
+        ],
+    };
+
+    // ── ESTADO DOS QUIZZES ──────────────────────────────────────────────────
+    const state = {
+        facil:   { idx: 0, score: 0, questions: [] },
+        medio:   { idx: 0, score: 0, questions: [] },
+        dificil: { idx: 0, score: 0, questions: [] },
+    };
+
+    // ── UTILITÁRIOS ─────────────────────────────────────────────────────────
+    function shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+    }
+
+    let audioCtx = null;
+    function playSound(correct) {
+        try {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            if (correct) {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(1046.5, audioCtx.currentTime + 0.1);
+            } else {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(300, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.2);
+            }
+            gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+            osc.start(); osc.stop(audioCtx.currentTime + 0.3);
+        } catch(e) {}
+    }
+
+    // ── CONTROLE DE TABS ────────────────────────────────────────────────────
+    const TAB_STYLES = {
+        facil:   { active: 'border-emerald-500 bg-emerald-500/20 text-emerald-300', hover: 'hover:border-emerald-500/50 hover:text-emerald-400' },
+        medio:   { active: 'border-amber-500 bg-amber-500/20 text-amber-300',       hover: 'hover:border-amber-500/50 hover:text-amber-400'   },
+        dificil: { active: 'border-red-500 bg-red-500/20 text-red-300',             hover: 'hover:border-red-500/50 hover:text-red-400'       },
+    };
+
+    function switchQuiz(level) {
+        document.querySelectorAll('.quiz-panel').forEach(p => p.classList.add('hidden'));
+        document.getElementById('quiz-' + level).classList.remove('hidden');
+        ['facil','medio','dificil'].forEach(l => {
+            const btn = document.getElementById('qtab-' + l);
+            btn.className = 'px-6 py-2.5 rounded-full font-semibold text-sm transition-all border ' +
+                (l === level
+                    ? TAB_STYLES[l].active
+                    : 'border-gray-700 text-gray-500 ' + TAB_STYLES[l].hover);
+        });
+    }
+
+    // ── LÓGICA DO QUIZ ──────────────────────────────────────────────────────
+    function startQuizLevel(level) {
+        state[level].questions = shuffle(QUESTIONS[level]);
+        state[level].idx   = 0;
+        state[level].score = 0;
+        document.getElementById('qstart-'  + level).style.display = 'none';
+        document.getElementById('qresult-' + level).style.display = 'none';
+        document.getElementById('qquestion-' + level).style.display = 'block';
+        showQuestion(level);
+    }
+
+    function showQuestion(level) {
+        const s = state[level];
+        const qd = s.questions[s.idx];
+        const total = s.questions.length;
+
+        document.getElementById('qcur-'  + level).textContent = s.idx + 1;
+        document.getElementById('qtot-'  + level).textContent = total;
+        document.getElementById('qprog-' + level).style.width = ((s.idx + 1) / total * 100) + '%';
+
+        const textEl = document.getElementById('qtext-' + level);
+        textEl.classList.remove('fade-in'); void textEl.offsetWidth;
+        textEl.classList.add('fade-in');
+        textEl.textContent = qd.q;
+
+        const optsEl = document.getElementById('qopts-' + level);
+        optsEl.innerHTML = '';
+        // shuffle option order but track correct answer
+        const indices = shuffle([0,1,2,3]);
+        indices.forEach(origIdx => {
+            const btn = document.createElement('button');
+            btn.className = 'quiz-option fade-in';
+            btn.textContent = qd.opts[origIdx];
+            btn.onclick = () => selectAnswer(level, origIdx === qd.c, btn, optsEl, indices, qd.c);
+            optsEl.appendChild(btn);
+        });
+    }
+
+    function selectAnswer(level, isCorrect, clickedBtn, optsEl, indices, correctOrigIdx) {
+        optsEl.querySelectorAll('button').forEach(b => b.disabled = true);
+        if (isCorrect) {
+            clickedBtn.classList.add('correct');
+            state[level].score++;
+            playSound(true);
+        } else {
+            clickedBtn.classList.add('wrong');
+            // highlight the correct button
+            const btns = optsEl.querySelectorAll('button');
+            indices.forEach((origIdx, pos) => {
+                if (origIdx === correctOrigIdx) btns[pos].classList.add('correct');
+            });
+            playSound(false);
+        }
+        setTimeout(() => {
+            state[level].idx++;
+            if (state[level].idx < state[level].questions.length) {
+                showQuestion(level);
+            } else {
+                showResult(level);
+            }
+        }, 1400);
+    }
+
+    function showResult(level) {
+        document.getElementById('qquestion-' + level).style.display = 'none';
+        const resultEl = document.getElementById('qresult-' + level);
+        resultEl.style.display = 'block';
+
+        const score = state[level].score;
+        const total = state[level].questions.length;
+        document.getElementById('qscore-' + level).textContent = score + '/' + total;
+
+        let emoji, msg;
+        if (score <= 3)      { emoji = '🎯'; msg = 'Inicio de jornada! Continue estudando — o mundo de PM é fascinante.'; }
+        else if (score <= 6) { emoji = '💪'; msg = 'Bom trabalho! Você está construindo uma base sólida em produto.'; }
+        else if (score <= 8) { emoji = '🔥'; msg = 'Muito bem! Você domina os principais conceitos. Continue evoluindo!'; }
+        else                 { emoji = '🚀'; msg = 'Incrível! Você tem o mindset de um PM de Alta Performance!'; }
+
+        document.getElementById('qemoji-' + level).textContent = emoji;
+        document.getElementById('qmsg-'   + level).textContent = msg;
+    }
+
+    // ── EXPOSE ──────────────────────────────────────────────────────────────
+    window.switchQuiz      = switchQuiz;
+    window.startQuizLevel  = startQuizLevel;
+
+    setTimeout(() => { if(window.lucide) window.lucide.createIcons(); }, 100);
+    </script>
+</body>
+</html>

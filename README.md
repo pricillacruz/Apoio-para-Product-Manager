@@ -1,4 +1,4 @@
-# Product Manager Pricilla Cruz
+# Product Manager Pricilla S. Cruz
 
 <div align="center">
   <i>Plataforma de estudos sobre ferramentas e temas do dia a dia de um Product Manager.</i>
