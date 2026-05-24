@@ -6,7 +6,7 @@ const Navbar = `
                 <i data-lucide="layers" class="w-5 h-5"></i>
             </div>
             <span class="font-display font-bold text-xl tracking-tight text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-accent transition-all">
-                Journey PM
+                Product Manager Pricilla Cruz
             </span>
         </a>
         
@@ -64,7 +64,7 @@ const Footer = `
     <div class="container mx-auto px-6 text-center relative z-10">
         <a href="index.html" class="inline-flex items-center gap-2 mb-6 opacity-50 hover:opacity-100 transition-opacity">
             <i data-lucide="layers" class="w-5 h-5 text-white"></i>
-            <span class="font-display font-bold text-xl tracking-tight text-white">Journey PM</span>
+            <span class="font-display font-bold text-xl tracking-tight text-white">Product Manager Pricilla Cruz</span>
         </a>
         <p class="text-gray-500 text-sm max-w-md mx-auto">
             Transformando conceitos técnicos complexos em conhecimentos acessíveis, visuais e humanos.
@@ -78,7 +78,7 @@ const Footer = `
             </a>
         </div>
         <div class="mt-8 text-gray-700 text-xs">
-            © ${new Date().getFullYear()} PM_Pricruz · Desenvolvido por
+            © ${new Date().getFullYear()} Product Manager Pricilla Cruz · Desenvolvido por
             <a href="https://www.linkedin.com/in/pricilla-souza/" target="_blank" class="text-gray-400 font-semibold hover:text-primary transition-colors">Pricilla Souza</a>
             ·
             <a href="https://github.com/pricillacruz" target="_blank" class="text-gray-400 hover:text-white transition-colors">GitHub</a>

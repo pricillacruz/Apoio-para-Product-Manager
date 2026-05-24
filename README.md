@@ -1,7 +1,9 @@
-# The PM Playbook
+# Product Manager Pricilla Cruz
 
 <div align="center">
-  <i>A interface definitiva para o desenvolvimento e rotina de Product Managers de Alta Performance.</i>
+  <i>Plataforma de estudos sobre ferramentas e temas do dia a dia de um Product Manager.</i>
+  <br><br>
+  🔗 <b>Site ao vivo:</b> <a href="https://pricillacruz.github.io/Apoio-para-Product-Manager/">pricillacruz.github.io/Apoio-para-Product-Manager</a>
 </div>
 
 ---
