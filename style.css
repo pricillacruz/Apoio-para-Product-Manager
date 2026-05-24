@@ -7,11 +7,45 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 body {
     background-color: #030712;
     color: #e5e7eb;
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+}
+
+/* Universal Responsive Elements */
+img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+}
+
+iframe, video, svg {
+    max-width: 100%;
+}
+
+/* Responsive Table Wrappers */
+.table-responsive, .table-responsive-container {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 1.5rem;
+}
+
+/* Hamburger button adjustment */
+#mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    cursor: pointer;
+    z-index: 100;
 }
 
 /* Animations */
